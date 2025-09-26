@@ -1,7 +1,5 @@
 'use client'
-import { IoIosArrowDown } from 'react-icons/io';
 import { RxCross2 } from "react-icons/rx";
-import { IoIosArrowForward } from "react-icons/io";
 import { MdOutlineArrowOutward } from "react-icons/md";
 export const MegaMenuNavbar = ({
     id,
