@@ -3,11 +3,11 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 
 export const Title = ({
     children,
-    className,
+    className = "",
     icon = true,
 }) => {
     return (
-        <h2 className={`text-lightColor flex items-center gap-2 uppercase tracking-wider text-xl font-semibold ${className}`}>
+        <h2 className={`flex items-center gap-2 uppercase tracking-wider text-xl font-semibold ${className}`}>
             {children}
             <span className={icon === false ? 'hidden' : 'block'}>
                 <MdOutlineArrowOutward className="size-6 rotate-90" />

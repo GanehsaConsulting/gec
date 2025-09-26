@@ -1,19 +1,21 @@
 import Image from "next/image"
 import { FaPlay } from "react-icons/fa"
-import { Title } from "./Title"
+import { Title } from "./title"
 
 
 export const About = () => {
     return (
         <>
             <main className="grid grid-cols-1 md:grid-cols-2">
-                <section className="bg-darkColor py-20 md:py-30 px-10 flex flex-col justify-between">
-                    <Title>
+                <section className="bg-darkColor dark:bg-secondaryLight py-20 md:py-30 px-10 flex flex-col justify-between">
+                    <Title
+                    className={"text-lightColor dark:text-darkColor"}
+                    >
                         Get To Know Us
                     </Title>
 
                     <div className="mt-6 max-w-4xl">
-                        <p className="text-secondaryLight text-base md:text-lg leading-relaxed tracking-normal text-justify">
+                        <p className="text-secondaryLight dark:text-secondaryDark text-base md:text-lg leading-relaxed tracking-normal text-justify">
                             GEC (Ganesha Engineering & Construction) adalah identitas brand dari PT
                             Ganesha Multi Kreatif yang dibentuk melalui sinergi strategis empat entitas
                             bisnis dengan spesialisasi berbeda dalam dunia rekayasa dan konstruksi. GEC

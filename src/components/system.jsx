@@ -2,6 +2,8 @@ import { TbBuildingWarehouse } from "react-icons/tb";
 import { TbCircuitResistor } from "react-icons/tb";
 import { TbBuildingFactory } from "react-icons/tb";
 import { TbPick } from "react-icons/tb";
+import { TbBuildingFactory2, TbCertificate, TbShieldCheck, TbUsers } from "react-icons/tb";
+
 
 export const servicesMenu = [
   {
@@ -52,5 +54,30 @@ export const servicesMenu = [
       "Desain Rencana Reklamasi",
       "Monitoring & Evaluasi",
     ],
+  },
+];
+
+
+
+export const whyUs = [
+  {
+    icon: TbBuildingFactory2,
+    title: "Solusi 1 Pintu",
+    desc: "Menyatukan seluruh kebutuhan engineering dalam satu layanan terintegrasi yang efisien.",
+  },
+  {
+    icon: TbCertificate,
+    title: "Sertifikasi & Legalitas Lengkap",
+    desc: "Memenuhi seluruh standar teknis, hukum, dan profesional sesuai aturan nasional dan global.",
+  },
+  {
+    icon: TbShieldCheck,
+    title: "Reputasi Terjaga",
+    desc: "Diakui luas sebagai mitra terpercaya dengan rekam jejak proyek konstruksi berstandar tinggi.",
+  },
+  {
+    icon: TbUsers,
+    title: "Dipercaya Berbagai Kalangan",
+    desc: "Menjadi pilihan utama perusahaan, institusi, serta pemangku kepentingan di sektor industri.",
   },
 ];
