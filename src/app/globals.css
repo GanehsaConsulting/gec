@@ -246,3 +246,34 @@ body {
 .spacing {
   @apply py-10 md:py-20
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Show scrollbar only on hover */
+.scrollbar-hover::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  transition: width 0.2s;
+}
+.scrollbar-hover:hover::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-hover {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  transition: scrollbar-width 0.2s;
+}
+.scrollbar-hover:hover {
+  scrollbar-width: thin; /* Firefox */
+  -ms-overflow-style: auto; /* IE and Edge */
+}

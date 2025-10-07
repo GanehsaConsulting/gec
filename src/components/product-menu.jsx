@@ -19,7 +19,7 @@ export const ProductMenu = ({ expandedId }) => {
     const handleMouseEnter = (idx) => {
         setHoveredCard(idx);
     };
-    
+
     const handleMouseLeave = () => {
         setHoveredCard(null);
     };
@@ -85,7 +85,7 @@ export const ProductMenu = ({ expandedId }) => {
                             <Link
                                 key={idx}
                                 href={`/produk/${slugify(el.division)}`}
-                                className={`${expandAnimationClass} relative overflow-hidden rounded-main cursor-pointer block`}
+                                className={`${expandAnimationClass} relative overflow-hidden rounded-main cursor-pointer block h-fit`}
                                 style={{ transitionDelay: `${idx * 50}ms` }}
                                 onMouseEnter={() => handleMouseEnter(idx)}
                                 onMouseLeave={handleMouseLeave}
@@ -149,11 +149,10 @@ export const ProductMenu = ({ expandedId }) => {
                                 {/* === CARD CONTENT === */}
                                 <div className="z-20 bg-otherColor/50 dark:bg-otherColorDark/30 absolute -bottom-30 -right-30 blur-3xl w-50 h-50"></div>
 
-                                <div
-                                    className={`relative z-30 p-5 rounded-main border h-[280px] flex flex-col transition-all duration-300 ease-out ${hoveredCard === idx
-                                        ? "border-mainColor/30 dark:border-mainColor/40 bg-lightColor/95 dark:bg-darkColor/95 backdrop-blur-xl transform scale-[1.02] shadow-2xl"
-                                        : "border-darkColor/10 dark:border-lightColor/10 bg-lightColor/80 dark:bg-darkColor/80"
-                                        }`}
+                                <div className={`relative z-30 p-5 rounded-main border h-[280px] flex flex-col transition-all duration-300 ease-out ${hoveredCard === idx
+                                    ? "border-mainColor/30 dark:border-mainColor/40 bg-lightColor/95 dark:bg-darkColor/95 backdrop-blur-xl transform scale-[1.02] shadow-2xl"
+                                    : "border-darkColor/10 dark:border-lightColor/10 bg-lightColor/80 dark:bg-darkColor/80"
+                                    }`}
                                 >
                                     {/* Division Icon & Name - Horizontal layout */}
                                     <div className="flex items-center gap-3 mb-6">
@@ -181,52 +180,46 @@ export const ProductMenu = ({ expandedId }) => {
                                     </div>
 
                                     {/* Products List - Always show 4 */}
-                                    <div className="space-y-1.5 flex-grow overflow-hidden">
-                                        {el.services.slice(0, 4).map((service, id) => (
-                                            <div
+                                    <div className="space-y-2 flex-grow overflow-y-scroll scrollbar-hover">
+                                        {el.services.map((service, id) => (
+                                            <a
+                                                href={`/produk/${slugify(el.division)}/${service.slug}`}
                                                 key={id}
-                                             
+
                                             >
                                                 <p
-                                                    className={`text- font-medium transition-all duration-300 line-clamp-1 ${hoveredCard === idx
-                                                        ? "text-mainColor dark:text-purple-200"
-                                                        : "text-darkColor/80 dark:text-lightColor/80"
-                                                        }`}
+                                                    className={`text-sm font-medium transition-all duration-300 line-clamp-1 hover:text-mainColor hover:text-md hover:font-bold dark:hover:text-purple-300`}
                                                 >
                                                     {service.name}
                                                 </p>
-                                            </div>
+                                            </a>
                                         ))}
                                     </div>
 
                                     {/* Footer with count and arrow */}
-                                    <div className={`mt-4 pt-3 border-t flex items-center justify-between transition-all duration-300 ${
-                                        hoveredCard === idx 
-                                            ? "border-mainColor/20 dark:border-mainColor/30" 
-                                            : "border-darkColor/10 dark:border-lightColor/10"
-                                    }`}>
+                                    <div className={`mt-4 pt-3 border-t flex items-center justify-between transition-all duration-300 ${hoveredCard === idx
+                                        ? "border-mainColor/20 dark:border-mainColor/30"
+                                        : "border-darkColor/10 dark:border-lightColor/10"
+                                        }`}>
                                         {el.services.length > 4 ? (
-                                            <p className={`text-[10px] font-semibold transition-all duration-300 ${
-                                                hoveredCard === idx 
-                                                    ? "text-mainColor dark:text-purple-300" 
-                                                    : "text-darkColor/60 dark:text-lightColor/60"
-                                            }`}>
+                                            <p className={`text-[10px] font-semibold transition-all duration-300 ${hoveredCard === idx
+                                                ? "text-mainColor dark:text-purple-300"
+                                                : "text-darkColor/60 dark:text-lightColor/60"
+                                                }`}>
                                                 +{el.services.length - 4} produk lainnya
                                             </p>
                                         ) : (
-                                            <p className={`text-[10px] font-semibold transition-all duration-300 ${
-                                                hoveredCard === idx 
-                                                    ? "text-mainColor dark:text-purple-300" 
-                                                    : "text-darkColor/60 dark:text-lightColor/60"
-                                            }`}>
+                                            <p className={`text-[10px] font-semibold transition-all duration-300 ${hoveredCard === idx
+                                                ? "text-mainColor dark:text-purple-300"
+                                                : "text-darkColor/60 dark:text-lightColor/60"
+                                                }`}>
                                                 {el.services.length} produk
                                             </p>
                                         )}
-                                        <TbChevronRight className={`transition-all duration-300 ${
-                                            hoveredCard === idx 
-                                                ? "text-mainColor dark:text-purple-300 transform translate-x-1" 
-                                                : "text-darkColor/40 dark:text-lightColor/40"
-                                        }`} />
+                                        <TbChevronRight className={`transition-all duration-300 ${hoveredCard === idx
+                                            ? "text-mainColor dark:text-purple-300 transform translate-x-1"
+                                            : "text-darkColor/40 dark:text-lightColor/40"
+                                            }`} />
                                     </div>
                                 </div>
                             </Link>
