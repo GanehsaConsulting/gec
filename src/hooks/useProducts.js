@@ -69,7 +69,8 @@ export function useProducts(options = {}) {
     if (debug) params.append('debug', debug);
 
     const queryString = params.toString();
-    return `/api/${endpoint}${queryString ? `?${queryString}` : ''}`;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+    return `${baseUrl}/api/${endpoint}${queryString ? `?${queryString}` : ''}`;
   }, [
     endpoint,
     id,

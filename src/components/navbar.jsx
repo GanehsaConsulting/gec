@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import Link from 'next/link';
 import ThemeSwitch from './theme';
 import { MegaMenuNavbar } from './mega-menu';
-import { HiSquares2X2 } from 'react-icons/hi2';
 import { ServicesMenu } from './services-menu';
+import { ProductMenu } from './product-menu';
 
 export const Navbar = ({ children }) => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -65,12 +65,20 @@ export const Navbar = ({ children }) => {
                     <ul className="flex items-center flex-col ml-[1px] p-4 md:p-0 mt-4 font-medium md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 text-[14px]">
                         {/* Menu */}
                         <MegaMenuNavbar
-                            id="produk"
-                            title="Produk & Layanan"
+                            id="services"
+                            title="Layanan"
                             expandedId={expandedId}
                             setExpandedId={setExpandedId}
                         >
                             <ServicesMenu expandedId={expandedId} />
+                        </MegaMenuNavbar>
+                        <MegaMenuNavbar
+                            id="produk"
+                            title="Produk"
+                            expandedId={expandedId}
+                            setExpandedId={setExpandedId}
+                        >
+                            <ProductMenu expandedId={expandedId} />
                         </MegaMenuNavbar>
 
                         <li className='relative flex flex-col items-center group'>
