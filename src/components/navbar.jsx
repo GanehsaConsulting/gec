@@ -29,11 +29,7 @@ export const Navbar = ({ children }) => {
 
     return (
         <>
-            {isScrolled && (
-                <>
-                    <div className="fixed top-0 left-0 right-0 h-27 z-40 w-auto pointer-events-none linear-blur-navbar bg-gradient-to-b from-lightColor/15 dark:from-darkColor/20 to-transparent" />
-                </>
-            )}
+            <div className={`${isScrolled ? "translate-y-0 opacity-100" : "-translate-100 opacity-0"} duration-200 ease-in-out fixed top-0 left-0 right-0 h-27 z-40 w-auto pointer-events-none linear-blur-navbar bg-gradient-to-b from-lightColor/15 dark:from-darkColor/20 to-transparent`} />
             <div className={`${isScrolled ? "" : "mt-0"} navbar fixed 2xl:px-80 md:px-24 w-full z-[100] ease-in-out duration-300 text-[14px] md:flex justify-center gap-2 hidden `}>
                 <li className='relative flex flex-col items-center group'>
                     <Link
