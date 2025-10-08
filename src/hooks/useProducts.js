@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback } from 'react';
  * Custom hook untuk fetch products dari API
  * 
  * @param {Object} options - Query options
- * @param {string} options.endpoint - 'products' | 'categorized' | 'detail' | 'categorized/detail'
+ * @param {string} options.endpoint - 'products' | 'categorized' | 'detail' | 'categorized/detail' | 'products/division'
  * @param {string} options.id - Product ID
  * @param {string} options.slug - Product slug
  * @param {string} options.search - Search query
@@ -69,7 +69,7 @@ export function useProducts(options = {}) {
     if (debug) params.append('debug', debug);
 
     const queryString = params.toString();
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || '';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
     return `${baseUrl}/api/${endpoint}${queryString ? `?${queryString}` : ''}`;
   }, [
     endpoint,
@@ -164,6 +164,17 @@ export function useCategorizedProduct(idOrSlug, options = {}) {
   return useProducts({
     endpoint: 'products/categorized/detail',
     ...(isId ? { id: idOrSlug } : { slug: idOrSlug }),
+    ...options,
+  });
+}
+
+/**
+ * Hook untuk get products grouped by division
+ * Returns array of { division: string, products: array }
+ */
+export function useProductsByDivision(options = {}) {
+  return useProducts({
+    endpoint: 'products/division',
     ...options,
   });
 }

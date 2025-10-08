@@ -1,9 +1,15 @@
 import Image from "next/image";
 import { productDivisions } from "./system";
 import { SearchBar } from "./search-bar";
+import { useProducts } from "@/hooks/useProducts";
+import { CardProducts } from "./card-product";
 
 
 export const ProductBanner = () => {
+    const { data: products, loading, error } = useProducts({
+        priority: true,
+        published: true
+    });
 
     return (
         <>
@@ -11,7 +17,9 @@ export const ProductBanner = () => {
                 <div className="space-y-5 grid grid-cols-2 items-center gap-10">
                     <div className="max-w-xl space-y-5">
                         <h1 className="text-4xl md:text-6xl tracking-tighter text-balance pb-1">
-                            Engineered Materials for a Stronger Future
+                            Engineered
+
+                            {" "} Materials for a Stronger Future
                         </h1>
                         <p className="leading-5 max-w-xl">
                             Ganesha Enginnering & Constructions adalah mitra rekayasa teknik yang mengintegrasikan teknologi, pengalaman, dan presisi dalam setiap proyek—dari tanah hingga teknologi.
@@ -25,6 +33,7 @@ export const ProductBanner = () => {
                         <div className="flex flex-wrap gap-2">
                             {productDivisions.map((el, idx) => (
                                 <a
+                                    key={idx}
                                     href=""
                                     className="flex items-center gap-1 line-clamp-1 px-3 py-1 bg-white/70 dark:bg-black/60 backdrop-blur-xs rounded-full text-xs font-medium duration-300 hover:text-base hover:invert"
                                 >
@@ -42,6 +51,25 @@ export const ProductBanner = () => {
                     </div>
                 </div>
             </main>
+
+            {/* Error State */}
+            {error && (
+                <div className="margin my-10">
+                    <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 text-center">
+                        <p className="text-red-600 dark:text-red-400">Error: {error}</p>
+                    </div>
+                </div>
+            )}
+            {/* Mode Carousel - Best Selling */}
+            <CardProducts
+                products={products}
+                loading={loading}
+                title="Best Selling Products"
+                mode="carousel"
+                showTitle={true}
+                showDesc={false}
+                showArrows={true}
+            />
         </>
     )
 }
