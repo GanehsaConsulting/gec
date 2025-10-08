@@ -132,7 +132,7 @@ export const CardProducts = ({
                     ) : (
                         products.map((product, idx) => {
                             const productSlug = product.slug || slugify(product.productName || product.name || '');
-                            const productPath = product.sourcePath?.replace("/", "") || sourcePath?.replace("/", "") || "";
+                            const productPath = slugify(product.division) || sourcePath?.replace("/", "") || "";
                             const productUrl = `/${productPath}/${productSlug}`;
                             const imgUrl = product.imageUrl || product.image || "/cb.png";
 
@@ -228,7 +228,7 @@ export const CardProducts = ({
                     ) : (
                         products.map((product, idx) => {
                             const productSlug = product.slug || slugify(product.productName || product.name || '');
-                            const productPath = product.sourcePath?.replace("/", "") || sourcePath?.replace("/", "") || "";
+                            const productPath = slugify(product.division) || sourcePath?.replace("/", "") || "";
                             const productUrl = `/${productPath}/${productSlug}`;
                             const imgUrl = product.imageUrl || product.image || "/cb.png";
 

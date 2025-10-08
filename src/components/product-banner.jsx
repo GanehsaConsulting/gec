@@ -3,6 +3,7 @@ import { productDivisions } from "./system";
 import { SearchBar } from "./search-bar";
 import { useProducts } from "@/hooks/useProducts";
 import { CardProducts } from "./card-product";
+import { slugify } from "@/lib/slugify";
 
 
 export const ProductBanner = () => {

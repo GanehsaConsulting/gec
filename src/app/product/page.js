@@ -2,12 +2,13 @@
 import { useProductsByDivision } from "@/hooks/useProducts";
 import { CardProducts } from "@/components/card-product";
 import { ProductBanner } from "@/components/product-banner";
+import { slugify } from "@/lib/slugify";
 
 export default function ProdukPage() {
     const { data: divisions, loading, error } = useProductsByDivision({
         published: true
     });
-
+ 
     return (
         <>
             <ProductBanner />
@@ -40,7 +41,8 @@ export default function ProdukPage() {
                     mode="carousel"
                     showTitle={true}
                     showArrows={true}
-                    viewAllLink={`/product/${divisionData.division.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-')}`}
+                    sourcePath={`/${slugify(divisionData.division)}`}
+                    viewAllLink={`/product/${slugify(divisionData.division)}`}
                 />
             ))}
 
