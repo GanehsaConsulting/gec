@@ -65,16 +65,16 @@ export const Navbar = ({ children }) => {
                     <ul className="flex items-center flex-col ml-[1px] p-4 md:p-0 mt-4 font-medium md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 text-[14px]">
                         {/* Menu */}
                         <MegaMenuNavbar
-                            id="services"
-                            title="Layanan"
+                            id="Services"
+                            title="Services"
                             expandedId={expandedId}
                             setExpandedId={setExpandedId}
                         >
                             <ServicesMenu expandedId={expandedId} />
                         </MegaMenuNavbar>
                         <MegaMenuNavbar
-                            id="produk"
-                            title="Produk"
+                            id="Products"
+                            title="Products"
                             expandedId={expandedId}
                             setExpandedId={setExpandedId}
                         >
@@ -83,7 +83,7 @@ export const Navbar = ({ children }) => {
 
                         <li className='relative flex flex-col items-center group'>
                             <Link
-                                href={'/post'}
+                                href={'/activity-article'}
                                 className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
                                 aria-current="page"
                             >
@@ -93,7 +93,7 @@ export const Navbar = ({ children }) => {
                         </li>
                         <li className='relative flex flex-col items-center group'>
                             <Link
-                                href={'/tentang-kami'}
+                                href={'/about-us'}
                                 className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
                                 aria-current="page"
                             >

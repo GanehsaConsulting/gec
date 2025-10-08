@@ -12,7 +12,8 @@ import {
   TbPick,
   TbBuildingFactory2,
   TbCertificate,
-  TbUsers
+  TbUsers,
+  TbBlocks
 } from "react-icons/tb";
 
 export const servicesMenu = [

@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { productDivisions } from "./system"; // sesuaikan path import
-import { TbAsterisk, TbChevronRight, TbSearch } from "react-icons/tb";
+import { productDivisions } from "./system";
+import { TbAsterisk, TbBlocks, TbChevronRight, TbSearch } from "react-icons/tb";
 import { useState } from "react";
 import Image from "next/image";
 import { slugify } from "@/lib/slugify";
+import { Button } from "./ui/button";
 
 export const ProductMenu = ({ expandedId }) => {
     const [hoveredCard, setHoveredCard] = useState(null);
@@ -44,6 +45,9 @@ export const ProductMenu = ({ expandedId }) => {
     })).filter(division => division.services.length > 0);
 
     const displayDivisions = searchQuery ? filteredDivisions : productDivisions;
+
+    // Index for "All Products" card
+    const allProductsIdx = displayDivisions.length;
 
     return (
         <main className="space-y-5">
@@ -149,9 +153,10 @@ export const ProductMenu = ({ expandedId }) => {
                                 {/* === CARD CONTENT === */}
                                 <div className="z-20 bg-otherColor/50 dark:bg-otherColorDark/30 absolute -bottom-30 -right-30 blur-3xl w-50 h-50"></div>
 
-                                <div className={`relative z-30 p-5 rounded-main border h-[280px] flex flex-col transition-all duration-300 ease-out ${hoveredCard === idx
-                                    ? "border-mainColor/30 dark:border-mainColor/40 bg-lightColor/95 dark:bg-darkColor/95 backdrop-blur-xl transform scale-[1.02] shadow-2xl"
-                                    : "border-darkColor/10 dark:border-lightColor/10 bg-lightColor/80 dark:bg-darkColor/80"
+                                <div className={`relative z-30 p-5 rounded-main border h-[280px] flex flex-col transition-all duration-300 ease-out 
+                                ${hoveredCard === idx
+                                        ? "border-mainColor/30 dark:border-mainColor/40 bg-lightColor/95 dark:bg-darkColor/95 backdrop-blur-xl transform scale-[1.02] shadow-2xl"
+                                        : "border-darkColor/10 dark:border-lightColor/10 bg-lightColor/80 dark:bg-darkColor/80"
                                     }`}
                                 >
                                     {/* Division Icon & Name - Horizontal layout */}
@@ -180,10 +185,10 @@ export const ProductMenu = ({ expandedId }) => {
                                     </div>
 
                                     {/* Products List - Always show 4 */}
-                                    <div className="space-y-2 flex-grow overflow-y-scroll scrollbar-hover">
+                                    <div className="space-y-1 flex-grow overflow-y-scroll scrollbar-hover">
                                         {el.services.map((service, id) => (
-                                            <a
-                                                href={`/produk/${slugify(el.division)}/${service.slug}`}
+                                            <div
+                                                onClick={() => window.location.href = `/produk/${slugify(el.division)}/${service.slug}`}
                                                 key={id}
 
                                             >
@@ -192,7 +197,7 @@ export const ProductMenu = ({ expandedId }) => {
                                                 >
                                                     {service.name}
                                                 </p>
-                                            </a>
+                                            </div>
                                         ))}
                                     </div>
 
@@ -225,11 +230,118 @@ export const ProductMenu = ({ expandedId }) => {
                             </Link>
                         ))
                     ) : (
-                        <div className={`${expandAnimationClass} col-span-4 flex items-center justify-center min-h-[280px]`}>
+                        <div className={`${expandAnimationClass} col-span-4 flex flex-col gap-2 items-center justify-center min-h-[280px] `}>
                             <p className="text-sm text-darkColor/60 dark:text-lightColor/60">
                                 Produk tidak ditemukan
                             </p>
+                            <a href=""
+                                className="px-3 py-2 dark:bg-lightColor/20 bg-darkColor/10 hover:bg-mainColor/20 dark:hover:bg-secondaryColor/20 rounded-full duration-300"
+                            >
+                                Cek Semua Produk
+                            </a>
                         </div>
+                    )}
+
+                    {/* All Products Button with same styling */}
+                    {!searchQuery && (
+                        <Link
+                            href={'/product'}
+                            className={`${expandAnimationClass} relative overflow-hidden rounded-main cursor-pointer block h-[280px]`}
+                            style={{ transitionDelay: `${allProductsIdx * 50}ms` }}
+                            onMouseEnter={() => handleMouseEnter(allProductsIdx)}
+                            onMouseLeave={handleMouseLeave}
+                            onMouseMove={(e) => handleMouseMove(e, allProductsIdx)}
+                        >
+                            {/* === BACKGROUND INTERACTION EFFECTS === */}
+                            <div
+                                className={`absolute inset-0 rounded-main transition-all duration-300 ease-out ${hoveredCard === allProductsIdx ? "opacity-100" : "opacity-0"
+                                    }`}
+                                style={{
+                                    background:
+                                        hoveredCard === allProductsIdx
+                                            ? `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(var(--main-color-rgb, 59, 130, 246), 0.15), transparent 40%)`
+                                            : "transparent",
+                                }}
+                            />
+
+                            <div
+                                className={`absolute w-32 h-32 bg-mainColor blur-md rounded-full transition-all duration-300 ease-in-out pointer-events-none ${hoveredCard === allProductsIdx
+                                    ? "scale-150 opacity-100"
+                                    : "scale-0 opacity-0"
+                                    }`}
+                                style={{
+                                    left: `${mousePosition.x}px`,
+                                    top: `${mousePosition.y}px`,
+                                    transform: `translate(-50%, -50%) ${hoveredCard === allProductsIdx ? "scale(2.5)" : "scale(0)"
+                                        }`,
+                                    transformOrigin: "center",
+                                    zIndex: 10,
+                                }}
+                            />
+
+                            <div
+                                className={`absolute w-32 h-32 rounded-full transition-all duration-200 ease-out pointer-events-none ${hoveredCard === allProductsIdx ? "opacity-50" : "opacity-0"
+                                    }`}
+                                style={{
+                                    left: `${mousePosition.x - 64}px`,
+                                    top: `${mousePosition.y - 64}px`,
+                                    background:
+                                        "radial-gradient(circle, rgba(var(--main-color-rgb, 59, 130, 246), 0.3) 0%, rgba(var(--main-color-rgb, 59, 130, 246), 0.1) 30%, transparent 70%)",
+                                    filter: "blur(20px)",
+                                    transform: hoveredCard === allProductsIdx ? "scale(1)" : "scale(0.8)",
+                                    zIndex: 5,
+                                }}
+                            />
+
+                            {/* Card Border Glow */}
+                            <div
+                                className={`absolute inset-0 rounded-main transition-all duration-300 ease-out pointer-events-none ${hoveredCard === allProductsIdx ? "opacity-100" : "opacity-0"
+                                    }`}
+                                style={{
+                                    background:
+                                        hoveredCard === allProductsIdx
+                                            ? `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(var(--main-color-rgb, 59, 130, 246), 0.4), transparent 60%)`
+                                            : "transparent",
+                                    padding: "1px",
+                                    zIndex: 15,
+                                }}
+                            />
+
+                            {/* === CARD CONTENT === */}
+                            <div className="z-20 bg-otherColor/50 dark:bg-otherColorDark/30 absolute -bottom-30 -right-30 blur-3xl w-50 h-50"></div>
+
+                            <div className={`relative z-30 p-5 rounded-main border h-full flex flex-col items-center justify-center transition-all duration-300 ease-out 
+                        ${hoveredCard === allProductsIdx
+                                    ? "border-mainColor/30 dark:border-mainColor/40 bg-lightColor/95 dark:bg-darkColor/95 backdrop-blur-xl transform scale-[1.02] shadow-2xl"
+                                    : "border-darkColor/10 dark:border-lightColor/10 bg-lightColor/80 dark:bg-darkColor/80"
+                                }`}
+                            >
+                                <div
+                                    className={`text-2xl p-2.5 rounded-lg transition-all duration-300 mb-2 ${hoveredCard === allProductsIdx
+                                        ? "bg-mainColor/20 dark:bg-mainColor/30 transform scale-110"
+                                        : "bg-darkColor/5 dark:bg-lightColor/5"
+                                        }`}
+                                >
+                                    <TbBlocks
+                                    />
+                                </div>
+                                <h2 className={`text-2xl font-bold text-center transition-all duration-300 ${hoveredCard === allProductsIdx ? "transform scale-110" : ""
+                                    }`}>
+                                    <span className={`text-transparent bg-clip-text transition-all duration-300 ${hoveredCard === allProductsIdx
+                                        ? "bg-gradient-to-r from-mainColor via-other1 to-secondaryDark dark:from-purple-200 dark:via-other2 dark:to-secondaryLight"
+                                        : "bg-gradient-to-r from-other1 to-secondaryDark dark:from-other2 dark:to-secondaryLight"
+                                        }`}>
+                                        All Products
+                                    </span>
+                                </h2>
+                                <p className={`mt-2 text-sm text-center transition-all duration-300 ${hoveredCard === allProductsIdx
+                                    ? "text-mainColor dark:text-purple-300"
+                                    : "text-darkColor/60 dark:text-lightColor/60"
+                                    }`}>
+                                    Lihat semua produk kami
+                                </p>
+                            </div>
+                        </Link>
                     )}
                 </div>
 

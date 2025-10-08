@@ -1,4 +1,4 @@
-import { DM_Sans, Montserrat, Mulish, Ubuntu } from "next/font/google";
+import { DM_Sans, Montserrat} from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "next-themes";

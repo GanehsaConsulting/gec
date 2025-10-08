@@ -53,13 +53,13 @@ export const MegaMenuNavbar = ({
 
             {/* Mega Menu */}
             <div
-                className={`fixed inset-0 top-0 left-0 w-screen pt-16 pb-24 transition-all duration-300 ease-in-out transform noBar
+                className={`fixed inset-0 top-0 left-0 w-screen  pb-24 transition-all duration-300 ease-in-out transform noBar
                          ${isExpanded ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}
             >
                 <div
                     onMouseEnter={() => setExpandedId(id)}
                     onMouseLeave={() => setExpandedId(null)}
-                    className="2xl:px-80 md:px-10 min-h-[50lvh] pt-5 noBar">
+                    className="2xl:px-80 md:px-10 min-h-[50lvh] pt-20 noBar">
                     {children}
                 </div>
             </div>
