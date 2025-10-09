@@ -35,7 +35,7 @@ export const ProductBanner = () => {
                             {productDivisions.map((el, idx) => (
                                 <a
                                     key={idx}
-                                    href=""
+                                    href={"/product/" + slugify(el.division)}
                                     className="flex items-center gap-1 line-clamp-1 px-3 py-1 bg-white/70 dark:bg-black/60 backdrop-blur-xs rounded-full text-xs font-medium duration-300 hover:text-base hover:invert"
                                 >
                                     <el.icon />

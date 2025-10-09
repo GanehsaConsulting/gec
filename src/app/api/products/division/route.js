@@ -28,7 +28,7 @@ export async function GET(request) {
     }
 
     // Group products with their variants
-    products = groupProductsWithVariants(products);
+  products = groupProductsWithVariants(products);
 
     // Group products by division
     const divisions = {};
@@ -69,3 +69,4 @@ export async function GET(request) {
     );
   }
 }
+

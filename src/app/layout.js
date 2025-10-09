@@ -1,8 +1,9 @@
-import { DM_Sans, Montserrat} from "next/font/google";
+import { DM_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "next-themes";
 import { CustomScrollbar } from "@/components/custom-scrollbar";
+import { Toaster } from "sonner";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat", // hanya untuk class tertentu
@@ -26,9 +27,12 @@ export default function RootLayout({ children }) {
         className={`${nunito.className} ${montserrat.variable}  antialiased`}
       >
         <ThemeProvider enableSystem attribute={'class'}>
-          <Navbar >
+          <Navbar>
             {children}
           </Navbar>
+
+          <Toaster position="top-center" richColors />
+
           <CustomScrollbar />
         </ThemeProvider>
       </body>

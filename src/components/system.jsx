@@ -414,7 +414,7 @@ export const productDivisions = [
   },
   {
     icon: TbWall,
-    division: "Retaining Walls & Soil Reinforcement",
+    division: "Retaining Walls And Soil Reinforcement",
     services: [
       {
         id: "031",
@@ -469,7 +469,7 @@ export const productDivisions = [
   },
   {
     icon: TbTool,
-    division: "Infrastruktur & Soil Reinforcement",
+    division: "Infrastruktur And Soil Reinforcement",
     services: [
       {
         id: "022",

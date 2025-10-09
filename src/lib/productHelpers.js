@@ -231,25 +231,25 @@ export const getProductBySlug = (products, slug) => {
 export const getProduct = (products, identifier) => {
   // Try by ID first
   let product = products.find(p => p.id === identifier);
-  
+
   // If not found, try by slug
   if (!product) {
     product = products.find(p => p.slug === identifier);
   }
-  
+
   return product;
 };
 
 // Get products by category
 export const getProductsByCategory = (products, category) => {
-  return products.filter(product => 
+  return products.filter(product =>
     product.productCategory.toLowerCase() === category.toLowerCase()
   );
 };
 
 // Get products by division
 export const getProductsByDivision = (products, division) => {
-  return products.filter(product => 
+  return products.filter(product =>
     product.division.toLowerCase() === division.toLowerCase()
   );
 };
@@ -257,15 +257,15 @@ export const getProductsByDivision = (products, division) => {
 // Search products by keyword (search in name, description, keywords)
 export const searchProducts = (products, query, debug = false) => {
   if (!query) return products;
-  
+
   // Sanitize query: remove quotes, trim, lowercase
   const lowerQuery = query
     .replace(/['"]/g, '') // Remove single and double quotes
     .trim()
     .toLowerCase();
-  
+
   if (!lowerQuery) return products;
-  
+
   // Filter dan scoring
   const scoredProducts = products
     .map(product => {
@@ -277,7 +277,7 @@ export const searchProducts = (products, query, debug = false) => {
       const lowerCategory = product.productCategory.toLowerCase();
       const lowerDivision = product.division.toLowerCase();
       const lowerKeywords = product.keywords.join(' ').toLowerCase();
-      
+
       // ProductName scoring (exclusive - only highest match)
       if (lowerName === lowerQuery) {
         score += 100;
@@ -298,7 +298,7 @@ export const searchProducts = (products, query, debug = false) => {
           if (debug) scoreDetails.push('name contains: +30');
         }
       }
-      
+
       // Slug scoring (exclusive - only highest match)
       if (lowerSlug === lowerQuery) {
         score += 90;
@@ -310,7 +310,7 @@ export const searchProducts = (products, query, debug = false) => {
         score += 25;
         if (debug) scoreDetails.push('slug contains: +25');
       }
-      
+
       // Category scoring (exclusive)
       if (lowerCategory === lowerQuery) {
         score += 25;
@@ -319,7 +319,7 @@ export const searchProducts = (products, query, debug = false) => {
         score += 15;
         if (debug) scoreDetails.push('category contains: +15');
       }
-      
+
       // Keywords scoring (exclusive)
       const keywordWords = lowerKeywords.split(/[\s;,]+/);
       if (keywordWords.some(word => word === lowerQuery)) {
@@ -332,21 +332,21 @@ export const searchProducts = (products, query, debug = false) => {
         score += 10;
         if (debug) scoreDetails.push('keyword contains: +10');
       }
-      
+
       // Description contains query
       if (lowerDesc.includes(lowerQuery)) {
         score += 5;
         if (debug) scoreDetails.push('desc contains: +5');
       }
-      
+
       // Division contains query
       if (lowerDivision.includes(lowerQuery)) {
         score += 3;
         if (debug) scoreDetails.push('division contains: +3');
       }
-      
-      return { 
-        ...product, 
+
+      return {
+        ...product,
         _searchScore: score,
         _scoreDetails: debug ? scoreDetails : undefined
       };
@@ -363,12 +363,12 @@ export const searchProducts = (products, query, debug = false) => {
       // Then sort by name
       return a.productName.localeCompare(b.productName);
     });
-  
+
   // Remove search score from final results (keep details if debug)
   return scoredProducts.map(({ _searchScore, _scoreDetails, ...product }) => {
     if (debug) {
-      return { 
-        ...product, 
+      return {
+        ...product,
         _debug: {
           score: _searchScore,
           details: _scoreDetails
@@ -382,11 +382,11 @@ export const searchProducts = (products, query, debug = false) => {
 // Sort products
 export const sortProducts = (products, sortBy, order = 'asc') => {
   const sorted = [...products];
-  
+
   sorted.sort((a, b) => {
     let valueA, valueB;
-    
-    switch(sortBy) {
+
+    switch (sortBy) {
       case 'name':
         valueA = a.productName.toLowerCase();
         valueB = b.productName.toLowerCase();
@@ -412,12 +412,12 @@ export const sortProducts = (products, sortBy, order = 'asc') => {
         valueA = a.id;
         valueB = b.id;
     }
-    
+
     if (valueA < valueB) return order === 'asc' ? -1 : 1;
     if (valueA > valueB) return order === 'asc' ? 1 : -1;
     return 0;
   });
-  
+
   return sorted;
 };
 
@@ -425,7 +425,7 @@ export const sortProducts = (products, sortBy, order = 'asc') => {
 export const paginateProducts = (products, page = 1, limit = 10) => {
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
-  
+
   return {
     data: products.slice(startIndex, endIndex),
     pagination: {
@@ -483,68 +483,75 @@ export const groupProductsWithVariants = (products) => {
       .filter(p => p.partOf && p.partOf.trim() !== '' && p.partOf !== '-')
       .map(p => p.partOf)
   );
-  
+
   // Parent products = products whose ID is referenced in partOf OR products without partOf
   const parentProducts = products.filter(p => {
     const hasNoPartOf = !p.partOf || p.partOf.trim() === '' || p.partOf === '-';
     const isReferencedAsParent = partOfIds.has(p.id);
     return hasNoPartOf || isReferencedAsParent;
   });
-  
+
   // Variants = products that have partOf value
-  const variants = products.filter(p => p.partOf && p.partOf.trim() !== '' && p.partOf !== '-');
-  
+  const childVariants = products.filter(p => p.partOf && p.partOf.trim() !== '' && p.partOf !== '-');
+
   // Attach variants to parent products
   return parentProducts.map(parent => {
-    const productVariants = variants.filter(v => v.partOf === parent.id);
-    
+    const productVariants = childVariants.filter(v => v.partOf === parent.id);
+
     if (productVariants.length > 0) {
-      return {
-        ...parent,
-        hasVariants: true,
-        variants: productVariants,
-        variantCount: productVariants.length
-      };
+      // Filter variants yang isPublished === true
+      const publishedChildren = productVariants.filter(v => v.isPublished === true);
+
+      // Jika parent unpublished tapi ada children yang published
+      if (parent.isPublished === false && publishedChildren.length > 0) {
+        // Promosikan child pertama sebagai parent baru
+        const newParent = publishedChildren[0];
+        const remainingChildren = publishedChildren.slice(1);
+
+        return {
+          id: newParent.id,
+          division: newParent.division,
+          productCategory: parent.productCategory, // Tetap gunakan category dari parent asli
+          isPublished: newParent.isPublished,
+          isPriority: newParent.isPriority,
+          imageUrl: newParent.imageUrl,
+          hasVariants: true,
+          variants: [newParent, ...remainingChildren]
+        };
+      }
+
+      // Jika parent published
+      if (parent.isPublished === true) {
+        const allPublishedVariants = [parent, ...publishedChildren];
+
+        return {
+          id: parent.id,
+          division: parent.division,
+          productCategory: parent.productCategory,
+          isPublished: parent.isPublished,
+          isPriority: parent.isPriority,
+          imageUrl: parent.imageUrl,
+          hasVariants: true,
+          variants: allPublishedVariants
+        };
+      }
+
+      // Jika parent unpublished dan tidak ada children yang published
+      return null;
     }
-    
+
+    // Produk tanpa variant - hanya tampilkan jika published
+    if (parent.isPublished === false) {
+      return null;
+    }
+
     return {
       ...parent,
       hasVariants: false,
       variants: [],
       variantCount: 0
     };
-  });
-};
-
-// Get single product with variants
-export const getProductWithVariants = (products, identifier) => {
-  // Find the product by ID or slug
-  let product = products.find(p => p.id === identifier || p.slug === identifier);
-  
-  if (!product) return null;
-  
-  // If this is a variant, get the parent instead
-  if (product.partOf && product.partOf.trim() !== '' && product.partOf !== '-') {
-    const parent = products.find(p => p.id === product.partOf);
-    if (parent) {
-      product = parent;
-    }
-  }
-  
-  // Get all variants for this product
-  const variants = products.filter(p => 
-    p.partOf && 
-    p.partOf.trim() !== '' && 
-    p.partOf !== '-' && 
-    p.partOf === product.id
-  );
-  
-  return {
-    ...product,
-    hasVariants: variants.length > 0,
-    variants: variants,
-    variantCount: variants.length
-  };
+  }).filter(p => p !== null);
 };
 
 // Flatten variants (show all as separate products)

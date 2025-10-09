@@ -88,7 +88,7 @@ export const ProductMenu = ({ expandedId }) => {
                         displayDivisions.map((el, idx) => (
                             <Link
                                 key={idx}
-                                href={`/produk/${slugify(el.division)}`}
+                                href={`/product/${slugify(el.division)}`}
                                 className={`${expandAnimationClass} relative overflow-hidden rounded-main cursor-pointer block h-fit`}
                                 style={{ transitionDelay: `${idx * 50}ms` }}
                                 onMouseEnter={() => handleMouseEnter(idx)}
@@ -188,7 +188,7 @@ export const ProductMenu = ({ expandedId }) => {
                                     <div className="space-y-1 flex-grow overflow-y-scroll scrollbar-hover">
                                         {el.services.map((service, id) => (
                                             <div
-                                                onClick={() => window.location.href = `/produk/${slugify(el.division)}/${service.slug}`}
+                                                onClick={() => window.location.href = `/product/${slugify(el.division)}/${service.slug}`}
                                                 key={id}
 
                                             >

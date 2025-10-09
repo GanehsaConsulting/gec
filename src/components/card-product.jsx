@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { FaWhatsapp } from "react-icons/fa";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { slugify } from "@/lib/slugify";
+import { HighlightText } from "./highlight-text";
 
 // Skeleton Loading Component for Card
 const CardSkeleton = () => (
@@ -30,22 +31,24 @@ const GridCardSkeleton = () => (
 );
 
 export const CardProducts = ({
-    products = [], // Array of products data
-    loading = false, // Loading state
+    products = [],
+    loading = false,
     title = "Best Selling!",
     viewAllLink,
-    mode = "carousel", // "carousel" atau "grid"
+    mode = "carousel",
     showTitle = true,
-    showArrows = true, // Hanya untuk mode carousel
+    showArrows = true,
     showDesc = true,
-    gridCols = "md:grid-cols-4", // Konfigurasi grid columns
-    sourcePath = "" // Base path untuk product URL
+    gridCols = "md:grid-cols-4",
+    sourcePath = "",
+    useMargin = true,
+    verticalMargin = "my-10",
+    searchTerm = "" // Add searchTerm prop
 }) => {
     const [carouselRef, setCarouselRef] = useState(null);
     const [isAtStart, setIsAtStart] = useState(true);
     const [isAtEnd, setIsAtEnd] = useState(false);
 
-    // Auto switch ke grid jika products kurang dari 5
     const effectiveMode = (!loading && products?.length < 5) ? "grid" : mode;
 
     const updateCarouselPosition = () => {
@@ -56,11 +59,10 @@ export const CardProducts = ({
         }
     };
 
-    // Handle empty state
     if (!loading && (!products || products.length === 0)) {
         return (
-            <section className="my-10">
-                <div className="margin">
+            <section className={verticalMargin}>
+                <div className={useMargin ? "margin" : ""}>
                     {showTitle && (
                         <div className="text-2xl md:text-3xl font-medium mb-5">
                             {title}
@@ -77,8 +79,8 @@ export const CardProducts = ({
     // CAROUSEL MODE
     if (effectiveMode === "carousel") {
         return (
-            <main className="mt-10">
-                <div className="margin flex items-center justify-between mb-4">
+            <main className={verticalMargin}>
+                <div className={`${useMargin ? "margin" : ""} flex items-center justify-between mb-4`}>
                     {showTitle && (
                         <div>
                             <h1 className="text-3xl font-medium">
@@ -133,7 +135,7 @@ export const CardProducts = ({
                         products.map((product, idx) => {
                             const productSlug = product.slug || slugify(product.productName || product.name || '');
                             const productPath = slugify(product.division) || sourcePath?.replace("/", "") || "";
-                            const productUrl = `/${productPath}/${productSlug}`;
+                            const productUrl = `/product/${productPath}/${productSlug}`;
                             const imgUrl = product.imageUrl || product.image || "/cb.png";
 
                             return (
@@ -179,11 +181,17 @@ export const CardProducts = ({
                                     </div>
                                     <div className="mt-2 space-y-2">
                                         <h1 className="font-medium line-clamp-2">
-                                            {product.productName || product.name}
+                                            <HighlightText
+                                                text={product.productName || product.name}
+                                                searchTerm={searchTerm}
+                                            />
                                         </h1>
                                         {product.descriptions && showDesc === true && (
                                             <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2">
-                                                {product.descriptions}
+                                                <HighlightText
+                                                    text={product.descriptions}
+                                                    searchTerm={searchTerm}
+                                                />
                                             </p>
                                         )}
                                     </div>
@@ -198,8 +206,8 @@ export const CardProducts = ({
 
     // GRID MODE
     return (
-        <section className="my-10">
-            <div className="margin">
+        <section className={verticalMargin}>
+            <div className={useMargin ? "margin" : ""}>
                 {showTitle && (
                     <div className="flex items-center justify-between mb-5">
                         <h1 className="text-2xl md:text-3xl font-medium">
@@ -229,7 +237,7 @@ export const CardProducts = ({
                         products.map((product, idx) => {
                             const productSlug = product.slug || slugify(product.productName || product.name || '');
                             const productPath = slugify(product.division) || sourcePath?.replace("/", "") || "";
-                            const productUrl = `/${productPath}/${productSlug}`;
+                            const productUrl = `/product/${productPath}/${productSlug}`;
                             const imgUrl = product.imageUrl || product.image || "/cb.png";
 
                             return (
@@ -247,8 +255,11 @@ export const CardProducts = ({
                                             className="w-full h-full duration-300 ease-in-out group-hover:scale-110 aspect-square rounded-main object-cover"
                                         />
                                         <div className="absolute top-2 left-2 group-hover:-translate-y-100 translate-y-0 duration-500">
-                                            <p className="px-2 py-1 text-xs rounded-full bg-darkColor/10 text-darkColor font-semibold backdrop-blur-lg">
-                                                {product.division || product.category || product.productCategory || "Product"}
+                                            <p className="px-2 py-1 text-xs rounded-full bg-lightColor/50 text-darkColor font-semibold backdrop-blur-lg">
+                                                <HighlightText
+                                                    text={product.division || product.category || product.productCategory || "Product"}
+                                                    searchTerm={searchTerm}
+                                                />
                                             </p>
                                         </div>
                                         <div className="z-10 flex items-center justify-center absolute inset-0 backdrop-blur-[2px] bg-lightColor/40 dark:bg-darkColor/30 group-hover:opacity-100 opacity-0 duration-300"></div>
@@ -275,11 +286,17 @@ export const CardProducts = ({
                                     </div>
                                     <div className="mt-2 space-y-2">
                                         <h1 className="font-medium line-clamp-2">
-                                            {product.productName || product.name}
+                                            <HighlightText
+                                                text={product.productName || product.name}
+                                                searchTerm={searchTerm}
+                                            />
                                         </h1>
                                         {product.descriptions && showDesc === true && (
                                             <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2">
-                                                {product.descriptions}
+                                                <HighlightText
+                                                    text={product.descriptions}
+                                                    searchTerm={searchTerm}
+                                                />
                                             </p>
                                         )}
                                     </div>
