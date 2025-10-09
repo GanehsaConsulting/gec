@@ -8,7 +8,7 @@ import { MdClear } from 'react-icons/md';
 export const SearchBar = ({
   value = '',
   onSearch,
-  placeholder = "Cari Nama Produk, Kategori, atau Divisi...",
+  placeholder = "Cari Nama Produk, Kategori",
   searchTerm = '',
   showClearButton = true,
   searchStats = { totalResults: 0, searchTime: 0 },

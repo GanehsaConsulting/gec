@@ -97,7 +97,7 @@ export const CardProducts = ({
                         </div>
                     )}
                     {showArrows && (
-                        <div className="space-x-2">
+                        <div className="hidden md:block space-x-2">
                             <Button
                                 size="icon"
                                 onClick={() => carouselRef?.scrollBy({ left: -700, behavior: "smooth" })}

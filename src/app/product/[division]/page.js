@@ -59,6 +59,7 @@ export default function ProductByDivisionPage() {
                     showTitle={false}
                     showDesc={true}
                     showArrows={true}
+                    gridCols="grid-cols-2"
                 />
             )}
         </main>

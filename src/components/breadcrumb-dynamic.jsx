@@ -29,7 +29,7 @@ export const BreadcrumbDynamic = ({
                     <BreadcrumbItem>
                         <BreadcrumbLink asChild>
                             <Link href="/">
-                                Beranda
+                                Home
                             </Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>

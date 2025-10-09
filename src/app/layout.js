@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "next-themes";
 import { CustomScrollbar } from "@/components/custom-scrollbar";
 import { Toaster } from "sonner";
+import { Footer } from "@/components/footer";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat", // hanya untuk class tertentu
@@ -30,9 +31,8 @@ export default function RootLayout({ children }) {
           <Navbar>
             {children}
           </Navbar>
-
-          <Toaster position="top-center" richColors />
-
+          {/* <Footer /> */}
+          <Toaster position="top-right" richColors />
           <CustomScrollbar />
         </ThemeProvider>
       </body>

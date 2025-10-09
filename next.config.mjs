@@ -34,7 +34,7 @@ const nextConfig = {
             },
             {
                 protocol: "https",
-                hostname: "akcdn.detik.net.id",
+                hostname: "geolexa.com",
             },
             {
                 protocol: "https",

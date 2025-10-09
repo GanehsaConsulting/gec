@@ -132,7 +132,7 @@ export default function ProdukPage() {
                 <div className="lg:col-span-8 space-y-5">
                     <div className="lg:sticky lg:top-17 lg:z-20">
                         <SearchBar
-                            className="bg-white/80 dark:bg-black/80 backdrop-blur-sm"
+                            className="bg-white/80 dark:bg-black/80 backdrop-blur-sm w"
                             value={filters.search}
                             onSearch={handleSearch}
                             searchTerm={filters.search}
