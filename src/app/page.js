@@ -2,6 +2,7 @@
 import { Branding } from "@/components/branding";
 import { CardProducts } from "@/components/card-product";
 import { MainBanner } from "@/components/main-banner";
+import { StatsSection } from "@/components/stats-section";
 import { WhyUs } from "@/components/why-us";
 import { useProducts } from "@/hooks/useProducts";
 
@@ -32,8 +33,8 @@ export default function Home() {
         showDesc={false}
         showArrows={true}
       />
-
       <Branding />
+      <StatsSection />
       <WhyUs />
     </>
   );

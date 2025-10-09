@@ -87,7 +87,7 @@ export const Navbar = ({ children }) => {
                                 className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
                                 aria-current="page"
                             >
-                                Aktifitas & Artikel
+                                Activity & Artikel
                             </Link>
                             <span className={`${path.startsWith('/activity') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
                         </li>
@@ -97,9 +97,9 @@ export const Navbar = ({ children }) => {
                                 className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
                                 aria-current="page"
                             >
-                                Tentang Kami
+                               About Us
                             </Link>
-                            <span className={`${path.startsWith('/activity') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
+                            <span className={`${path.startsWith('/about-us') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
                         </li>
                     </ul>
                     <div className='ml-1 flex items-center gap-3 py-1.5 px-1.5 mr-[1.5px] bg-darkColor/5 dark:bg-lightColor/10 rounded-secondary'>

@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           <Navbar>
             {children}
           </Navbar>
-          {/* <Footer /> */}
+          <Footer />
           <Toaster position="top-right" richColors />
           <CustomScrollbar />
         </ThemeProvider>

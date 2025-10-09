@@ -52,8 +52,8 @@ export const MainBanner = () => {
                         brightness-105
                     "
                     src="/bann.mp4"
-                    // autoPlay
-                    // loop
+                    autoPlay
+                    loop
                     muted
                     playsInline
                     preload="auto"
