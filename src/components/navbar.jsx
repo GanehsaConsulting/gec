@@ -34,7 +34,7 @@ export const Navbar = ({ children }) => {
                 <li className='relative flex flex-col items-center group'>
                     <Link
                         href={'/'}
-                        className={`shadow-custom border border-darkColor/10 dark:border-lightColor/10 bg-lightColor/65 dark:bg-darkColor/50 backdrop-blur-xs backdrop-brightness-110 z-[555] flex items-center -ml-[11px] p-[5px] pr-2 text-gray-800 dark:text-white rounded-main hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
+                        className={`shadow-custom border border-darkColor/10 dark:border-lightColor/10 bg-lightColor/65 dark:bg-darkColor/50 backdrop-blur-xs backdrop-brightness-110 z-[555] flex items-center -ml-[11px] p-[5px] pr-2 text-gray-800 dark:text-white rounded-main hover:bg-lightColor/80 dark:hover:bg-darkColor/80 duration-200 ease-in-out`}
                         aria-current="page"
                     >
                         <Image

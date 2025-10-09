@@ -1,10 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { productDivisions } from "./system";
-import { SearchBar } from "./search-bar";
 import { useProducts } from "@/hooks/useProducts";
 import { CardProducts } from "./card-product";
 import { slugify } from "@/lib/slugify";
-import Link from "next/link";
 
 
 export const ProductBanner = () => {

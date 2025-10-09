@@ -4,6 +4,8 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "./ui/button"
 import { FaPlay } from "react-icons/fa";
+import { RxGear } from "react-icons/rx";
+import { TbManualGearboxFilled } from "react-icons/tb";
 
 export const MainBanner = () => {
     const [blurOpacity, setBlurOpacity] = useState(100) // Start with blur active
@@ -50,8 +52,8 @@ export const MainBanner = () => {
                         brightness-105
                     "
                     src="/bann.mp4"
-                    autoPlay
-                    loop
+                    // autoPlay
+                    // loop
                     muted
                     playsInline
                     preload="auto"
@@ -72,7 +74,7 @@ export const MainBanner = () => {
                     <div className="hidden md:block px-3 py-2 rounded-main border border-main/10 bg-thirdColor/5 w-fit">
                         <div className="">
                             <p className="font-bold text-xs uppercase text-secondaryColor">
-                                Infrastruktur · Teknologi Industri · Reklamasi · Inovasi Mekanikal
+                                Ganesha Engineering & Constructions
                             </p>
                         </div>
                     </div>

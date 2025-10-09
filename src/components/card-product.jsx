@@ -125,7 +125,7 @@ export const CardProducts = ({
                 >
                     {loading ? (
                         <>
-                            {[...Array(3)].map((_, idx) => (
+                            {[...Array(5)].map((_, idx) => (
                                 <div key={idx} className={`${idx === 0 && "md:ml-10 ml-4"}`}>
                                     <CardSkeleton />
                                 </div>
