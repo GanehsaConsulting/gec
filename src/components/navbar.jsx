@@ -83,11 +83,11 @@ export const Navbar = ({ children }) => {
 
                         <li className='relative flex flex-col items-center group'>
                             <Link
-                                href={'/activity-article'}
+                                href={'/project-article'}
                                 className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
                                 aria-current="page"
                             >
-                                Activity & Artikel
+                                Project & Artikel
                             </Link>
                             <span className={`${path.startsWith('/activity') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
                         </li>
@@ -97,7 +97,7 @@ export const Navbar = ({ children }) => {
                                 className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
                                 aria-current="page"
                             >
-                               About Us
+                               About
                             </Link>
                             <span className={`${path.startsWith('/about-us') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
                         </li>
@@ -119,7 +119,7 @@ export const Navbar = ({ children }) => {
             </div>
             {/* Background Layer & Effect */}
             < div className={`hidden md:block fixed top-0 z-[80] ${expandedId ? "opacity-100 backdrop-blur-xl md:backdrop-blur-[10px] w-screen h-screen" : "opacity-0"} noBar bg-lightColor/60 dark:bg-darkColor/80 transition-opacity duration-300`} />
-            <div className={`${expandedId ? "md:scale-105 overflow-hidden" : ""} noBar md:transform md:origin-top md:transition-transform md:duration-500 md:ease-in-out`}>
+            <div className={`${expandedId ? "md:scale-102 overflow-hidden" : ""} noBar md:transform md:origin-top md:transition-transform md:duration-500 md:ease-in-out`}>
                 {children}
             </div>
         </>

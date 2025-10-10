@@ -1,17 +1,5 @@
 import { getSheetData } from "@/lib/googleSheets";
-import {
-  formatMasterData,
-  getPublishedProducts,
-  groupProductsWithVariants,
-  getProductWithVariants,
-  searchProducts,
-  sortProducts,
-  paginateProducts,
-  filterByPriceRange,
-  getProductsByCategory,
-  getProductsByDivision,
-  getPriorityProducts,
-} from "@/lib/productHelpers";
+import { filterByPriceRange, formatMasterData, getPriorityProducts, getProductsByCategory, getProductsByDivision, getPublishedProducts, groupProductsWithVariants, paginateProducts, searchProducts, sortProducts } from "@/lib/productHelpers";
 
 export async function GET(request) {
   try {
@@ -32,6 +20,7 @@ export async function GET(request) {
     const limit = parseInt(searchParams.get('limit')) || 10;
     const minPrice = searchParams.get('minPrice') ? parseFloat(searchParams.get('minPrice')) : null;
     const maxPrice = searchParams.get('maxPrice') ? parseFloat(searchParams.get('maxPrice')) : null;
+    const hasVariants = searchParams.get('hasVariants');
     const debug = searchParams.get('debug') === 'true';
 
     // Fetch master data
@@ -45,7 +34,7 @@ export async function GET(request) {
     // Get single product with variants by ID or slug
     if (id || slug) {
       const identifier = id || slug;
-      const product = getProductWithVariants(products, identifier);
+      const product = groupProductsWithVariants(products, identifier);
       
       return Response.json({
         success: true,
@@ -77,6 +66,15 @@ export async function GET(request) {
 
     // Group products with their variants BEFORE search
     products = groupProductsWithVariants(products);
+
+    // Filter by hasVariants (after grouping)
+    if (hasVariants !== null) {
+      const shouldHaveVariants = hasVariants === 'true';
+      products = products.filter(product => {
+        const productHasVariants = product.variants && product.variants.length > 0;
+        return shouldHaveVariants ? productHasVariants : !productHasVariants;
+      });
+    }
 
     // Search (after grouping - search in parent, keep variants)
     if (search) {

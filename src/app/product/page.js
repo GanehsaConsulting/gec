@@ -13,7 +13,7 @@ export default function ProdukPage() {
         search: '',
         division: '',
         page: 1,
-        limit: 6
+        limit: 9
     });
 
     // Untuk mode loadmore - accumulate products
@@ -94,7 +94,7 @@ export default function ProdukPage() {
             search: '',
             division: '',
             page: 1,
-            limit: 6
+            limit: 9
         });
         setAccumulatedProducts([]);
     }, []);
@@ -117,58 +117,58 @@ export default function ProdukPage() {
                 </div>
             )}
 
-            <div className="margin spacing grid grid-cols-1 lg:grid-cols-10 gap-5">
-                <div className="lg:col-span-2">
-                    <aside className="lg:sticky lg:top-17 lg:self-start lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
-                        <Sidebar
-                            divisions={divisionsData || []}
-                            selectedDivision={filters.division}
-                            onDivisionChange={handleDivisionChange}
-                            onClearFilters={clearFilters}
-                        />
-                    </aside>
-                </div>
-
-                <div className="lg:col-span-8 space-y-5">
-                    <div className="lg:sticky lg:top-17 lg:z-20">
-                        <SearchBar
-                            className="bg-white/80 dark:bg-black/80 backdrop-blur-sm w"
-                            value={filters.search}
-                            onSearch={handleSearch}
-                            searchTerm={filters.search}
-                            searchStats={{
-                                totalResults: pagination?.total || 0
-                            }}
-                        />
+            <div className="margin spacing">
+                <div className="grid grid-cols-1 lg:grid-cols-10 gap-10">
+                    <div className="lg:col-span-3">
+                        <aside className="lg:sticky lg:top-17 lg:self-start lg:max-h-[calc(100vh-7rem)] space-y-5">
+                            <SearchBar
+                                className="bg-white/80 dark:bg-black/80 backdrop-blur-sm w"
+                                value={filters.search}
+                                onSearch={handleSearch}
+                                searchTerm={filters.search}
+                                searchStats={{
+                                    totalResults: pagination?.total || 0
+                                }}
+                            />
+                            <Sidebar
+                                divisions={divisionsData || []}
+                                selectedDivision={filters.division}
+                                onDivisionChange={handleDivisionChange}
+                                onClearFilters={clearFilters}
+                            />
+                        </aside>
                     </div>
 
-                    <CardProducts
-                        products={displayProducts}
-                        loading={loading && filters.page === 1}
-                        mode="grid"
-                        showTitle={false}
-                        showArrows={false}
-                        gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-                        useMargin={false}
-                        verticalMargin=""
-                        searchTerm={filters.search}
-                    />
-
-                    {pagination && (
-                        <Pagination
-                            mode="loadmore"
-                            currentPage={filters.page}
-                            totalPages={pagination.totalPages}
-                            onLoadMore={handleLoadMore}
-                            totalItems={pagination.total}
-                            itemsPerPage={filters.limit}
-                            isLoading={isLoadingMore || (loading && filters.page > 1)}
-                            hasMore={hasMore}
-                            showInfo={true}
+                    <div className="lg:col-span-7 space-y-5">
+                        <CardProducts
+                            products={displayProducts}
+                            loading={loading && filters.page === 1}
+                            mode="grid"
+                            showTitle={false}
+                            showArrows={false}
+                            gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+                            useMargin={false}
+                            verticalMargin=""
+                            searchTerm={filters.search}
                         />
-                    )}
+
+                        {pagination && (
+                            <Pagination
+                                mode="loadmore"
+                                currentPage={filters.page}
+                                totalPages={pagination.totalPages}
+                                onLoadMore={handleLoadMore}
+                                totalItems={pagination.total}
+                                itemsPerPage={filters.limit}
+                                isLoading={isLoadingMore || (loading && filters.page > 1)}
+                                hasMore={hasMore}
+                                showInfo={true}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
+
 
             {!loading && !error && (!products || products.length === 0) && (
                 <div className="margin my-10">

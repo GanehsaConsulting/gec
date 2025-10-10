@@ -30,8 +30,8 @@ export default function RootLayout({ children }) {
         <ThemeProvider enableSystem attribute={'class'}>
           <Navbar>
             {children}
+            <Footer />
           </Navbar>
-          <Footer />
           <Toaster position="top-right" richColors />
           <CustomScrollbar />
         </ThemeProvider>

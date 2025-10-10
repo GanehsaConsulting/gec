@@ -12,7 +12,8 @@ export const SearchBar = ({
   searchTerm = '',
   showClearButton = true,
   searchStats = { totalResults: 0, searchTime: 0 },
-  className = ""
+  className = "",
+  classNameButton = ""
 }) => {
   const [inputValue, setInputValue] = useState(value);
 
@@ -50,7 +51,7 @@ export const SearchBar = ({
               <button
                 type="button"
                 onClick={handleClear}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors`}
                 aria-label="Clear search"
               >
                 <X className="h-4 w-4" />
@@ -59,10 +60,10 @@ export const SearchBar = ({
           </div>
 
           <button
-          variant={"glass"}
+            variant={"glass"}
             type="submit"
             disabled={!inputValue.trim()}
-            className="min-w-[80px] backdrop-blur-sm bg-primary/80 text-primary-foreground hover:bg-primary/90 dark:hover:bg-primary/90 rounded-full h-9 px-4 py-2 cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium"
+            className={`${classNameButton} min-w-[80px] backdrop-blur-sm bg-primary/80 text-primary-foreground hover:bg-primary/90 dark:hover:bg-primary/90 rounded-full h-9 px-4 py-2 cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium`}
           >
             Cari
           </button>
@@ -74,7 +75,7 @@ export const SearchBar = ({
           <div className="flex items-center justify-between">
             <div className="inline-flex items-center gap-2 bg-white/50 rounded-full pr-3 pl-1 py-1 backdrop-blur-sm">
               <span className="flex items-center justify-center gap-1 bg-blue-100/70 dark:bg-blue-900/70 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full text-xs">
-              <Search className="h-3 w-3" />
+                <Search className="h-3 w-3" />
                 Mencari: <span className="font-medium">"{searchTerm}"</span>
               </span>
               {searchStats.totalResults > 0 && (
@@ -87,7 +88,7 @@ export const SearchBar = ({
               onClick={handleClear}
               className="text-xs text-darkColor/70 dark:text-lightColor/70 hover:underline px-2 py-1 bg-red-200/30 dark:bg-red-900/30 backdrop-blur-sm rounded-full flex items-center gap-1"
             >
-              <MdClear/> Hapus pencarian
+              <MdClear /> Hapus pencarian
             </button>
           </div>
         </div>

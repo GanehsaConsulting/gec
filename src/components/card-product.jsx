@@ -30,6 +30,20 @@ const GridCardSkeleton = () => (
     </div>
 );
 
+// Skeleton untuk Family Mode
+const FamilyCardSkeleton = () => (
+    <div className="w-full h-full animate-pulse">
+        <div className="bg-gray-200 dark:bg-gray-700 rounded-main p-4 h-full">
+            <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded w-3/4 mb-4"></div>
+            <div className="grid grid-cols-2 gap-2">
+                {[...Array(4)].map((_, idx) => (
+                    <div key={idx} className="aspect-square bg-gray-300 dark:bg-gray-600 rounded"></div>
+                ))}
+            </div>
+        </div>
+    </div>
+);
+
 export const CardProducts = ({
     products = [],
     loading = false,
@@ -43,13 +57,13 @@ export const CardProducts = ({
     sourcePath = "",
     useMargin = true,
     verticalMargin = "my-10",
-    searchTerm = "" // Add searchTerm prop
+    searchTerm = ""
 }) => {
     const [carouselRef, setCarouselRef] = useState(null);
     const [isAtStart, setIsAtStart] = useState(true);
     const [isAtEnd, setIsAtEnd] = useState(false);
 
-    const effectiveMode = (!loading && products?.length < 5) ? "grid" : mode;
+    const effectiveMode = (!loading && products?.length < 5 && mode !== "family") ? "grid" : mode;
 
     const updateCarouselPosition = () => {
         if (carouselRef) {
@@ -70,6 +84,119 @@ export const CardProducts = ({
                     )}
                     <div className="bg-white dark:bg-darkColor rounded-lg shadow-sm p-6 text-center">
                         <p>Tidak ada produk tersedia saat ini.</p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    // FAMILY MODE - For categorized products with variants
+    if (effectiveMode === "family") {
+        return (
+            <section className={verticalMargin}>
+                <div className={useMargin ? "margin" : ""}>
+                    {showTitle && (
+                        <div className="flex items-center justify-between mb-5">
+                            <h1 className="text-2xl md:text-3xl font-medium">
+                                {title}
+                            </h1>
+                            {viewAllLink && (
+                                <a
+                                    href={viewAllLink}
+                                    className="text-xs flex items-center gap-1 mt-1 hover:text-mainColorLight dark:hover:text-mainColorDark"
+                                >
+                                    <Button size={"sm"}>
+                                        <HiChevronRight /> Lihat semua
+                                    </Button>
+                                </a>
+                            )}
+                        </div>
+                    )}
+
+                    <div className={`grid gap-4 ${gridCols}`}>
+                        {loading ? (
+                            <>
+                                {[...Array(6)].map((_, idx) => (
+                                    <FamilyCardSkeleton key={idx} />
+                                ))}
+                            </>
+                        ) : (
+
+                            products.map((product, idx) => {
+                                const productNameIdx0 = product.variants[0].productName
+                                const productSlug = slugify(productNameIdx0);
+                                const productPath = slugify(product.division) || sourcePath?.replace("/", "") || "";
+                                const productUrl = `/product/${productPath}/${productSlug}`;
+                                const hasVariants = product.variants && product.variants.length > 0;
+                                const displayVariants = hasVariants ? product.variants.slice(0, 4) : [];
+
+                                return (
+                                    <Link
+                                        key={product.id || idx}
+                                        href={productUrl}
+                                        className="group"
+                                    >
+                                        <div className="bg-lightColor dark:bg-darkColor rounded-main p-2.5 border border-darkColor/10 dark:border-lightColor/10 hover:border-mainColorLight dark:hover:border-mainColorDark transition-all duration-300 h-full">
+                                            {/* Category/Product Name */}
+                                            <div className="mb-3">
+                                                <p className="line-clamp-1 text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                                    <HighlightText
+                                                        text={product.division}
+                                                        searchTerm={searchTerm}
+                                                    />
+                                                </p>
+                                            </div>
+
+                                            {/* Grid of variant images */}
+                                            <div className="grid grid-cols-2 gap-1">
+                                                {displayVariants.map((variant, vIdx) => (
+                                                    <div
+                                                        key={variant.id || vIdx}
+                                                        className="relative aspect-square rounded overflow-hidden bg-gray-100 dark:bg-gray-800"
+                                                    >
+                                                        <Image
+                                                            width={200}
+                                                            height={200}
+                                                            src={variant.imageUrl || variant.image || "/cb.png"}
+                                                            alt={variant.productName || variant.name || "Variant"}
+                                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                                        />
+                                                    </div>
+                                                ))}
+                                                {/* Add blank squares if less than 4 variants */}
+                                                {Array.from({ length: 4 - displayVariants.length }).map((_, idx) => (
+                                                    <div
+                                                        key={`blank-${idx}`}
+                                                        className="aspect-square rounded overflow-hidden bg-white dark:bg-black border-darkColor/10 dark:border-lightColor/10"
+                                                    />
+                                                ))}
+                                            </div>
+
+                                            <div className="mt-3">
+                                                <h2 className="text-sm font-medium line-clamp-2 group-hover:text-mainColorLight dark:group-hover:text-mainColorDark transition-colors">
+                                                    <HighlightText
+                                                        text={product.productCategory || product.productName || product.name}
+                                                        searchTerm={searchTerm}
+                                                    />
+                                                </h2>
+                                            </div>
+
+                                            {/* Variant count badge */}
+                                            {hasVariants && (
+                                                <div className="mt-3 flex items-center justify-between text-neutral-500">
+                                                    <span className="text-xs">
+                                                        {product.variants.length} {product.variants.length === 1 ? 'Variant' : 'Variants'}
+                                                    </span>
+                                                    <p className="flex items-center gap-1 text-xs text-mainColorLight dark:text-mainColorDark group-hover:text-darkColor dark:group-hover:text-lightColor group-hover:opacity-100 duration-300">
+                                                        More Detail <HiChevronRight className="size-3" />
+                                                    </p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </Link>
+                                );
+                            })
+                        )}
                     </div>
                 </div>
             </section>

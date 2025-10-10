@@ -2,6 +2,9 @@
 import { Button } from "./ui/button";
 import { SlidersHorizontal, X, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import { TbFilter } from "react-icons/tb";
+import { RiApps2AiFill } from "react-icons/ri";
+import { FaDotCircle } from "react-icons/fa";
 
 export const Sidebar = ({
     divisions = [],
@@ -22,12 +25,11 @@ export const Sidebar = ({
     };
 
     return (
-        <div className="border w-full bg-lightColor dark:bg-darkColor rounded-main p-4 space-y-4">
+        <div className="w-full space-y-2">
             {/* Header */}
-            <div className="flex items-center justify-between pb-3 border-b">
-                <div className="flex items-center gap-2">
-                    <SlidersHorizontal className="h-4 w-4" />
-                    <h3 className="font-semibold">Filter</h3>
+            <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between w-full gap-2 text-sm">
+                    <h3 className="font-semibold">Browse By Divisions</h3>
                 </div>
                 {hasActiveFilters && (
                     <Button
@@ -42,104 +44,85 @@ export const Sidebar = ({
                 )}
             </div>
 
+
+
             {/* Division Filter */}
-            <div className="space-y-2">
+            <div className="space-y-2 border-l-2 pl-4">
                 <button
-                    onClick={() => setIsExpanded(!isExpanded)}
-                    className="flex items-center justify-between w-full text-sm font-medium hover:text-mainColorLight dark:hover:text-mainColorDark transition-colors"
+                    onClick={() => onDivisionChange('')}
+                    className={`py-1 flex justify-between items-center gap-2 rounded-third cursor-pointer group w-full text-left transition-all duration-200 relative
+                                ${!selectedDivision ? 'font-medium' : 'font-base'}`}
                 >
-                    <span>Pilih Divisi</span>
-                    {isExpanded ? (
-                        <ChevronUp className="h-4 w-4" />
-                    ) : (
-                        <ChevronDown className="h-4 w-4" />
-                    )}
+                    <div className={`${!selectedDivision ? "block" : "hidden"} w-[2px] h-9 bg-other1 absolute -left-4.5 top-1/2 transform -translate-y-1/2`}></div>
+
+                    <span className={`text-sm group-hover:text-other1 group-hover:font-bold duration-300`}>
+                        Semua Divisi
+                    </span>
+
+                    <span className={` ${!selectedDivision ? 'bg-other1/20' : 'bg-lightColor'} aspect-square flex items-center justify-center text-xs px-2 py-0.5 rounded-full min-w-[28px] font-semibold`}>
+                        <RiApps2AiFill className="h-3.5 w-3.5" />
+                    </span>
                 </button>
 
-                {isExpanded && (
-                    <div className="space-y-2">
-                        <button
-                            onClick={() => onDivisionChange('')}
-                            className={`px-3 py-2 flex justify-start items-center gap-2 rounded-third cursor-pointer group w-full text-left transition-all duration-200 ${!selectedDivision
-                                ? 'bg-mainColor dark:bg-secondaryColor text-white shadow-sm'
-                                : 'bg-white dark:bg-black text-black dark:text-white hover:bg-neutral-50 dark:hover:bg-neutral-700'
-                                }`}
-                        >
-                            <span className={`text-sm font-medium ${!selectedDivision
-                                ? ''
-                                : 'group-hover:text-mainColorLight dark:group-hover:text-mainColorDark'
-                                }`}>
-                                Semua Divisi
-                            </span>
-                        </button>
-
-                        {divisions.length === 0 ? (
-                            <p className="text-xs text-muted-foreground pl-2 py-2">Loading divisions...</p>
-                        ) : (
-                            divisions.map((divisionData, index) => {
-                                const divisionName = divisionData.division || divisionData;
-                                let productCount = 0;
-                                if (divisionData.products) {
-                                    productCount = divisionData.products.reduce((total, product) => {
-                                        if (product.hasVariants && product.variants?.length > 0) {
-                                            return total + product.variants.length;
-                                        }
-                                        return total + 1;
-                                    }, 0);
-                                } else {
-                                    productCount = divisionData.count || 0;
+                {divisions.length === 0 ? (
+                    <p className="text-xs text-muted-foreground pl-2 py-2">Loading divisions...</p>
+                ) : (
+                    divisions.map((divisionData, index) => {
+                        const divisionName = divisionData.division || divisionData;
+                        let productCount = 0;
+                        if (divisionData.products) {
+                            productCount = divisionData.products.reduce((total, product) => {
+                                if (product.hasVariants && product.variants?.length > 0) {
+                                    return total + product.variants.length;
                                 }
-                                const isActive = selectedDivision === divisionName;
+                                return total + 1;
+                            }, 0);
+                        } else {
+                            productCount = divisionData.count || 0;
+                        }
+                        const isActive = selectedDivision === divisionName;
 
-                                return (
-                                    <button
-                                        key={divisionName || index}
-                                        onClick={() => handleDivisionClick(divisionName)}
-                                        className={`px-2 py-2 flex items-center justify-start gap-2 rounded-third cursor-pointer group w-full text-left transition-all duration-200 ${isActive
-                                            ? 'bg-mainColor dark:bg-secondaryColor text-white shadow-sm'
-                                            : 'bg-white dark:bg-black text-black dark:text-white hover:bg-neutral-50 dark:hover:bg-neutral-700'
-                                            }`}
-                                    >
-                                        {productCount > 0 && (
-                                            <span className={`aspect-square flex items-center justify-center text-xs px-2 py-0.5 rounded-full min-w-[28px] ${isActive
-                                                ? 'bg-white/20 text-white font-semibold'
-                                                : 'bg-neutral-100 dark:bg-neutral-700 text-muted-foreground'
-                                                }`}>
-                                                {productCount}
-                                            </span>
-                                        )}
-                                        <span className={`flex items-center gap-2 line-clamp-1 text-sm ${isActive
-                                            ? 'font-medium'
-                                            : 'group-hover:text-mainColorLight dark:group-hover:text-mainColorDark'
-                                            }`}>
-                                            {divisionName}
-                                        </span>
-                                    </button>
-                                );
-                            })
-                        )}
-                    </div>
+                        return (
+                            <button
+                                key={divisionName || index}
+                                onClick={() => handleDivisionClick(divisionName)}
+                                className={`py-1 flex justify-between items-center gap-2 rounded-third cursor-pointer group w-full text-left transition-all duration-200 relative
+                                ${!isActive ? 'font-medium' : 'font-base'}`}
+                            >
+                                <div className={`${isActive ? "block" : "hidden"} w-[2px] h-9 bg-other1 absolute -left-4.5 top-1/2 transform -translate-y-1/2`}></div>
+
+                                <span className={`flex items-center gap-2 line-clamp-1 text-sm ${isActive
+                                    ? 'font-medium'
+                                    : 'group-hover:text-mainColorLight dark:group-hover:text-mainColorDark'
+                                    }`}>
+                                    {divisionName}
+                                </span>
+                                {productCount > 0 && (
+                                    <span className={` ${isActive ? 'bg-other1/20' : 'bg-lightColor'} aspect-square flex items-center justify-center text-xs px-2 py-0.5 rounded-full min-w-[28px] font-semibold`}>
+                                        {productCount}
+                                    </span>
+                                )}
+                            </button>
+                        );
+                    })
                 )}
             </div>
 
             {/* Active Filter Info */}
             {hasActiveFilters && (
-                <div className="pt-3 border-t">
-                    <div className="text-xs text-muted-foreground mb-2">Filter Aktif:</div>
-                    <div className="flex flex-wrap gap-2">
-                        <span className="inline-flex items-center gap-1 bg-mainColorLight/10 dark:bg-mainColorDark/10 text-mainColorLight dark:text-mainColorDark px-2 py-1 rounded-full text-xs font-medium">
-                            {selectedDivision}
-                            <Button
-                                variant={"destructive"}
-                                size={"xs"}
-                                onClick={() => onDivisionChange('')}
-                                className="hover:bg-mainColorLight/20 dark:hover:bg-mainColorDark/20 rounded-full p-0.5 transition-colors"
-                                aria-label="Remove filter"
-                            >
-                                <X className="size-3" />
-                            </Button>
-                        </span>
-                    </div>
+                <div className="flex flex-wrap gap-2 mt-4">
+                    <span className="bg-lightColor inline-flex items-center gap-1 text-mainColorLight dark:text-mainColorDark pl-2 pr-1 py-1 rounded-full text-xs font-medium">
+                        {selectedDivision}
+                        <Button
+                            variant={"destructive"}
+                            size={"xs"}
+                            onClick={() => onDivisionChange('')}
+                            className="hover:bg-mainColorLight/20 dark:hover:bg-mainColorDark/20 rounded-full p-0.5 transition-colors"
+                            aria-label="Remove filter"
+                        >
+                            <X className="size-3" />
+                        </Button>
+                    </span>
                 </div>
             )}
         </div>

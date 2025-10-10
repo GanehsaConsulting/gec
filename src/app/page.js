@@ -4,13 +4,19 @@ import { CardProducts } from "@/components/card-product";
 import { MainBanner } from "@/components/main-banner";
 import { StatsSection } from "@/components/stats-section";
 import { WhyUs } from "@/components/why-us";
-import { useProducts } from "@/hooks/useProducts";
+import { useCategorizedProducts, useProducts } from "@/hooks/useProducts";
 
 export default function Home() {
   const { data: products, loading, error } = useProducts({
     priority: true,
     published: true
   });
+
+  const { data: productsC, loadingC, errorC } = useCategorizedProducts({
+    published: true,
+    hasVariants: true,
+  });
+
   return (
     <>
       <MainBanner />
@@ -36,6 +42,17 @@ export default function Home() {
       <Branding />
       <StatsSection />
       <WhyUs />
+        {/* Mode Carousel - Best Selling */}
+      <CardProducts
+        products={productsC}
+        loading={loading}
+        title="Family Products"
+        mode="family"
+        showTitle={true}
+        showDesc={false}
+        showArrows={true}
+        gridCols="grid-cols-6"
+      />
     </>
   );
 }

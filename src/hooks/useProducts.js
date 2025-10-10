@@ -19,6 +19,7 @@ import { useState, useEffect, useCallback } from 'react';
  * @param {number} options.limit - Items per page
  * @param {number} options.minPrice - Minimum price
  * @param {number} options.maxPrice - Maximum price
+ * @param {boolean} options.hasVariants - Filter products with variants (true = only products with variants, false = only products without variants)
  * @param {boolean} options.debug - Debug mode
  * @param {boolean} options.enabled - Auto fetch on mount (default: true)
  * 
@@ -41,6 +42,7 @@ export function useProducts(options = {}) {
     limit,
     minPrice,
     maxPrice,
+    hasVariants,
     debug,
     enabled = true,
   } = options;
@@ -66,6 +68,7 @@ export function useProducts(options = {}) {
     if (limit) params.append('limit', limit);
     if (minPrice !== undefined) params.append('minPrice', minPrice);
     if (maxPrice !== undefined) params.append('maxPrice', maxPrice);
+    if (hasVariants !== undefined) params.append('hasVariants', hasVariants);
     if (debug) params.append('debug', debug);
 
     const queryString = params.toString();
@@ -86,6 +89,7 @@ export function useProducts(options = {}) {
     limit,
     minPrice,
     maxPrice,
+    hasVariants,
     debug,
   ]);
 
@@ -137,7 +141,7 @@ export function useProducts(options = {}) {
  */
 export function useProduct(idOrSlug, options = {}) {
   const isId = /^\d+$/.test(idOrSlug);
-  
+
   return useProducts({
     endpoint: options.detailed ? 'products/detail' : 'products',
     ...(isId ? { id: idOrSlug } : { slug: idOrSlug }),
@@ -160,7 +164,7 @@ export function useCategorizedProducts(options = {}) {
  */
 export function useCategorizedProduct(idOrSlug, options = {}) {
   const isId = /^\d+$/.test(idOrSlug);
-  
+
   return useProducts({
     endpoint: 'products/categorized/detail',
     ...(isId ? { id: idOrSlug } : { slug: idOrSlug }),
