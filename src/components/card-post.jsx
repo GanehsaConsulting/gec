@@ -1,7 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
+import { Title } from "./title";
 
-export const CardPost = () => {
+export const CardPost = (
+    mode = "grid"
+) => {
     const data = [
         {
             id: 1,
@@ -73,45 +76,94 @@ export const CardPost = () => {
 
     return (
         <>
-            <div className="grid grid-cols-4 gap-3 margin">
-                {data.map((el, idx) => (
-                    <Link
-                        key={idx}
-                        href=""
-                    >
-                        <div className="relative h-[60lvh] rounded-main overflow-hidden group">
-                            <Image
-                                width={500}
-                                height={500}
-                                src={el.image}
-                                className={`h-[60lvh] object-cover rounded-main group-hover:scale-105 duration-300`}
-                                alt={el.title}
-                            />
+            {mode === "grid" ? (
+                <div className="grid grid-cols-4 gap-3 margin">
+                    {data.map((el, idx) => (
+                        <Link
+                            key={idx}
+                            href=""
+                        >
+                            <div className="relative h-[60lvh] rounded-main overflow-hidden group">
+                                <Image
+                                    width={500}
+                                    height={500}
+                                    src={el.image}
+                                    className={`h-[60lvh] object-cover rounded-main group-hover:scale-105 duration-300`}
+                                    alt={el.title}
+                                />
 
-                            <div className="absolute bottom-0 linear-blur-to-t w-full h-[30vh] bg-gradient-to-r from-darkColor/40 to-transparent"></div>
+                                <div className="absolute bottom-0 linear-blur-to-t w-full h-[30vh] bg-gradient-to-r from-darkColor/40 to-transparent"></div>
 
-                            <div className="absolute top-2 left-2 group-hover:-translate-y-100 translate-y-0 duration-500">
-                                <p className="px-2 py-1 text-xs rounded-full bg-lightColor/70 dark:bg-darkColor/70 lightColor font-semibold backdrop-blur-lg">
-                                    {el.category}
-                                </p>
-                            </div>
-
-                            <div className="absolute left-0 bottom-0 right-0 mt-3 space-y-2">
-                                <div className="bg-white/70 dark:bg-darkColor/60 min-h-[15lvh] border border-lightColor/10 backdrop-blur-sm backdrop-brightness-125 m-1.5 rounded-secondary p-4">
-                                    <h1 className="text-lg font-medium line-clamp-2">
-                                        {el.title}
-                                    </h1>
-
-                                    <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-1">
-                                        {el.description}
+                                <div className="absolute top-2 left-2 group-hover:-translate-y-100 translate-y-0 duration-500">
+                                    <p className="px-2 py-1 text-xs rounded-full bg-lightColor/70 dark:bg-darkColor/70 lightColor font-semibold backdrop-blur-lg">
+                                        {el.category}
                                     </p>
                                 </div>
-                            </div>
-                        </div>
 
-                    </Link>
-                ))}
-            </div>
+                                <div className="absolute left-0 bottom-0 right-0 mt-3 space-y-2">
+                                    <div className="bg-white/70 dark:bg-darkColor/60 min-h-[15lvh] border border-lightColor/10 backdrop-blur-sm backdrop-brightness-125 m-1.5 rounded-secondary p-4">
+                                        <h1 className="text-lg font-medium line-clamp-2">
+                                            {el.title}
+                                        </h1>
+
+                                        <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-1">
+                                            {el.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </Link>
+                    ))}
+                </div>
+            ) : (
+                <div className="py-20">
+                    <Title className="mb-5 margin !text-2xl">
+                        Our Latest Project & Activity
+                    </Title>
+                    <div className="carousel w-full gap-3">
+                        {data.map((el, idx) => (
+                            <Link
+                                key={idx}
+                                href=""
+                                className={`${idx === 0 && "ml-4 md:ml-10"} ${idx === data.length - 1 && "mr-4 md:mr-10"}`}
+                            >
+                                <div className="relative h-[60lvh] min-w-[40lvh] max-w-[40lvh] rounded-main overflow-hidden group">
+                                    <Image
+                                        width={500}
+                                        height={500}
+                                        src={el.image}
+                                        className={`h-[60lvh] min-w-[40lvh] max-w-[40lvh] object-cover rounded-main group-hover:scale-105 duration-300`}
+                                        alt={el.title}
+                                    />
+
+                                    <div className="absolute bottom-0 linear-blur-to-t w-full h-[30vh] bg-gradient-to-r from-darkColor/40 to-transparent"></div>
+
+                                    <div className="absolute top-2 left-2 group-hover:-translate-y-100 translate-y-0 duration-500">
+                                        <p className="px-2 py-1 text-xs rounded-full bg-lightColor/70 dark:bg-darkColor/70 lightColor font-semibold backdrop-blur-lg">
+                                            {el.category}
+                                        </p>
+                                    </div>
+
+                                    <div className="absolute left-0 bottom-0 right-0 mt-3 space-y-2">
+                                        <div className="bg-white/70 dark:bg-darkColor/60 min-h-[15lvh] border border-lightColor/10 backdrop-blur-sm backdrop-brightness-125 m-1.5 rounded-secondary p-4">
+                                            <h1 className="text-lg font-medium line-clamp-2">
+                                                {el.title}
+                                            </h1>
+
+                                            <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-1">
+                                                {el.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
+
         </>
     )
 }

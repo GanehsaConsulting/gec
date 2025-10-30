@@ -1,8 +1,10 @@
 'use client'
 import { Branding } from "@/components/branding";
+import { CardPost } from "@/components/card-post";
 import { CardProducts } from "@/components/card-product";
 import { MainBanner } from "@/components/main-banner";
 import { StatsSection } from "@/components/stats-section";
+import { Title } from "@/components/title";
 import { WhyUs } from "@/components/why-us";
 import { useCategorizedProducts, useProducts } from "@/hooks/useProducts";
 
@@ -40,9 +42,12 @@ export default function Home() {
         showArrows={true}
       />
       <Branding />
+      <CardPost
+        mode="carousel"
+      />
       <StatsSection />
       <WhyUs />
-        {/* Mode Carousel - Best Selling */}
+      {/* Mode Carousel - Best Selling */}
       <CardProducts
         products={productsC}
         loading={loading}

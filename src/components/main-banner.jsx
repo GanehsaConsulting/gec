@@ -23,7 +23,7 @@ export const MainBanner = () => {
             // Fade in blur at 6 seconds (2 seconds before video ends)
             setTimeout(() => {
                 setBlurOpacity(100)
-            }, 6000)
+            }, 3000)
         }
 
         // Start first cycle immediately
@@ -38,8 +38,8 @@ export const MainBanner = () => {
     }, [])
 
     return (
-        <main className="h-screen relative">
-            <div className="relative w-full h-screen overflow-hidden">
+        <main className="md:h-screen relative">
+            <div className="relative w-full h-[50lvh] md:h-[60vh] overflow-hidden">
                 <video
                     className="
                         w-full h-full object-cover
@@ -69,7 +69,7 @@ export const MainBanner = () => {
                 />
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 bg-white dark:bg-black backdrop-blur-xl py-7 md:py-0 md:h-[40vh] flex items-center px-4 md:px-10">
+            <div className="bg-white dark:bg-black backdrop-blur-xl py-7 md:py-0 md:h-[40vh] flex items-center px-4 md:px-10">
                 <div className="md:max-w-4xl md:space-y-5 space-y-3">
                     <div className="hidden md:block px-3 py-2 rounded-main border border-main/10 bg-thirdColor/5 w-fit">
                         <div className="">
