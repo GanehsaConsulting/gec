@@ -1,3 +1,4 @@
+import { CardPost } from "@/components/card-post";
 import { Button } from "@/components/ui/button";
 import { MdOutlineArrowOutward } from "react-icons/md";
 
@@ -14,7 +15,7 @@ export default function ProjectArticlePage() {
                 <div className="flex justify-between">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter text-balance pb-1">
                             Our Project  <br />
-                            <span className="text-neutral-600">
+                            <span className="text-neutral-600 dark:text-neutral-400">
                                 & Activity
                             </span>
                         </h1>
@@ -28,6 +29,7 @@ export default function ProjectArticlePage() {
                     </div>
                 </div>
             </section>
+                <CardPost/>
         </>
     );
 }

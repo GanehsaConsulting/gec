@@ -66,7 +66,8 @@ export const ContactForm = () => {
                             ))}
                         </div>
                     </div>
-                    <div>
+                    <div className="relative">
+
                         <Image
                             width={700}
                             height={700}
@@ -74,6 +75,58 @@ export const ContactForm = () => {
                             src="https://images.unsplash.com/photo-1599707254554-027aeb4deacd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1742"
                             alt="Contact us image"
                         />
+                        <div className="absolute top-0 left-0 w-full h-full bg-darkColor/30 flex items-center justify-center">
+                            <div className=" bg-white/50 dark:bg-black/40 backdrop-blur-sm p-5 rounded-main shadow-custom w-full max-w-sm">
+                                <Title>
+                                    Send Us Message
+                                </Title>
+                                <form className="mt-6 max-w-2xl flex flex-col gap-4">
+                                    <div className="relative">
+                                        <Input
+                                            type="text"
+                                            className="indent-13 p-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-darkColor/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
+                                        />
+                                        <p className="absolute top-1/2 transform -translate-y-1/2 left-3 text-sm opacity-60">
+                                            Name
+                                        </p>
+                                    </div>
+                                    <div className="relative">
+                                        <Input
+                                            type="email"
+                                            className=" indent-13 p-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-darkColor/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
+                                        />
+                                        <p className="absolute top-1/2 transform -translate-y-1/2 left-3 text-sm opacity-60">
+                                            Email
+                                        </p>
+                                    </div>
+                                    <div className="relative">
+                                        <Input
+                                            type="number"
+                                            className=" indent-13 p-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-darkColor/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
+                                        />
+                                        <p className="absolute top-1/2 transform -translate-y-1/2 left-3 text-sm opacity-60">
+                                            Phone
+                                        </p>
+                                    </div>
+
+
+                                    <div className="relative">
+                                        <Textarea
+                                            rows="7"
+                                            className="indent-17 resize-none p-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-darkColor/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
+                                        />
+                                        <p className="absolute top-[23px] transform -translate-y-1/2 left-3 text-sm opacity-60">
+                                            Message
+                                        </p>
+                                    </div>
+
+                                    <Button>
+                                        <FaPaperPlane />  Send Message
+                                    </Button>
+
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
 
