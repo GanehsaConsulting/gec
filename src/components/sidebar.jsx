@@ -25,7 +25,7 @@ export const Sidebar = ({
     };
 
     return (
-        <div className="w-full space-y-2">
+        <div className="w-full h-full p-4 bg-lightColor/50 dark:bg-darkColor/50 backdrop-blur-md rounded-main border border-neutral-500/10 space-y-2">
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div className="flex items-center justify-between w-full gap-2 text-sm">
@@ -47,7 +47,7 @@ export const Sidebar = ({
 
 
             {/* Division Filter */}
-            <div className="space-y-2 border-l-2 pl-4">
+            <div className="space-y-2 pl-4">
                 <button
                     onClick={() => onDivisionChange('')}
                     className={`py-1 flex justify-between items-center gap-2 rounded-third cursor-pointer group w-full text-left transition-all duration-200 relative

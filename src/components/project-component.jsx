@@ -1,11 +1,16 @@
-export const ProjectComponent = () => {
-    return (
-        <main className="grid grid-cols-10 gap-10">
-            <div className="col-span-3">
+import { CardPost } from "./card-post"
+import { Sidebar } from "./sidebar"
 
+export const ProjectComponent = () => {
+
+
+    return (
+        <main className="">
+            <div className="absolute left-10 z-50 min-w-100 h-full">
+                <Sidebar/>
             </div>
-            <div className="col-span-7">
-                
+            <div className="">
+                <CardPost />
             </div>
         </main>
     )

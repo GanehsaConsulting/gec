@@ -24,8 +24,8 @@ export const PageSwitcher = ({ pages, children }) => {
 
     return (
         <PageContext.Provider value={{ activeTab, direction }}>
-            <div className="margin spacing pt-40">
-                <div className="flex items-end gap-4 mb-12">
+            <div className="">
+                <div className="margin spacing flex items-end gap-4 mb-12">
                     <AnimatePresence mode="popLayout">
                         {orderedTabs.map((tab) => {
                             const isActive = tab === activeTab;

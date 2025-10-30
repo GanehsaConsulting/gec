@@ -8,6 +8,21 @@ import ThemeSwitch from './theme';
 import { MegaMenuNavbar } from './mega-menu';
 import { ServicesMenu } from './services-menu';
 import { ProductMenu } from './product-menu';
+import { FaGear } from "react-icons/fa6";
+
+// Sementara
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+// 
 
 export const Navbar = ({ children }) => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -64,14 +79,14 @@ export const Navbar = ({ children }) => {
 
                     <ul className="flex items-center flex-col ml-[1px] p-4 md:p-0 mt-4 font-medium md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 text-[14px]">
                         {/* Menu */}
-                        <MegaMenuNavbar
+                        {/* <MegaMenuNavbar
                             id="Services"
                             title="Services"
                             expandedId={expandedId}
                             setExpandedId={setExpandedId}
                         >
                             <ServicesMenu expandedId={expandedId} />
-                        </MegaMenuNavbar>
+                        </MegaMenuNavbar> */}
                         <MegaMenuNavbar
                             id="Products"
                             title="Products"
@@ -83,21 +98,45 @@ export const Navbar = ({ children }) => {
 
                         <li className='relative flex flex-col items-center group'>
                             <Link
-                                href={'/project-article'}
+                                href={'/project'}
                                 className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
                                 aria-current="page"
                             >
-                                Project & Artikel
+                              Our Project
                             </Link>
                             <span className={`${path.startsWith('/activity') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
                         </li>
+
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <button className='cursor-pointer z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out'>
+                                    News
+                                </button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <FaGear className='text-3xl spin-slow' />
+                                    <AlertDialogTitle>
+                                        Under Construction
+                                    </AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        News currently being developed. Please check again later.
+                                    </AlertDialogDescription>
+
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogAction className={'w-full'}>Continue</AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+
                         <li className='relative flex flex-col items-center group'>
                             <Link
                                 href={'/about-us'}
                                 className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
                                 aria-current="page"
                             >
-                               About
+                                About
                             </Link>
                             <span className={`${path.startsWith('/about-us') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
                         </li>

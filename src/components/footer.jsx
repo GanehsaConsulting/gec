@@ -21,11 +21,10 @@ export const Footer = () => {
     const footerLinks = {
         company: [
             { label: 'About Us', href: '/about' },
-            { label: 'Why Choose Us', href: '/why-us' },
             { label: 'Our Projects', href: '/projects' },
             { label: 'Certifications', href: '/certifications' },
             { label: 'Careers', href: '/careers' },
-            { label: 'Blog & News', href: '/blog' },
+            { label: 'Project & News', href: '/blog' },
         ],
         services: [
             { label: 'Infrastructure Development', href: '/services/infrastructure', icon: TbBuildingWarehouse },
@@ -169,7 +168,7 @@ export const Footer = () => {
                         </div>
 
                         {/* Services Links */}
-                        <div className="lg:col-span-2">
+                        {/* <div className="lg:col-span-2">
                             <h3 className="text-neutral-500/90 dark:text-neutral-400 font-base mb-2 text-sm capitalize tracking-tight">Services</h3>
                             <ul className="space-y-2.5 group">
                                 {footerLinks.services.map((link) => {
@@ -185,7 +184,7 @@ export const Footer = () => {
                                     );
                                 })}
                             </ul>
-                        </div>
+                        </div> */}
 
                         {/* Products Links */}
                         <div className="lg:col-span-2">
@@ -198,7 +197,7 @@ export const Footer = () => {
                                                 href={link.href}
                                                 className="flex items-center gap-1 text-sm text-black dark:text-white  transition-all  group-hover:[&:not(:hover)]:text-gray-400  hover:text-mainColorLight dark:hover:text-mainColorDark"
                                             >
-                                                <span className="group-hover:translate-x-0.5 transition-transform">{link.label}</span>
+                                                <span className="transition-transform">{link.label}</span>
                                             </Link>
                                         </li>
                                     );
@@ -223,56 +222,6 @@ export const Footer = () => {
                             </ul>
                         </div>
 
-                          {/* Support Links */}
-                        <div className="lg:col-span-2">
-                            <h3 className="text-neutral-500/90 dark:text-neutral-400 font-base mb-2 text-sm capitalize tracking-tight">Support</h3>
-                            <ul className="space-y-2.5 group">
-                                {footerLinks.support.map((link) => (
-                                    <li key={link.label}>
-                                        <Link
-                                            href={link.href}
-                                            className="flex items-center gap-1 text-sm text-black dark:text-white transition-all group-hover:[&:not(:hover)]:text-gray-400 hover:text-mainColorLight dark:hover:text-mainColorDark"
-                                        >
-                                            <span>{link.label}</span>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                          {/* Support Links */}
-                        <div className="lg:col-span-2">
-                            <h3 className="text-neutral-500/90 dark:text-neutral-400 font-base mb-2 text-sm capitalize tracking-tight">Support</h3>
-                            <ul className="space-y-2.5 group">
-                                {footerLinks.support.map((link) => (
-                                    <li key={link.label}>
-                                        <Link
-                                            href={link.href}
-                                            className="flex items-center gap-1 text-sm text-black dark:text-white transition-all group-hover:[&:not(:hover)]:text-gray-400 hover:text-mainColorLight dark:hover:text-mainColorDark"
-                                        >
-                                            <span>{link.label}</span>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                          {/* Support Links */}
-                        <div className="lg:col-span-2">
-                            <h3 className="text-neutral-500/90 dark:text-neutral-400 font-base mb-2 text-sm capitalize tracking-tight">Support</h3>
-                            <ul className="space-y-2.5 group">
-                                {footerLinks.support.map((link) => (
-                                    <li key={link.label}>
-                                        <Link
-                                            href={link.href}
-                                            className="flex items-center gap-1 text-sm text-black dark:text-white transition-all group-hover:[&:not(:hover)]:text-gray-400 hover:text-mainColorLight dark:hover:text-mainColorDark"
-                                        >
-                                            <span>{link.label}</span>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
 
                     </div>
 
