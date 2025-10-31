@@ -48,8 +48,7 @@ export const ContactForm = () => {
             />
 
             <div className="margin flex flex-col justify-between">
-                <div className="grid grid-cols-1 md:grid-cols-2 spacing">
-
+                <div className="grid grid-cols-1 md:grid-cols-2 spacing gap-5">
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter text-balance pb-1">
                         <span className="text-neutral-500 dark:text-neutral-300">
                             Get In
