@@ -221,7 +221,7 @@ export const MobileNavigation = () => {
                             key={idx}
                             href={el.link}
                             onClick={handleLinkClick}
-                            className={`flex flex-col items-center relative transition-all duration-200 w-16 py-1 rounded-full ${isActive(el.link)
+                            className={`flex flex-col items-center relative transition-all duration-200 w-18 py-1 rounded-full ${isActive(el.link)
                                 ? "bg-white/10 dark:bg-white/10 text-darkColor dark:text-lightColor"
                                 : "text-darkColor/50 dark:text-lightColor/50"
                                 }`}
