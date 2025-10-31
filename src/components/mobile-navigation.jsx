@@ -23,7 +23,6 @@ import {
 } from 'react-icons/tb';
 import ThemeSwitch from "./theme";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { BoxIcon } from "lucide-react";
 
 export const MobileNavigation = () => {
     const pathname = usePathname();
@@ -101,34 +100,37 @@ export const MobileNavigation = () => {
                     ? 'bottom-[72px] opacity-100 translate-y-0'
                     : 'bottom-[-100%] opacity-0 translate-y-8 pointer-events-none'
                     }`}
+                style={{ maxHeight: "calc(100vh - 8rem)" }}
             >
-                <div className="bg-lightColor/30 dark:bg-darkColor/30 rounded-3xl border border-darkColor/15 dark:border-lightColor/15 shadow-2xl max-h-[70vh] overflow-y-auto no-scrollbar">
+                <div className="bg-lightColor/30 dark:bg-darkColor/30 rounded-3xl border border-darkColor/15 dark:border-lightColor/15 shadow-2xl h-full overflow-y-auto no-scrollbar">
                     {/* Header */}
-                    <div className="sticky top-0 p-1.5">
-                        <div className="bg-lightColor/50 dark:bg-darkColor/50 backdrop-blur-sm px-5 py-4 border-b border-darkColor/10 dark:border-lightColor/10 flex items-center justify-between rounded-[18px] border">
-                            <h3 className="font-semibold text-lg">Menu</h3>
-                            <div className="flex items-center gap-4">
+                    <div className="sticky top-0 p-1.5 z-10">
+                        <div className="bg-lightColor/50 dark:bg-darkColor/50 backdrop-blur-sm px-4 sm:px-5 py-3 sm:py-4 border-b border-darkColor/10 dark:border-lightColor/10 flex items-center justify-between rounded-[18px] border">
+                            <h3 className="font-semibold text-base sm:text-lg">Menu</h3>
+                            <div className="flex items-center gap-2 sm:gap-4">
                                 <Link
-                                    href="/"
-                                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-darkColor/10 dark:hover:bg-lightColor/10 transition-colors"
+                                    href="https://www.instagram.com/ganeshamultikreatif"
+                                    target="_blank"
+                                    className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-darkColor/10 dark:hover:bg-lightColor/10 transition-colors"
                                 >
-                                    <FaInstagram className="text-xl" />
+                                    <FaInstagram className="text-lg sm:text-xl" />
                                 </Link>
                                 <Link
-                                    href="/"
-                                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-darkColor/10 dark:hover:bg-lightColor/10 transition-colors"
+                                    href="https://api.whatsapp.com/send?phone=628887127000"
+                                    target="_blank"
+                                    className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-darkColor/10 dark:hover:bg-lightColor/10 transition-colors"
                                 >
-                                    <FaWhatsapp className="text-xl" />
+                                    <FaWhatsapp className="text-lg sm:text-xl" />
                                 </Link>
                                 <ThemeSwitch />
                             </div>
                         </div>
                     </div>
 
-                    <div className="p-4 space-y-6">
+                    <div className="p-3 sm:p-4 space-y-4 sm:space-y-6">
                         {/* Company Section */}
                         <div>
-                            <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3 px-2">
+                            <h4 className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2 sm:mb-3 px-2">
                                 Company
                             </h4>
                             <div className="space-y-1">
@@ -137,54 +139,26 @@ export const MobileNavigation = () => {
                                         key={idx}
                                         href={item.href}
                                         onClick={handleLinkClick}
-                                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${isActive(item.href)
-                                            ? 'bg-darkColor/10 dark:bg-lightColor/10  '
+                                        className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-xl transition-all ${isActive(item.href)
+                                            ? 'bg-darkColor/10 dark:bg-lightColor/10'
                                             : 'hover:bg-darkColor/5 dark:hover:bg-lightColor/5'
                                             }`}
                                     >
-                                        <div className={`text-xl ${isActive(item.href)
-                                            ? ' '
+                                        <div className={`text-lg sm:text-xl flex-shrink-0 ${isActive(item.href)
+                                            ? ''
                                             : 'text-neutral-600 dark:text-neutral-400'
                                             }`}>
                                             {item.icon}
                                         </div>
-                                        <span className="text-sm font-medium">{item.label}</span>
+                                        <span className="text-xs sm:text-sm font-medium">{item.label}</span>
                                     </Link>
                                 ))}
                             </div>
                         </div>
 
-                        {/* Services Section */}
-                        {/* <div>
-                            <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3 px-2">
-                                Services
-                            </h4>
-                            <div className="space-y-1">
-                                {megaMenuItems.services.map((item, idx) => (
-                                    <Link
-                                        key={idx}
-                                        href={item.href}
-                                        onClick={handleLinkClick}
-                                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${isActive(item.href)
-                                            ? 'bg-mainColorLight/10 dark:bg-mainColorDark/10  '
-                                            : 'hover:bg-darkColor/5 dark:hover:bg-lightColor/5'
-                                            }`}
-                                    >
-                                        <div className={`text-xl ${isActive(item.href)
-                                            ? ' '
-                                            : 'text-neutral-600 dark:text-neutral-400'
-                                            }`}>
-                                            {item.icon}
-                                        </div>
-                                        <span className="text-sm font-medium">{item.label}</span>
-                                    </Link>
-                                ))}
-                            </div>
-                        </div> */}
-
                         {/* Products Section */}
                         <div className="pb-2">
-                            <h4 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3 px-2">
+                            <h4 className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2 sm:mb-3 px-2">
                                 Products
                             </h4>
                             <div className="space-y-1">
@@ -193,18 +167,18 @@ export const MobileNavigation = () => {
                                         key={idx}
                                         href={item.href}
                                         onClick={handleLinkClick}
-                                        className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all ${isActive(item.href)
-                                            ? 'bg-darkColor/10 dark:bg-lightColor/10  '
+                                        className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-xl transition-all ${isActive(item.href)
+                                            ? 'bg-darkColor/10 dark:bg-lightColor/10'
                                             : 'hover:bg-darkColor/5 dark:hover:bg-lightColor/5'
                                             }`}
                                     >
-                                        <div className={`text-xl ${isActive(item.href)
-                                            ? ' '
+                                        <div className={`text-lg sm:text-xl flex-shrink-0 ${isActive(item.href)
+                                            ? ''
                                             : 'text-neutral-600 dark:text-neutral-400'
                                             }`}>
                                             {item.icon}
                                         </div>
-                                        <span className="text-sm font-medium">{item.label}</span>
+                                        <span className="text-xs sm:text-sm font-medium">{item.label}</span>
                                     </Link>
                                 ))}
                             </div>
@@ -214,22 +188,23 @@ export const MobileNavigation = () => {
             </div>
 
             {/* Bottom Navigation Bar */}
-            <div className="md:hidden fixed bottom-3 left-4 right-4 z-888 flex items-center justify-center gap-2">
-                <div className="flex w-fit items-center justify-around bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm px-[4px] py-[4px] rounded-full border border-darkColor/15 dark:border-lightColor/15">
+            <div className="md:hidden fixed bottom-3 left-4 right-4 z-888 flex items-center justify-between gap-1.5 sm:gap-2">
+                {/* Navigation Items Container */}
+                <div className="flex flex-1 items-center justify-around bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm px-[4px] sm:px-[4px] py-[4px] rounded-full border border-darkColor/15 dark:border-lightColor/15 overflow-hidden">
                     {navigation.map((el, idx) => (
                         <Link
                             key={idx}
                             href={el.link}
                             onClick={handleLinkClick}
-                            className={`flex flex-col items-center relative transition-all duration-200 w-18 py-1 rounded-full ${isActive(el.link)
+                            className={`flex flex-col items-center justify-center relative transition-all duration-200 py-1 rounded-full flex-1 min-w-0 ${isActive(el.link)
                                 ? "bg-white/10 dark:bg-white/10 text-darkColor dark:text-lightColor"
                                 : "text-darkColor/50 dark:text-lightColor/50"
                                 }`}
                         >
-                            <div className="w-fit text-[24px] relative">
+                            <div className="w-fit text-[20px] sm:text-[24px] relative">
                                 {el.icon}
                             </div>
-                            <p className={`text-[9px] font-medium transition-all ${isActive(el.link) ? "font-bold" : ""
+                            <p className={`text-[8px] sm:text-[9px] font-medium transition-all truncate px-1 max-w-full ${isActive(el.link) ? "font-bold" : ""
                                 }`}>
                                 {el.label}
                             </p>
@@ -240,10 +215,11 @@ export const MobileNavigation = () => {
                 {/* Menu Toggle Button */}
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="w-fit h-full"
+                    className="flex-shrink-0"
+                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 >
-                    <div className={`flex items-center flex-col justify-center text-[28px] bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm p-3 aspect-square rounded-full border border-darkColor/15 dark:border-lightColor/15 transition-all ${isMenuOpen
-                        ? 'bg-mainColorLight/20 dark:bg-mainColorDark/20  '
+                    <div className={`flex items-center justify-center text-[24px] sm:text-[28px] bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm p-2.5 sm:p-3 aspect-square rounded-full border border-darkColor/15 dark:border-lightColor/15 transition-all ${isMenuOpen
+                        ? 'bg-mainColorLight/20 dark:bg-mainColorDark/20'
                         : 'text-darkColor/60 dark:text-lightColor/60 hover:scale-105'
                         }`}>
                         <HiDotsHorizontal className={`transition-transform duration-300 ${!isMenuOpen ? 'block' : 'hidden'}`} />
