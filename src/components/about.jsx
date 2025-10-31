@@ -1,8 +1,4 @@
 import Image from "next/image"
-import { FaPlay } from "react-icons/fa"
-import { Title } from "./title"
-
-
 export const About = () => {
     return (
         <>
@@ -38,7 +34,6 @@ export const About = () => {
                         </p>
                     </div>
                 </section>
-
             </main>
         </>
     )
