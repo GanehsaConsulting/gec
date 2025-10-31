@@ -214,19 +214,19 @@ export const MobileNavigation = () => {
             </div>
 
             {/* Bottom Navigation Bar */}
-            <div className="md:hidden fixed bottom-3 left-3 right-3 z-888 flex items-center justify-between gap-1">
-                <div className="flex w-full items-center justify-around bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm px-[2px] py-[4px] rounded-full border border-darkColor/15 dark:border-lightColor/15">
+            <div className="md:hidden fixed bottom-3 left-4 right-4 z-888 flex items-center justify-center gap-2">
+                <div className="flex w-fit items-center justify-around bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm px-[4px] py-[4px] rounded-full border border-darkColor/15 dark:border-lightColor/15">
                     {navigation.map((el, idx) => (
                         <Link
                             key={idx}
                             href={el.link}
                             onClick={handleLinkClick}
-                            className={`flex flex-col items-center relative transition-all duration-200 w-18 py-1 rounded-full ${isActive(el.link)
+                            className={`flex flex-col items-center relative transition-all duration-200 w-16 py-1 rounded-full ${isActive(el.link)
                                 ? "bg-white/10 dark:bg-white/10 text-darkColor dark:text-lightColor"
                                 : "text-darkColor/50 dark:text-lightColor/50"
                                 }`}
                         >
-                            <div className="w-fit text-[20px] relative">
+                            <div className="w-fit text-[24px] relative">
                                 {el.icon}
                             </div>
                             <p className={`text-[9px] font-medium transition-all ${isActive(el.link) ? "font-bold" : ""
@@ -242,7 +242,7 @@ export const MobileNavigation = () => {
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     className="w-fit h-full"
                 >
-                    <div className={`flex items-center flex-col justify-center text-[25px] bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm p-2.5 aspect-square rounded-full border border-darkColor/15 dark:border-lightColor/15 transition-all ${isMenuOpen
+                    <div className={`flex items-center flex-col justify-center text-[28px] bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm p-3 aspect-square rounded-full border border-darkColor/15 dark:border-lightColor/15 transition-all ${isMenuOpen
                         ? 'bg-mainColorLight/20 dark:bg-mainColorDark/20  '
                         : 'text-darkColor/60 dark:text-lightColor/60 hover:scale-105'
                         }`}>
