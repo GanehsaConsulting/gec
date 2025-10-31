@@ -201,7 +201,7 @@ export const MobileNavigation = () => {
                                 : "text-darkColor/50 dark:text-lightColor/50"
                                 }`}
                         >
-                            <div className="w-fit text-[20px] sm:text-[24px] relative">
+                            <div className="w-fit text-[25px] sm:text-[25px] relative">
                                 {el.icon}
                             </div>
                             <p className={`text-[8px] sm:text-[9px] font-medium transition-all truncate px-1 max-w-full ${isActive(el.link) ? "font-bold" : ""
@@ -218,7 +218,7 @@ export const MobileNavigation = () => {
                     className="flex-shrink-0"
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 >
-                    <div className={`flex items-center justify-center text-[24px] sm:text-[28px] bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm p-2.5 sm:p-3 aspect-square rounded-full border border-darkColor/15 dark:border-lightColor/15 transition-all ${isMenuOpen
+                    <div className={`flex items-center justify-center text-[29px] sm:text-[29px] bg-lightColor/40 dark:bg-darkColor/20 backdrop-blur-sm p-2.5 sm:p-3 aspect-square rounded-full border border-darkColor/15 dark:border-lightColor/15 transition-all ${isMenuOpen
                         ? 'bg-mainColorLight/20 dark:bg-mainColorDark/20'
                         : 'text-darkColor/60 dark:text-lightColor/60 hover:scale-105'
                         }`}>
