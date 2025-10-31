@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useRef } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { Button } from "./ui/button";
-import { Title } from "./title";
+import { Title } from "./title-text";
 
 // Separate Card Component for better reusability
 const ProjectCard = ({ project, className = "" }) => {

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Title } from "./title"
+import { Title } from "./title-text"
 
 export const VisionMission = () => {
     return (

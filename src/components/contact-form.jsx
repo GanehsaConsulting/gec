@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { FaPaperPlane } from "react-icons/fa"
-import { Title } from "./title"
+import { Title } from "./title-text"
 import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
 import { Button } from "./ui/button"

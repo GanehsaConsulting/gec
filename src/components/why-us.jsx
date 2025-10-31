@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { whyUs } from "./system";
-import { Title } from "./title";
+import { Title } from "./title-text";
 
 export const WhyUs = () => {
     return (
