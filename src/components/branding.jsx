@@ -1,7 +1,5 @@
 import Image from "next/image"
 import { Title } from "./title"
-import { WhyUs } from "./why-us"
-import { whyUs } from "./system"
 
 export const Branding = () => {
     return (

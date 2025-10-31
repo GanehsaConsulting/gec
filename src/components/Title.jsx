@@ -1,4 +1,3 @@
-import { Icon } from "lucide-react";
 import { MdOutlineArrowOutward } from "react-icons/md";
 
 export const Title = ({
