@@ -44,9 +44,12 @@ export default function Home() {
       <Branding />
       <CardPost
         mode="carousel"
+        showTitle={true}
+        title="Latest Projects"
       />
       <StatsSection />
       <WhyUs />
+
       {/* Mode Carousel - Best Selling */}
       <CardProducts
         products={productsC}
@@ -56,7 +59,7 @@ export default function Home() {
         showTitle={true}
         showDesc={false}
         showArrows={true}
-        gridCols="grid-cols-6"
+        gridCols="grid-cols-2 md:grid-cols-6"
       />
     </>
   );

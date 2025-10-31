@@ -6,7 +6,7 @@ import { Title } from "./title"
 export const About = () => {
     return (
         <>
-            <main className="grid grid-cols-1 md:grid-cols-1">
+            <main className="grid grid-cols-1">
                 <section className="max-h-[50vh]">
                     <Image
                         width={2037}
@@ -15,12 +15,15 @@ export const About = () => {
                         src="https://images.unsplash.com/photo-1533378890784-b2a5b0a59d40?q=80&w=2037&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="About Us Image" />
                 </section>
-                <section className="bg-darkColor dark:bg-secondaryLight py-15 md:py-30 md:px-10 px-4 flex flex-row items-start justify-between">
-                    <h1 className="invert text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter text-balance pb-1">
-                        <span className="text-black dark:text-white">
+                <section className="bg-darkColor dark:bg-secondaryLight py-15 md:py-30 md:px-10 px-4 flex flex-col gap-5 md:flex-row items-start justify-between">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter text-balance pb-1">
+                        <span className="dark:text-neutral-500 text-neutral-300">
                             Get To
                         </span>
-                        <br /> Know Us
+                        <br />
+                        <span className="invert"> 
+                            Know Us
+                        </span>
                     </h1>
 
                     <div className="max-w-4xl">

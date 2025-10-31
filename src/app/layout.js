@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { CustomScrollbar } from "@/components/custom-scrollbar";
 import { Toaster } from "sonner";
 import { Footer } from "@/components/footer";
+import { MobileNavigation } from "@/components/mobile-navigation";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat", // hanya untuk class tertentu
@@ -25,13 +26,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
-        className={`${nunito.className} ${montserrat.variable}  antialiased`}
+        className={`${nunito.className} ${montserrat.variable} antialiased`}
       >
         <ThemeProvider enableSystem attribute={'class'}>
           <Navbar>
             {children}
             <Footer />
           </Navbar>
+          <MobileNavigation />
           <Toaster position="top-right" richColors />
           <CustomScrollbar />
         </ThemeProvider>
