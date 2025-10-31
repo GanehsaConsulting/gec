@@ -75,7 +75,7 @@ export const ContactForm = () => {
 
                 </div>
                 {/* Mobile Contact Cards - Vertical Stack */}
-                <div className="flex flex-col gap-3 lg:hidden mb-6">
+                <div className="flex flex-col gap-3 lg:hidden mb-3">
                     {dataContact.map((el, idx) => (
                         <Link
                             href={el.link}
@@ -97,67 +97,8 @@ export const ContactForm = () => {
                             </div>
                         </Link>
                     ))}
-                    <div className="bg-white/50 dark:bg-black/40 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-main shadow-custom w-full max-w-md">
-                        <Title className="!text-xl sm:!text-2xl">
-                            Send Us Message
-                        </Title>
 
-                        <form className="mt-4 sm:mt-6 flex flex-col gap-3 sm:gap-4">
-                            {/* Name Input */}
-                            <div className="relative">
-                                <Input
-                                    type="text"
-                                    placeholder=" "
-                                    className="peer w-full pl-16 sm:pl-20 pr-3 py-2 sm:py-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-black/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
-                                />
-                                <p className="absolute top-1/2 transform -translate-y-1/2 left-3 text-xs sm:text-sm opacity-60 pointer-events-none">
-                                    Name
-                                </p>
-                            </div>
-
-                            {/* Email Input */}
-                            <div className="relative">
-                                <Input
-                                    type="email"
-                                    placeholder=" "
-                                    className="peer w-full pl-16 sm:pl-20 pr-3 py-2 sm:py-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-black/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
-                                />
-                                <p className="absolute top-1/2 transform -translate-y-1/2 left-3 text-xs sm:text-sm opacity-60 pointer-events-none">
-                                    Email
-                                </p>
-                            </div>
-
-                            {/* Phone Input */}
-                            <div className="relative">
-                                <Input
-                                    type="tel"
-                                    placeholder=" "
-                                    className="peer w-full pl-16 sm:pl-20 pr-3 py-2 sm:py-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-black/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
-                                />
-                                <p className="absolute top-1/2 transform -translate-y-1/2 left-3 text-xs sm:text-sm opacity-60 pointer-events-none">
-                                    Phone
-                                </p>
-                            </div>
-
-                            {/* Message Textarea */}
-                            <div className="relative">
-                                <Textarea
-                                    rows="5"
-                                    placeholder=" "
-                                    className="peer w-full pl-20 sm:pl-24 pr-3 py-2 sm:py-3 resize-none border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-black/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
-                                />
-                                <p className="absolute top-4 left-3 text-xs sm:text-sm opacity-60 pointer-events-none">
-                                    Message
-                                </p>
-                            </div>
-
-                            {/* Submit Button */}
-                            <Button className="w-full flex items-center justify-center gap-2 py-2 sm:py-3">
-                                <FaPaperPlane className="text-sm" />
-                                <span>Send Message</span>
-                            </Button>
-                        </form>
-                    </div>
+                 
                 </div>
 
                 {/* Desktop Contact Cards - Grid */}
@@ -255,7 +196,7 @@ export const ContactForm = () => {
 
                 {/* Background + teks */}
                 <div className="relative w-full h-[300px] md:h-[500px] rounded-parent overflow-hidden">
-                    <div className="h-full roumded-main shadow-custom w-full hidden lg:block overflow-hidden">
+                    <div className="h-full roumded-main shadow-custom w-full overflow-hidden">
                         <div className="h-full rounded-main overflow-hidden">
                             <iframe
                                 className="w-full h-full dark:invert dark:contrast-75"
