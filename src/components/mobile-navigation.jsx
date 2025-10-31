@@ -107,16 +107,16 @@ export const MobileNavigation = () => {
                     <div className="sticky top-0 p-1.5 z-10">
                         <div className="bg-lightColor/50 dark:bg-darkColor/50 backdrop-blur-sm px-4 sm:px-5 py-3 sm:py-4 border-b border-darkColor/10 dark:border-lightColor/10 flex items-center justify-between rounded-[18px] border">
                             <h3 className="font-semibold text-base sm:text-lg">Menu</h3>
-                            <div className="flex items-center gap-2 sm:gap-4">
+                            <div className="flex items-center gap-4">
                                 <Link
-                                    href="https://www.instagram.com/ganeshamultikreatif"
+                                    href="https://www.instagram.com/ganeshaec.co.id"
                                     target="_blank"
                                     className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-darkColor/10 dark:hover:bg-lightColor/10 transition-colors"
                                 >
                                     <FaInstagram className="text-lg sm:text-xl" />
                                 </Link>
                                 <Link
-                                    href="https://api.whatsapp.com/send?phone=628887127000"
+                                    href="https://api.whatsapp.com/send?phone=08871510045"
                                     target="_blank"
                                     className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full hover:bg-darkColor/10 dark:hover:bg-lightColor/10 transition-colors"
                                 >
@@ -197,7 +197,7 @@ export const MobileNavigation = () => {
                             href={el.link}
                             onClick={handleLinkClick}
                             className={`flex flex-col items-center justify-center relative transition-all duration-200 py-1 rounded-full flex-1 min-w-0 ${isActive(el.link)
-                                ? "bg-white/10 dark:bg-white/10 text-darkColor dark:text-lightColor"
+                                ? "bg-black/5 dark:bg-white/10 text-darkColor dark:text-lightColor"
                                 : "text-darkColor/50 dark:text-lightColor/50"
                                 }`}
                         >

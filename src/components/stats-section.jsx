@@ -100,7 +100,7 @@ export const StatsSection = () => {
             description: 'Konsistensi mutu dan profesionalitas dalam setiap tahap pekerjaan di lapangan.'
         },
         {
-            value: '10M+',
+            value: '80M+',
             label: 'Nilai Kontrak',
             description: 'Total nilai proyek yang dikerjakan dengan standar nasional dan internasional.'
         }

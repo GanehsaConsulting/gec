@@ -19,11 +19,11 @@ export const Footer = () => {
 
     const footerLinks = {
         company: [
-            { label: 'About Us', href: '/about' },
-            { label: 'Our Projects', href: '/projects' },
-            { label: 'Certifications', href: '/certifications' },
-            { label: 'Careers', href: '/careers' },
-            { label: 'Project & News', href: '/blog' },
+            { label: 'About Us', href: '/about-us' },
+            { label: 'Our Projects', href: '/project' },
+            { label: 'All Products', href: '/product', },
+            { label: 'Contact Us', href: '/contact' },
+            { label: 'News & Blog', href: '/news' },
         ],
         services: [
             { label: 'Infrastructure Development', href: '/services/infrastructure', icon: TbBuildingWarehouse },
@@ -58,36 +58,36 @@ export const Footer = () => {
     const socialLinks = [
         {
             icon: FaWhatsapp,
-            href: 'https://wa.me/6281234567890',
+            href: 'https://wa.me/08871510045',
             label: 'WhatsApp',
-            color: 'hover:text-green-500',
+            color: 'dark:hover:text-green-500 hover:text-green-500',
             bgHover: 'dark:hover:bg-green-300/20 hover:bg-green-500/10'
         },
         {
             icon: FaInstagram,
             href: 'https://instagram.com/gec_official',
             label: 'Instagram',
-            color: 'hover:text-pink-500',
+            color: 'dark:hover:text-pink-500 hover:text-pink-500',
             bgHover: 'dark:hover:bg-pink-300/20 hover:bg-pink-500/10'
         },
         {
             icon: FaLinkedin,
             href: 'https://linkedin.com/company/gec',
             label: 'LinkedIn',
-            color: 'hover:text-blue-500',
+            color: 'dark:hover:text-blue-500 hover:text-blue-500',
             bgHover: 'dark:hover:bg-blue-300/20 hover:bg-blue-500/10'
         },
         {
             icon: FaFacebook,
-            href: 'https://facebook.com/gec.official',
+            href: 'https://facebook.com/ganeshaec.co.id',
             label: 'Facebook',
-            color: 'hover:text-blue-600',
+            color: 'dark:hover:text-blue-500 hover:text-blue-600',
             bgHover: 'dark:hover:bg-blue-300/20 hover:bg-blue-600/10'
         },
     ];
 
     const contactInfo = [
-        { icon: FaPhone, text: '+62 812-3456-7890', href: 'tel:+6281234567890' },
+        { icon: FaPhone, text: '0887 1510 045', href: 'tel:08871510045' },
         { icon: FaEnvelope, text: 'info@gec.co.id', href: 'mailto:info@gec.co.id' },
         { icon: FaMapMarkerAlt, text: 'Jakarta, Indonesia', href: 'https://maps.google.com' },
     ];
@@ -231,7 +231,7 @@ export const Footer = () => {
                             {socialLinks.map((social) => {
                                 const Icon = social.icon;
                                 return (
-                                    <a
+                                    <Link
                                         key={social.label}
                                         href={social.href}
                                         target="_blank"
@@ -239,8 +239,8 @@ export const Footer = () => {
                                         className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all text-neutral-900 dark:text-neutral-100 ${social.color} ${social.bgHover}`}
                                         aria-label={social.label}
                                     >
-                                        <Icon className="h-5 w-5" />
-                                    </a>
+                                        <Icon className="h-5 w-5 dark:group-" />
+                                    </Link>
                                 );
                             })}
                         </div>

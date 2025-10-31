@@ -104,7 +104,7 @@ export const Navbar = ({ children }) => {
                             >
                               Our Project
                             </Link>
-                            <span className={`${path.startsWith('/activity') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
+                            <span className={`${path.startsWith('/project') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
                         </li>
 
                         <AlertDialog>

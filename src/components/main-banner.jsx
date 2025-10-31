@@ -39,7 +39,7 @@ export const MainBanner = () => {
 
     return (
         <main className="md:h-screen relative">
-            <div className="relative w-full h-[45lvh] md:h-[60vh] overflow-hidden">
+            <div className="relative w-full h-[50lvh] md:h-[60vh] overflow-hidden">
                 <video
                     className="
                         w-full h-full object-cover
@@ -72,7 +72,7 @@ export const MainBanner = () => {
             <div className="bg-white dark:bg-black backdrop-blur-xl py-7 md:py-0 md:h-[40vh] flex items-center px-4 md:px-10">
                 <div className="md:max-w-4xl md:space-y-5 space-y-3">
                     <div className="px-3 py-2 rounded-main border border-main/10 bg-thirdColor/5 w-fit">
-                            <p className="font-bold md:text-xs text-[10px] uppercase text-secondaryColor">
+                            <p className="font-bold md:text-xs text-[10px] uppercase text-secondaryColor dark:brightness-125">
                                 Ganesha Engineering & Constructions
                             </p>
                     </div>
