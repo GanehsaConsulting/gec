@@ -62,7 +62,7 @@ export function useProjects(options = {}) {
 
         const queryString = params.toString();
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-        return `${baseUrl}/api/projects${queryString ? `?${queryString}` : ''}`;
+        return `${baseUrl}/api/projects/detail${queryString ? `?${queryString}` : ''}`;
     }, [
         id,
         slug,
