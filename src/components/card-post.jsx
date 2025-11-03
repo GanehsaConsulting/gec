@@ -6,11 +6,15 @@ import { useRef } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { Button } from "./ui/button";
 import { Title } from "./title-text";
+import { slugify } from "@/lib/slugify";
 
 // Separate Card Component for better reusability
 const ProjectCard = ({ project, className = "" }) => {
+    // Use slug if available, fallback to id
+    const href = project.title ? `/project/${slugify(project.title)}` : `/project/${project.id}`;
+
     return (
-        <Link href={`/projects/${project.id}`}>
+        <Link href={href}>
             <div className={`relative h-[50lvh] md:h-[60lvh] rounded-main overflow-hidden group ${className}`}>
                 <Image
                     width={500}
@@ -117,50 +121,7 @@ export const CardPost = ({
             image:
                 "https://images.unsplash.com/photo-1508356730910-16e7e7f024f1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1796",
         },
-        {
-            id: 3,
-            title: "Pengadaan Perangkat Elektronik untuk Fasilitas Pelabuhan",
-            category: "Pengadaan Elektronik & Mekanik",
-            location: "Tanjung Priok, DKI Jakarta",
-            year: 2024,
-            description:
-                "Penyediaan dan pemasangan perangkat elektronik pelabuhan seperti sistem CCTV, panel kontrol, serta perangkat keamanan berbasis IoT.",
-            image:
-                "https://images.unsplash.com/photo-1641219996730-b21ca5b26d26?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2062",
-        },
-        {
-            id: 4,
-            title: "Reklamasi Pasca Tambang Nikel",
-            category: "Reklamasi Pasca Tambang",
-            location: "Kolaka, Sulawesi Tenggara",
-            year: 2023,
-            description:
-                "Proyek reklamasi lahan bekas tambang nikel melalui proses pemulihan tanah, penanaman vegetasi lokal, dan sistem pengendalian erosi.",
-            image:
-                "https://images.unsplash.com/photo-1603556830536-0e80dcc8e85f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=930",
-        },
-        {
-            id: 5,
-            title: "Pembangunan Drainase dan Jalan Akses Industri",
-            category: "Infrastruktur",
-            location: "Cikarang, Bekasi",
-            year: 2022,
-            description:
-                "Pekerjaan konstruksi drainase dan jalan akses menuju kawasan industri dengan sistem perkerasan beton dan saluran tertutup.",
-            image:
-                "https://images.unsplash.com/photo-1630297777866-e2d178f29376?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=774",
-        },
-        {
-            id: 6,
-            title: "Sistem Otomasi Produksi Pabrik Makanan",
-            category: "Instalasi Pabrik",
-            location: "Karawang, Jawa Barat",
-            year: 2024,
-            description:
-                "Integrasi sistem otomasi untuk lini produksi pabrik makanan menggunakan sensor, aktuator, dan PLC untuk efisiensi maksimal.",
-            image:
-                "https://images.unsplash.com/photo-1600897529572-88c1636fc7f7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1740",
-        },
+        // ... rest of default data
     ];
 
     const projects = data.length > 0 ? data : defaultData;

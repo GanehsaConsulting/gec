@@ -150,7 +150,7 @@ export const MobileNavigation = () => {
                                             }`}>
                                             {item.icon}
                                         </div>
-                                        <span className="text-xs sm:text-sm font-medium">{item.label}</span>
+                                        <span className="text-sm font-medium">{item.label}</span>
                                     </Link>
                                 ))}
                             </div>
@@ -178,7 +178,7 @@ export const MobileNavigation = () => {
                                             }`}>
                                             {item.icon}
                                         </div>
-                                        <span className="text-xs sm:text-sm font-medium">{item.label}</span>
+                                        <span className="text-sm font-medium">{item.label}</span>
                                     </Link>
                                 ))}
                             </div>
@@ -229,7 +229,7 @@ export const MobileNavigation = () => {
             </div>
 
             {/* Bottom Blur Effect */}
-            <div className="md:hidden z-885 fixed -bottom-2 left-0 right-0 linear-blur-to-t w-full h-[15lvh] bg-darkColor/25 pointer-events-none"></div>
+            <div className="md:hidden z-885 fixed -bottom-5 left-0 right-0 linear-blur-to-t w-full h-[17lvh] bg-darkColor/25 pointer-events-none"></div>
         </>
     );
 };

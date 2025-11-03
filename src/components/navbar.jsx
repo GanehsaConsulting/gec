@@ -107,7 +107,7 @@ export const Navbar = ({ children }) => {
                             <span className={`${path.startsWith('/project') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
                         </li>
 
-                        <AlertDialog>
+                        {/* <AlertDialog>
                             <AlertDialogTrigger asChild>
                                 <button className='cursor-pointer z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out'>
                                     News & Blog
@@ -128,7 +128,7 @@ export const Navbar = ({ children }) => {
                                     <AlertDialogAction className={'w-full'}>Continue</AlertDialogAction>
                                 </AlertDialogFooter>
                             </AlertDialogContent>
-                        </AlertDialog>
+                        </AlertDialog> */}
 
                         <li className='relative flex flex-col items-center group'>
                             <Link
