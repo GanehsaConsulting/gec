@@ -61,7 +61,7 @@ export function useProjects(options = {}) {
         if (debug) params.append('debug', debug);
 
         const queryString = params.toString();
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
         return `${baseUrl}/api/projects${queryString ? `?${queryString}` : ''}`;
     }, [
         id,

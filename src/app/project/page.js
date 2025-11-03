@@ -6,9 +6,6 @@ import { useProjects } from '@/hooks/useProjects';
 
 export default function ProjectArticlePage() {
     const { data, loading, error, pagination } = useProjects({
-        published: true,
-        sortBy: 'date',
-        order: 'desc',
         page: 1,
         limit: 12,
     });
@@ -64,8 +61,8 @@ export default function ProjectArticlePage() {
                         <p className="text-red-800 dark:text-red-200">
                             Failed to load projects: {error}
                         </p>
-                        <Button 
-                            onClick={() => window.location.reload()} 
+                        <Button
+                            onClick={() => window.location.reload()}
                             className="mt-4"
                             variant="outline"
                         >
@@ -90,7 +87,7 @@ export default function ProjectArticlePage() {
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">
                                 Showing {transformedProjects.length} of {pagination.total} projects
                             </p>
-                            
+
                             {pagination.totalPages > 1 && (
                                 <div className="flex items-center gap-2">
                                     <Button
