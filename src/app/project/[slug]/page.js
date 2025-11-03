@@ -107,9 +107,9 @@ export default function ProjectDetail({ params }) {
 
                 <div className="absolute bottom-0 left-0 right-0">
                     <div className="mb-8 flex justify-center">
-                        <div className="space-y-3 w-full mx-62">
+                        <div className="space-y-3 w-full mx-4 lg:mx-62">
                             {/* Category Badge */}
-                            <span className="px-3 py-1 rounded-full border border-secondaryColor text-secondaryColor dark:brightness-150 w-fit text-sm inline-block">
+                            <span className="px-3 py-1 rounded-full border border-secondaryColor text-secondaryColor dark:brightness-150 w-fit text-xs lg:text-sm inline-block">
                                 {project.category}
                             </span>
 
@@ -126,7 +126,7 @@ export default function ProjectDetail({ params }) {
                             </div>
 
                             {/* Title */}
-                            <h1 className="text-3xl md:text-4xl tracking-tighter text-balance pb-1 font-bold">
+                            <h1 className="text-2xl md:text-4xl tracking-tighter text-balance pb-1 font-bold">
                                 {project.title}
                             </h1>
                         </div>
@@ -153,10 +153,10 @@ export default function ProjectDetail({ params }) {
 
             {/* Main Content */}
             <section id="content-section" className="py-8 md:py-12 flex justify-center">
-                <div className="mx-62">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6">Project Overview</h2>
+                <div className="mx-4 lg:mx-62">
+                    <h2 className="text-xl md:text-3xl font-bold mb-6">Project Overview</h2>
                     <div
-                        className="prose dark:prose-invert max-w-none prose-headings:font-bold prose-p:text-gray-700 dark:prose-p:text-gray-300"
+                        className="prose dark:prose-invert max-w-none prose-headings:font-bold prose-p:text-gray-700 dark:prose-p:text-gray-300 "
                         dangerouslySetInnerHTML={{ __html: project.content }}
                     />
                 </div>
@@ -165,7 +165,7 @@ export default function ProjectDetail({ params }) {
             {/* Image Gallery Carousel */}
             {project.images && project.images.length > 0 && (
                 <section className="py-8 md:py-12">
-                    <div className="mb-6 flex items-center justify-between mx-62">
+                    <div className="mb-6 flex lg:flex-row flex-col lg:items-center justify-between mx-4 lg:mx-62">
                         <div>
                             <h2 className="text-2xl md:text-3xl font-bold">Project Gallery</h2>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -174,7 +174,7 @@ export default function ProjectDetail({ params }) {
                         </div>
 
                         {/* Navigation Buttons */}
-                        <div className="flex items-center gap-2">
+                        <div className="md:flex items-center gap-2 hidden">
                             <Button
                                 size="icon"
                                 onClick={scrollLeft}
@@ -197,7 +197,7 @@ export default function ProjectDetail({ params }) {
                     <div className="relative">
                         <div
                             ref={carouselRef}
-                            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar px-4 md:px-10"
+                            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar px-0 md:px-10"
                             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
                             {project.images.map((image, index) => (
