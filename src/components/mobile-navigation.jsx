@@ -23,6 +23,8 @@ import {
 } from 'react-icons/tb';
 import ThemeSwitch from "./theme";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { productDivisions } from "./system";
+import { slugify } from "@/lib/slugify";
 
 export const MobileNavigation = () => {
     const pathname = usePathname();
@@ -162,10 +164,10 @@ export const MobileNavigation = () => {
                                 Products
                             </h4>
                             <div className="space-y-1">
-                                {megaMenuItems.products.map((item, idx) => (
+                                {productDivisions.map((item, idx) => (
                                     <Link
                                         key={idx}
-                                        href={item.href}
+                                        href={"/product/" + slugify(item.division)}
                                         onClick={handleLinkClick}
                                         className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-2.5 rounded-xl transition-all ${isActive(item.href)
                                             ? 'bg-darkColor/10 dark:bg-lightColor/10'
@@ -176,9 +178,9 @@ export const MobileNavigation = () => {
                                             ? ''
                                             : 'text-neutral-600 dark:text-neutral-400'
                                             }`}>
-                                            {item.icon}
+                                          <item.icon />
                                         </div>
-                                        <span className="text-sm font-medium">{item.label}</span>
+                                        <span className="text-sm font-medium">{item.division}</span>
                                     </Link>
                                 ))}
                             </div>
