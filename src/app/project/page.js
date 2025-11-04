@@ -10,6 +10,7 @@ export default function ProjectArticlePage() {
     const { data, loading, error, pagination } = useProjects({
         page: 1,
         limit: 12,
+        published: true,
     });
 
     // Transform data ke format yang dibutuhkan CardPost
