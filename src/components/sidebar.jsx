@@ -98,7 +98,7 @@ export const Sidebar = ({
                                     {divisionName}
                                 </span>
                                 {productCount > 0 && (
-                                    <span className={` ${isActive ? 'bg-other1/20' : 'bg-lightColor'} aspect-square flex items-center justify-center text-xs px-2 py-0.5 rounded-full min-w-[28px] font-semibold`}>
+                                    <span className={` ${isActive ? 'bg-other1/20' : 'bg-lightColor dark:bg-darkColor'} aspect-square flex items-center justify-center text-xs px-2 py-0.5 rounded-full min-w-[28px] font-semibold`}>
                                         {productCount}
                                     </span>
                                 )}

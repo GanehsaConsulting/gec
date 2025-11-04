@@ -109,7 +109,7 @@ export const Footer = () => {
                                     width={200}
                                     height={100}
                                     className='w-12 h-12 sm:w-15 sm:h-15 object-cover -ml-1 dark:hidden block'
-                                    src="/gec-BLACK.png"
+                                    src="/gec-black.png"
                                     alt="GEC Logo"
                                 />
 

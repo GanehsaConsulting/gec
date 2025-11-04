@@ -82,7 +82,7 @@ export function ImageGalleryModal({ images, isOpen, onClose, initialIndex = 0 })
 
                 {/* Image Caption */}
                 {currentImage.caption && (
-                    <div className="absolute top-5 text-center">
+                    <div className="absolute left-5 top-5 text-center">
                         <p className="text-white md:text-base px-4 py-2 bg-lightColor/20 rounded-full text-xs">
                             {currentImage.caption}
                         </p>
@@ -90,7 +90,7 @@ export function ImageGalleryModal({ images, isOpen, onClose, initialIndex = 0 })
                 )}
 
             {/* Counter */}
-            <div className="absolute bottom-5 right-5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+            <div className="hidden md:block absolute bottom-5 right-5 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <p className="text-white text-sm font-medium">
                     {currentIndex + 1} / {images.length}
                 </p>
@@ -98,7 +98,7 @@ export function ImageGalleryModal({ images, isOpen, onClose, initialIndex = 0 })
 
             {/* Thumbnail Strip (Optional) */}
             <div className="absolute bottom-5 left-5 overflow-x-auto">
-                <div className="flex gap-2 justify-center">
+                <div className="flex gap-1 justify-center">
                     {images.map((image, index) => (
                         <button
                             key={index}
