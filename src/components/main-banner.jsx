@@ -1,11 +1,8 @@
 "use client"
 
-import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "./ui/button"
 import { FaPlay } from "react-icons/fa";
-import { RxGear } from "react-icons/rx";
-import { TbManualGearboxFilled } from "react-icons/tb";
 
 export const MainBanner = () => {
     const [blurOpacity, setBlurOpacity] = useState(100) // Start with blur active

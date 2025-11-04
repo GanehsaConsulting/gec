@@ -11,10 +11,10 @@ import { slugify } from "@/lib/slugify";
 // Separate Card Component for better reusability
 const ProjectCard = ({ project, className = "" }) => {
     // Use slug if available, fallback to id
-    const href = project.slug 
-        ? `/project/${project.slug}` 
-        : project.title 
-            ? `/project/${slugify(project.title)}` 
+    const href = project.slug
+        ? `/project/${project.slug}`
+        : project.title
+            ? `/project/${slugify(project.title)}`
             : `/project/${project.id}`;
 
     return (
@@ -83,7 +83,8 @@ export const CardPost = ({
     title = "Our Latest Project & Activity",
     showTitle = false,
     className = "",
-    gridCols = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    gridCols = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+    loading = false,
 }) => {
     const carouselRef = useRef(null);
 
@@ -103,7 +104,7 @@ export const CardPost = ({
     };
 
     // Empty state
-    if (!data || data.length === 0) {
+    if (!loading && (!data || data.length === 0)) {
         return (
             <div className="margin py-20 text-center">
                 <p className="text-neutral-500 dark:text-neutral-400">

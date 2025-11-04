@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect, useRef } from 'react';
 
 const StatCard = ({ finalValue, label, description, duration = 2000, delay = 0 }) => {

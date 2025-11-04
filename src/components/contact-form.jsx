@@ -16,8 +16,8 @@ const dataContact = [
     {
         label: "Email",
         icon: <TbMailFilled />,
-        data: "info@ganeshaec.co.id",
-        link: "mailto:info@gec.co.id"
+        data: "gecganesha@gmail.com",
+        link: "mailto:gecganesha@gmail.com"
     },
     {
         label: "Phone",
