@@ -80,7 +80,7 @@ export const MainBanner = () => {
                         Ganesha Enginnering & Constructions adalah mitra rekayasa teknik yang mengintegrasikan teknologi, pengalaman, dan presisi dalam setiap proyek—dari tanah hingga teknologi.
                     </p>
 
-                    <div className="space-x-2">
+                    <div className="flex items-center gap-2">
                         <Button>
                             <FaPlay className="size-3" />
                             Explore
