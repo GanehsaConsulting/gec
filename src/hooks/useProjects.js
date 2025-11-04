@@ -62,7 +62,7 @@ export function useProjects(options = {}) {
 
         const queryString = params.toString();
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-        return `${baseUrl}/api/projects/detail${queryString ? `?${queryString}` : ''}`;
+        return `${baseUrl}/api/projects/${queryString ? `?${queryString}` : ''}`;
     }, [
         id,
         slug,
@@ -373,7 +373,7 @@ export function useProjectDetail(slug, options = {}) {
 
         try {
             const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-            const url = `${baseUrl}/api/projects/${slug}`;
+            const url = `${baseUrl}/api/projects/detail/${slug}`;
 
             const response = await fetch(url);
             const result = await response.json();
