@@ -23,7 +23,6 @@ export const Footer = () => {
             { label: 'Our Projects', href: '/project' },
             { label: 'All Products', href: '/product', },
             { label: 'Contact Us', href: '/contact' },
-            { label: 'News & Blog', href: '/news' },
         ],
         services: [
             { label: 'Infrastructure Development', href: '/services/infrastructure', icon: TbBuildingWarehouse },
@@ -40,11 +39,8 @@ export const Footer = () => {
         ],
         support: [
             { label: 'Contact Us', href: '/contact' },
-            { label: 'Request Quote', href: '/quote' },
-            { label: 'Technical Support', href: '/support' },
-            { label: 'FAQ', href: '/faq' },
-            { label: 'Documentation', href: '/docs' },
-            { label: 'Product Catalog', href: '/catalog' },
+            { label: 'Documentation', href: '/project' },
+            { label: 'Product Catalog', href: '/product' },
         ],
     };
 
