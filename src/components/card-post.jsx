@@ -11,7 +11,11 @@ import { slugify } from "@/lib/slugify";
 // Separate Card Component for better reusability
 const ProjectCard = ({ project, className = "" }) => {
     // Use slug if available, fallback to id
-    const href = project.title ? `/project/${slugify(project.title)}` : `/project/${project.id}`;
+    const href = project.slug 
+        ? `/project/${project.slug}` 
+        : project.title 
+            ? `/project/${slugify(project.title)}` 
+            : `/project/${project.id}`;
 
     return (
         <Link href={href}>
@@ -97,37 +101,9 @@ export const CardPost = ({
             carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
     };
-    // Default data if none provided
-    const defaultData = [
-        {
-            id: 1,
-            title: "Pembangunan Gedung Serbaguna Pemerintah Daerah",
-            category: "Infrastruktur",
-            location: "Majalengka, Jawa Barat",
-            year: 2024,
-            description:
-                "Proyek konstruksi gedung serbaguna dengan sistem struktur beton bertulang dan desain berstandar nasional untuk kegiatan masyarakat dan pemerintahan.",
-            image:
-                "https://images.unsplash.com/photo-1519143009590-e3800b9df468?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1568",
-        },
-        {
-            id: 2,
-            title: "Instalasi Sistem Mekanikal Pabrik Tekstil",
-            category: "Instalasi Pabrik",
-            location: "Bandung, Jawa Barat",
-            year: 2023,
-            description:
-                "Pekerjaan instalasi sistem mekanikal dan kelistrikan untuk fasilitas produksi tekstil, termasuk ducting, panel distribusi, dan sistem kontrol otomatis.",
-            image:
-                "https://images.unsplash.com/photo-1508356730910-16e7e7f024f1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1796",
-        },
-        // ... rest of default data
-    ];
-
-    const projects = data.length > 0 ? data : defaultData;
 
     // Empty state
-    if (projects.length === 0) {
+    if (!data || data.length === 0) {
         return (
             <div className="margin py-20 text-center">
                 <p className="text-neutral-500 dark:text-neutral-400">
@@ -142,7 +118,7 @@ export const CardPost = ({
             {mode === "grid" && (
                 <div className={className}>
                     <div className={`grid ${gridCols} gap-3 md:gap-4 margin`}>
-                        {projects.map((project) => (
+                        {data.map((project) => (
                             <ProjectCard key={project.id} project={project} />
                         ))}
                     </div>
@@ -159,7 +135,7 @@ export const CardPost = ({
                             </Title>
 
                             {/* Navigation Buttons */}
-                            <div className="md:flex items-center gap-2 hidden">
+                            <div className={`${data.length < 4 ? "!hidden" : "block"} md:flex items-center gap-2 hidden`}>
                                 <Button
                                     size={"icon"}
                                     onClick={scrollLeft}
@@ -182,12 +158,12 @@ export const CardPost = ({
                         ref={carouselRef}
                         className="carousel w-full gap-3 md:gap-4 scroll-smooth"
                     >
-                        {projects.map((project, idx) => (
+                        {data.map((project, idx) => (
                             <CarouselProjectCard
                                 key={project.id}
                                 project={project}
                                 isFirst={idx === 0}
-                                isLast={idx === projects.length - 1}
+                                isLast={idx === data.length - 1}
                             />
                         ))}
                     </div>

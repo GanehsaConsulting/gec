@@ -1,13 +1,16 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
+import { useState } from "react"
 import { FaPaperPlane } from "react-icons/fa"
 import { Title } from "./title-text"
 import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
 import { Button } from "./ui/button"
-import { TbMail, TbMailFilled } from "react-icons/tb";
-import { RiInstagramFill, RiWhatsappFill } from "react-icons/ri";
-import { IoIosCall } from "react-icons/io";
+import { TbMailFilled } from "react-icons/tb"
+import { RiInstagramFill, RiWhatsappFill } from "react-icons/ri"
+import { IoIosCall } from "react-icons/io"
 
 const dataContact = [
     {
@@ -37,6 +40,65 @@ const dataContact = [
 ];
 
 export const ContactForm = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+    
+    const [status, setStatus] = useState({
+        loading: false,
+        success: false,
+        error: null
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus({ loading: true, success: false, error: null });
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setStatus({ loading: false, success: true, error: null });
+                setFormData({ name: '', email: '', phone: '', message: '' });
+                
+                // Reset success message setelah 5 detik
+                setTimeout(() => {
+                    setStatus({ loading: false, success: false, error: null });
+                }, 5000);
+            } else {
+                setStatus({ 
+                    loading: false, 
+                    success: false, 
+                    error: data.error || 'Failed to send message' 
+                });
+            }
+        } catch (error) {
+            setStatus({ 
+                loading: false, 
+                success: false, 
+                error: 'Network error. Please try again.' 
+            });
+        }
+    };
+
     return (
         <section className="min-h-screen">
             <Image
@@ -63,18 +125,16 @@ export const ContactForm = () => {
                         <p>
                             GEC selalu terbuka untuk komunikasi dan kolaborasi. Hubungi kami untuk berdiskusi tentang proyek, layanan, atau solusi teknik yang sesuai dengan kebutuhan Anda.
                         </p>
-                        <Link
-                            href={dataContact[3].link}
-                        >
+                        <Link href={dataContact[3].link}>
                             <Button>
                                 <RiWhatsappFill className="text-lg" />
                                 Contact Now
                             </Button>
                         </Link>
                     </div>
-
                 </div>
-                {/* Mobile Contact Cards - Vertical Stack */}
+
+                {/* Mobile Contact Cards */}
                 <div className="flex flex-col gap-3 lg:hidden mb-3">
                     {dataContact.map((el, idx) => (
                         <Link
@@ -83,9 +143,7 @@ export const ContactForm = () => {
                             className="flex items-center gap-4 p-4 bg-white shadow-secondary dark:bg-darkColor rounded-main hover:shadow-lg transition-shadow"
                         >
                             <div className="bg-radial from-transparent to-neutral-300 dark:to-secondaryDark w-12 h-12 flex items-center justify-center rounded-full flex-shrink-0">
-                                <span className="text-xl">
-                                    {el.icon}
-                                </span>
+                                <span className="text-xl">{el.icon}</span>
                             </div>
                             <div className="flex flex-col items-start min-w-0">
                                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">
@@ -97,11 +155,9 @@ export const ContactForm = () => {
                             </div>
                         </Link>
                     ))}
-
-                 
                 </div>
 
-                {/* Desktop Contact Cards - Grid */}
+                {/* Desktop Contact Cards */}
                 <div className="hidden md:flex flex-wrap gap-3">
                     {dataContact.map((el, idx) => (
                         <Link
@@ -110,9 +166,7 @@ export const ContactForm = () => {
                             className="grow flex flex-col justify-between p-5 rounded-3xl dark:bg-darkColor bg-neutral-200 hover:invert duration-300 ease-in-out hover:-translate-y-3 origin-bottom hover:shadow-mainShadow"
                         >
                             <div className="bg-radial from-transparent to-neutral-300 dark:to-secondaryDark w-fit h-fit p-3 rounded-full mb-6 xl:mb-10">
-                                <span className="text-2xl">
-                                    {el.icon}
-                                </span>
+                                <span className="text-2xl">{el.icon}</span>
                             </div>
                             <div className="flex flex-col gap-1">
                                 <h1 className="font-medium text-lg md:text-xl">
@@ -125,7 +179,6 @@ export const ContactForm = () => {
                         </Link>
                     ))}
                 </div>
-
             </div>
 
             <section className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center margin mt-3">
@@ -137,11 +190,29 @@ export const ContactForm = () => {
                     <p className="text-gray-600 dark:text-gray-300 mb-6">
                         Ada pertanyaan, ide, atau kebutuhan kerja sama? Tulis pesan Anda di bawah, kami akan dengan senang hati menanggapinya secepat mungkin.
                     </p>
-                    <form className="mt-4 sm:mt-6 flex flex-col gap-3 sm:gap-4 w-full">
+
+                    {/* Status Messages */}
+                    {status.success && (
+                        <div className="w-full mb-4 p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-main">
+                            Pesan berhasil dikirim! Kami akan segera menghubungi Anda.
+                        </div>
+                    )}
+                    
+                    {status.error && (
+                        <div className="w-full mb-4 p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-main">
+                            {status.error}
+                        </div>
+                    )}
+
+                    <form onSubmit={handleSubmit} className="mt-4 sm:mt-6 flex flex-col gap-3 sm:gap-4 w-full">
                         {/* Name Input */}
                         <div className="relative">
                             <Input
                                 type="text"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
                                 placeholder=" "
                                 className="peer w-full pl-16 sm:pl-20 pr-3 py-2 sm:py-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-black/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
                             />
@@ -154,6 +225,10 @@ export const ContactForm = () => {
                         <div className="relative">
                             <Input
                                 type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
                                 placeholder=" "
                                 className="peer w-full pl-16 sm:pl-20 pr-3 py-2 sm:py-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-black/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
                             />
@@ -166,6 +241,9 @@ export const ContactForm = () => {
                         <div className="relative">
                             <Input
                                 type="tel"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
                                 placeholder=" "
                                 className="peer w-full pl-16 sm:pl-20 pr-3 py-2 sm:py-3 border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-black/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
                             />
@@ -178,6 +256,10 @@ export const ContactForm = () => {
                         <div className="relative">
                             <Textarea
                                 rows="5"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
                                 placeholder=" "
                                 className="peer w-full pl-20 sm:pl-24 pr-3 py-2 sm:py-3 resize-none border border-darkColor/10 dark:border-lightColor/10 rounded-main bg-white dark:bg-black/95 focus:outline-none focus:ring-2 focus:ring-secondaryLight duration-200 ease-in-out"
                             />
@@ -187,14 +269,27 @@ export const ContactForm = () => {
                         </div>
 
                         {/* Submit Button */}
-                        <Button className="w-full flex items-center justify-center gap-2 py-2 sm:py-3">
-                            <FaPaperPlane className="text-sm" />
-                            <span>Send Message</span>
+                        <Button 
+                            type="submit"
+                            disabled={status.loading}
+                            className="w-full flex items-center justify-center gap-2 py-2 sm:py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {status.loading ? (
+                                <>
+                                    <span className="animate-spin">⏳</span>
+                                    <span>Sending...</span>
+                                </>
+                            ) : (
+                                <>
+                                    <FaPaperPlane className="text-sm" />
+                                    <span>Send Message</span>
+                                </>
+                            )}
                         </Button>
                     </form>
                 </div>
 
-                {/* Background + teks */}
+                {/* Map */}
                 <div className="relative w-full h-[300px] md:h-[500px] rounded-parent overflow-hidden">
                     <div className="h-full roumded-main shadow-custom w-full overflow-hidden">
                         <div className="h-full rounded-main overflow-hidden">

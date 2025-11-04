@@ -11,10 +11,10 @@ import { HighlightText } from "./highlight-text";
 // Skeleton Loading Component for Card
 const CardSkeleton = () => (
     <div className="min-w-80 w-80 h-full animate-pulse">
-        <div className="w-80 h-80 bg-gray-200 dark:bg-gray-700 rounded-main"></div>
+        <div className="w-80 h-80 bg-neutral-200 dark:bg-neutral-700 rounded-main"></div>
         <div className="mt-2 space-y-2">
-            <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+            <div className="h-5 bg-neutral-200 dark:bg-neutral-700 rounded w-3/4"></div>
+            <div className="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-1/2"></div>
         </div>
     </div>
 );
@@ -22,10 +22,10 @@ const CardSkeleton = () => (
 // Skeleton untuk Grid Mode
 const GridCardSkeleton = () => (
     <div className="w-full h-full animate-pulse">
-        <div className="w-full aspect-square bg-gray-200 dark:bg-gray-700 rounded-main"></div>
+        <div className="w-full aspect-square bg-neutral-200 dark:bg-neutral-700 rounded-main"></div>
         <div className="mt-2 space-y-2">
-            <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+            <div className="h-5 bg-neutral-200 dark:bg-neutral-700 rounded w-3/4"></div>
+            <div className="h-4 bg-neutral-200 dark:bg-neutral-700 rounded w-1/2"></div>
         </div>
     </div>
 );
@@ -33,11 +33,11 @@ const GridCardSkeleton = () => (
 // Skeleton untuk Family Mode
 const FamilyCardSkeleton = () => (
     <div className="w-full h-full animate-pulse">
-        <div className="bg-gray-200 dark:bg-gray-700 rounded-main p-4 h-full">
-            <div className="h-6 bg-gray-300 dark:bg-gray-600 rounded w-3/4 mb-4"></div>
+        <div className="bg-neutral-200 dark:bg-neutral-700 rounded-main p-4 h-full">
+            <div className="h-6 bg-neutral-300 dark:bg-neutral-600 rounded w-3/4 mb-4"></div>
             <div className="grid grid-cols-2 gap-2">
                 {[...Array(4)].map((_, idx) => (
-                    <div key={idx} className="aspect-square bg-gray-300 dark:bg-gray-600 rounded"></div>
+                    <div key={idx} className="aspect-square bg-neutral-300 dark:bg-neutral-600 rounded"></div>
                 ))}
             </div>
         </div>
@@ -139,7 +139,7 @@ export const CardProducts = ({
                                         <div className="bg-lightColor dark:bg-darkColor rounded-main p-2.5 border border-darkColor/10 dark:border-lightColor/10 hover:border-mainColorLight dark:hover:border-mainColorDark transition-all duration-300 h-full">
                                             {/* Category/Product Name */}
                                             <div className="mb-3">
-                                                <p className="line-clamp-1 text-xs text-gray-500 dark:text-gray-400 mt-1">
+                                                <p className="line-clamp-1 text-xs text-neutral-500 dark:text-neutral-400 mt-1">
                                                     <HighlightText
                                                         text={product.division}
                                                         searchTerm={searchTerm}
@@ -152,7 +152,7 @@ export const CardProducts = ({
                                                 {displayVariants.map((variant, vIdx) => (
                                                     <div
                                                         key={variant.id || vIdx}
-                                                        className="relative aspect-square rounded overflow-hidden bg-gray-100 dark:bg-gray-800"
+                                                        className="relative aspect-square rounded overflow-hidden bg-neutral-100 dark:bg-neutral-800"
                                                     >
                                                         <Image
                                                             width={200}

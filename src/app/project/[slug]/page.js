@@ -8,6 +8,93 @@ import { HiArrowLeft, HiCalendar, HiMapPin, HiChevronLeft, HiChevronRight, HiMag
 import { CardPost } from "@/components/card-post"
 import { ImageGalleryModal } from "@/components/image-gallery-modal"
 import { FaMagnifyingGlassPlus } from 'react-icons/fa6';
+import { Skeleton } from '@/components/ui/skleton';
+
+// Project Detail Skeleton
+function ProjectDetailSkeleton() {
+    return (
+        <>
+            {/* Hero Section Skeleton */}
+            <section className="h-[60vh] relative overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+                <div className="absolute bottom-0 linear-blur w-full h-[60lvh] bg-white/70 dark:bg-black/50" />
+
+                {/* Back Button Skeleton */}
+                <div className="absolute top-4 left-4 md:top-8 md:left-8">
+                    <Skeleton className="w-40 h-9" />
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0">
+                    <div className="mb-8 flex justify-center">
+                        <div className="space-y-3 w-full mx-4 lg:mx-62">
+                            {/* Category Badge Skeleton */}
+                            <Skeleton className="w-32 h-6 rounded-full" />
+
+                            {/* Date & Location Skeleton */}
+                            <div className="flex flex-wrap items-center gap-3">
+                                <Skeleton className="w-32 h-5" />
+                                <Skeleton className="w-40 h-5" />
+                            </div>
+
+                            {/* Title Skeleton */}
+                            <div className="space-y-2">
+                                <Skeleton className="w-full h-8 md:h-10" />
+                                <Skeleton className="w-3/4 h-8 md:h-10" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Main Content Skeleton */}
+            <section className="py-8 md:py-12 flex justify-center">
+                <div className="mx-4 lg:mx-62 w-full">
+                    <Skeleton className="w-64 h-8 mb-6" />
+                    <div className="space-y-3">
+                        <Skeleton className="w-full h-4" />
+                        <Skeleton className="w-full h-4" />
+                        <Skeleton className="w-5/6 h-4" />
+                        <Skeleton className="w-full h-4" />
+                        <Skeleton className="w-4/6 h-4" />
+                        <Skeleton className="w-full h-4 mt-6" />
+                        <Skeleton className="w-full h-4" />
+                        <Skeleton className="w-3/4 h-4" />
+                    </div>
+                </div>
+            </section>
+
+            {/* Image Gallery Skeleton */}
+            <section className="py-8 md:py-12">
+                <div className="mb-6 flex lg:flex-row flex-col lg:items-center justify-between mx-4 lg:mx-62">
+                    <div className="space-y-2">
+                        <Skeleton className="w-48 h-8" />
+                        <Skeleton className="w-64 h-4" />
+                    </div>
+
+                    {/* Navigation Buttons Skeleton */}
+                    <div className="md:flex items-center gap-2 hidden">
+                        <Skeleton className="w-10 h-10 rounded-md" />
+                        <Skeleton className="w-10 h-10 rounded-md" />
+                    </div>
+                </div>
+
+                {/* Carousel Skeleton */}
+                <div className="flex gap-4 overflow-hidden px-0 md:px-10">
+                    {[1, 2, 3, 4].map((_, index) => (
+                        <div
+                            key={index}
+                            className={`relative flex-shrink-0 rounded-lg overflow-hidden
+                                ${index === 0 ? 'ml-4 md:ml-53' : ''}
+                                ${index === 3 ? 'mr-4 md:mr-53' : ''}`}
+                            style={{ width: '500px', height: '350px' }}
+                        >
+                            <Skeleton className="w-full h-full rounded-lg" />
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </>
+    );
+}
 
 export default function ProjectDetail({ params }) {
     // Unwrap params using React.use()
@@ -19,13 +106,9 @@ export default function ProjectDetail({ params }) {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const carouselRef = useRef(null);
 
-    // Loading State
+    // Loading State - Show Skeleton
     if (loading) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-gray-100"></div>
-            </div>
-        );
+        return <ProjectDetailSkeleton />;
     }
 
     // Error State
@@ -130,23 +213,6 @@ export default function ProjectDetail({ params }) {
                                 {project.title}
                             </h1>
                         </div>
-
-                        {/* <div className="flex flex-col justify-center gap-3">
-                            <p className="line-clamp-3 text-sm md:text-base">
-                                {project.content?.replace(/<[^>]*>/g, '').substring(0, 200) || project.title}
-                            </p>
-                            <Button
-                                size="sm"
-                                className="!text-xs w-fit"
-                                onClick={() => {
-                                    document.getElementById('content-section')?.scrollIntoView({ 
-                                        behavior: 'smooth' 
-                                    });
-                                }}
-                            >
-                                Lanjutkan Membaca
-                            </Button>
-                        </div> */}
                     </div>
                 </div>
             </section>
@@ -191,7 +257,6 @@ export default function ProjectDetail({ params }) {
                             </Button>
                         </div>
                     </div>
-
 
                     {/* Carousel */}
                     <div className="relative">

@@ -3,6 +3,8 @@ import { CardPost } from "@/components/card-post";
 import { Button } from "@/components/ui/button";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { useProjects } from '@/hooks/useProjects';
+import { ProjectGridSkeleton } from '@/components/project-card-skeleton';
+import { ReusableBanner } from "@/components/reusable-banner";
 
 export default function ProjectArticlePage() {
     const { data, loading, error, pagination } = useProjects({
@@ -16,42 +18,29 @@ export default function ProjectArticlePage() {
         title: project.title,
         category: project.category,
         location: project.location,
-        year: project.date?.split('/')[2] || '', // Extract year from DD/MM/YYYY
-        description: project.content?.replace(/<[^>]*>/g, '').substring(0, 150) + '...' || '', // Strip HTML and truncate
+        year: project.date?.split('/')[2] || '',
+        description: project.content?.replace(/<[^>]*>/g, '').substring(0, 150) + '...' || '',
         image: project.thumbnail || project.imageUrl[0] || 'https://images.unsplash.com/photo-1519143009590-e3800b9df468',
     })) || [];
 
     return (
         <>
-            <img
-                src="https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1758"
-                alt="Under Construction"
-                className="object-cover w-full max-h-[50vh] h-[50lvh] md:h-full"
+            <ReusableBanner
+                imageSrc="https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d"
+                imageAlt="Our Projects"
+                title="Our Project"
+                titleHighlight="& Activity"
+                description="Menampilkan berbagai proyek dan aktifitas yang telah GEC selesaikan dengan standar mutu tinggi, presisi teknik, dan dedikasi penuh terhadap kepuasan mitra."
+                buttonText="Explore"
+                buttonIcon={<MdOutlineArrowOutward className="rotate-90" />}
             />
-            <section className="margin py-10 md:py-20">
-                <div className="flex flex-col md:flex-row gap-5 justify-between">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter text-balance pb-1">
-                        Our Project  <br />
-                        <span className="text-neutral-600 dark:text-neutral-400">
-                            & Activity
-                        </span>
-                    </h1>
-                    <div className="space-y-3">
-                        <p className="text-sm sm:text-base leading-5 md:leading-6 max-w-2xl">
-                            Menampilkan berbagai proyek dan aktifitas yang telah GEC selesaikan dengan standar mutu tinggi, presisi teknik, dan dedikasi penuh terhadap kepuasan mitra.
-                        </p>
-                        <Button>
-                            Explore <MdOutlineArrowOutward className="rotate-90" />
-                        </Button>
-                    </div>
-                </div>
-            </section>
 
-            {/* Loading State */}
+            {/* Loading State with Skeleton */}
             {loading && (
-                <div className="margin py-20 flex justify-center items-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-gray-100"></div>
-                </div>
+                <ProjectGridSkeleton
+                    count={6}
+                    gridCols="grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+                />
             )}
 
             {/* Error State */}
@@ -94,7 +83,6 @@ export default function ProjectArticlePage() {
                                         variant="outline"
                                         disabled={!pagination.hasPrev}
                                         onClick={() => {
-                                            // Implement pagination logic here
                                             console.log('Previous page');
                                         }}
                                     >
@@ -107,7 +95,6 @@ export default function ProjectArticlePage() {
                                         variant="outline"
                                         disabled={!pagination.hasNext}
                                         onClick={() => {
-                                            // Implement pagination logic here
                                             console.log('Next page');
                                         }}
                                     >
