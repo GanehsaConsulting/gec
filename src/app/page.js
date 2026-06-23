@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Branding } from "@/components/branding";
+import { CementBlanketWidget } from "@/components/home/cement-blanket-widget";
 import { FamilyProductsClient } from "@/components/home/family-products-client";
 import { LatestProjectClient } from "@/components/home/latest-project-client";
 import { MainBanner } from "@/components/main-banner";
@@ -92,6 +93,7 @@ export default function Home() {
       {/* 🧱 PAGE STRUCTURE */}
       <main lang="id">
         <MainBanner />
+        <CementBlanketWidget />
         <LatestProjectClient />
         <Branding />
         <StatsSection />
