@@ -188,7 +188,7 @@ export const ProductMenu = ({ expandedId }) => {
                                     <div className="space-y-1 flex-grow overflow-y-scroll scrollbar-hover">
                                         {el.services.map((service, id) => (
                                             <div
-                                                onClick={() => window.location.href = `/product/${slugify(el.division)}/${service.slug}`}
+                                                onClick={() => window.location.href = service.dedicatedPath || `/product/${slugify(el.division)}/${service.slug}`}
                                                 key={id}
 
                                             >

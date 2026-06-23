@@ -1,85 +1,91 @@
-'use client'
+"use client";
 
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import Image from "next/image";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import Link from 'next/link';
-import ThemeSwitch from './theme';
-import { MegaMenuNavbar } from './mega-menu';
-import { ServicesMenu } from './services-menu';
-import { ProductMenu } from './product-menu';
+import Link from "next/link";
+import ThemeSwitch from "./theme";
+import { MegaMenuNavbar } from "./mega-menu";
+import { ServicesMenu } from "./services-menu";
+import { ProductMenu } from "./product-menu";
 import { FaGear } from "react-icons/fa6";
 
 // Sementara
 import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-// 
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+//
 
 export const Navbar = ({ children }) => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [expandedId, setExpandedId] = useState(null);
-    const path = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedId, setExpandedId] = useState(null);
+  const path = usePathname();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY;
-            setIsScrolled(scrollPosition > 0);
-        };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 0);
+    };
 
-        window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-    return (
-        <>
-            <div className={`${isScrolled ? "translate-y-0 opacity-100" : "-translate-100 opacity-0"} hidden duration-200 ease-in-out md:block fixed top-0 left-0 right-0 h-20 z-40 w-auto pointer-events-none linear-blur-navbar bg-gradient-to-b from-lightColor/15 dark:from-darkColor/20 to-transparent`} />
-            <div className={`${isScrolled ? "" : "mt-0"} navbar fixed 2xl:px-80 md:px-24 w-full z-[100] ease-in-out duration-300 text-[14px] md:flex justify-center gap-2 hidden `}>
-                <li className='relative flex flex-col items-center group'>
-                    <Link
-                        href={'/'}
-                        className={`shadow-custom border border-darkColor/10 dark:border-lightColor/10 bg-lightColor/65 dark:bg-darkColor/50 backdrop-blur-xs backdrop-brightness-110 z-[555] flex items-center -ml-[11px] p-[5px] pr-2 text-gray-800 dark:text-white rounded-main hover:bg-lightColor/80 dark:hover:bg-darkColor/80 duration-200 ease-in-out`}
-                        aria-current="page"
-                    >
-                        <Image
-                            width={30}
-                            height={30}
-                            className="dark:invert"
-                            src="/gec-black.png"
-                            alt="GEC Logo"
-                        />
-                        <div className='w-[1px] h-6 bg-black dark:bg-white rounded-secondary mx-1'></div>
-                        <div className='pl-1 -space-y-1 mr-1 dark:contrast-80 dark:brightness-125'>
-                            <h1 className='font-montserrat font-semibold bg-gradient-to-br from-black via-darkColor to-black dark:from-white dark:via-lightColor dark:to-secondaryLight w-fit text-transparent bg-clip-text'>
-                                Ganesha
-                            </h1>
-                            <p className='font-montserrat text-[10px] text-secondaryDark dark:text-lightColor'>
-                                Engineering & Consturctions
-                            </p>
-                        </div>
+  return (
+    <>
+      <div
+        className={`${isScrolled ? "translate-y-0 opacity-100" : "-translate-100 opacity-0"} hidden duration-200 ease-in-out md:block fixed top-0 left-0 right-0 h-20 z-40 w-auto pointer-events-none linear-blur-navbar bg-gradient-to-b from-lightColor/15 dark:from-darkColor/20 to-transparent`}
+      />
+      <div
+        className={`${isScrolled ? "" : "mt-0"} navbar fixed 2xl:px-80 md:px-24 w-full z-[100] ease-in-out duration-300 text-[14px] md:flex justify-center gap-2 hidden `}
+      >
+        <li className="relative flex flex-col items-center group">
+          <Link
+            href={"/"}
+            className={`shadow-custom border border-darkColor/10 dark:border-lightColor/10 bg-lightColor/65 dark:bg-darkColor/50 backdrop-blur-xs backdrop-brightness-110 z-[555] flex items-center -ml-[11px] p-[5px] pr-2 text-gray-800 dark:text-white rounded-main hover:bg-lightColor/80 dark:hover:bg-darkColor/80 duration-200 ease-in-out`}
+            aria-current="page"
+          >
+            <Image
+              width={30}
+              height={30}
+              className="dark:invert"
+              src="/gec-black.png"
+              alt="GEC Logo"
+            />
+            <div className="w-[1px] h-6 bg-black dark:bg-white rounded-secondary mx-1"></div>
+            <div className="pl-1 -space-y-1 mr-1 dark:contrast-80 dark:brightness-125">
+              <h1 className="font-montserrat font-semibold bg-gradient-to-br from-black via-darkColor to-black dark:from-white dark:via-lightColor dark:to-secondaryLight w-fit text-transparent bg-clip-text">
+                Ganesha
+              </h1>
+              <p className="font-montserrat text-[10px] text-secondaryDark dark:text-lightColor">
+                Engineering & Consturctions
+              </p>
+            </div>
+          </Link>
+          <span
+            className={`${path === "/" ? "scale-100" : "scale-0"} -ml-[11px] absolute bottom-[3px] w-[3px] h-[3px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}
+          ></span>
+        </li>
+        <div className="px-1 relative navbar-center hidden lg:flex">
+          {/* Wrapper */}
+          <div
+            className={`absolute backdrop-blur-xs backdrop-brightness-110 border border-darkColor/10 dark:border-lightColor/10 px-24 py-5 dark:bg-secondaryDark/50 bg-lightColor/65 rounded-main w-full h-[35px] -z-[100] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-custom`}
+          ></div>
 
-                    </Link>
-                    <span className={`${path === '/' ? 'scale-100' : 'scale-0'} -ml-[11px] absolute bottom-[3px] w-[3px] h-[3px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
-                </li>
-                <div className="px-1 relative navbar-center hidden lg:flex">
-
-                    {/* Wrapper */}
-                    <div className={`absolute backdrop-blur-xs backdrop-brightness-110 border border-darkColor/10 dark:border-lightColor/10 px-24 py-5 dark:bg-secondaryDark/50 bg-lightColor/65 rounded-main w-full h-[35px] -z-[100] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 shadow-custom`}></div>
-
-                    <ul className="flex items-center flex-col ml-[1px] p-4 md:p-0 mt-4 font-medium md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 text-[14px]">
-                        {/* Menu */}
-                        {/* <MegaMenuNavbar
+          <ul className="flex items-center flex-col ml-[1px] p-4 md:p-0 mt-4 font-medium md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 text-[14px]">
+            {/* Menu */}
+            {/* <MegaMenuNavbar
                             id="Services"
                             title="Services"
                             expandedId={expandedId}
@@ -87,27 +93,42 @@ export const Navbar = ({ children }) => {
                         >
                             <ServicesMenu expandedId={expandedId} />
                         </MegaMenuNavbar> */}
-                        <MegaMenuNavbar
-                            id="Products"
-                            title="Products"
-                            expandedId={expandedId}
-                            setExpandedId={setExpandedId}
-                        >
-                            <ProductMenu expandedId={expandedId} />
-                        </MegaMenuNavbar>
+            <MegaMenuNavbar
+              id="Products"
+              title="Products"
+              expandedId={expandedId}
+              setExpandedId={setExpandedId}
+            >
+              <ProductMenu expandedId={expandedId} />
+            </MegaMenuNavbar>
 
-                        <li className='relative flex flex-col items-center group'>
-                            <Link
-                                href={'/project'}
-                                className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
-                                aria-current="page"
-                            >
-                              Our Project
-                            </Link>
-                            <span className={`${path.startsWith('/project') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
-                        </li>
+            <li className="relative flex flex-col items-center group">
+              <Link
+                href={"/cement-blanket"}
+                className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
+                aria-current="page"
+              >
+                Cement Blanket
+              </Link>
+              <span
+                className={`${path.startsWith("/cement-blanket") ? "scale-100" : "scale-0"} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}
+              ></span>
+            </li>
 
-                        {/* <AlertDialog>
+            <li className="relative flex flex-col items-center group">
+              <Link
+                href={"/project"}
+                className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
+                aria-current="page"
+              >
+                Our Project
+              </Link>
+              <span
+                className={`${path.startsWith("/project") ? "scale-100" : "scale-0"} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}
+              ></span>
+            </li>
+
+            {/* <AlertDialog>
                             <AlertDialogTrigger asChild>
                                 <button className='cursor-pointer z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out'>
                                     News & Blog
@@ -130,38 +151,40 @@ export const Navbar = ({ children }) => {
                             </AlertDialogContent>
                         </AlertDialog> */}
 
-                        <li className='relative flex flex-col items-center group'>
-                            <Link
-                                href={'/about-us'}
-                                className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
-                                aria-current="page"
-                            >
-                                About
-                            </Link>
-                            <span className={`${path.startsWith('/about-us') ? 'scale-100' : 'scale-0'} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}></span>
-                        </li>
-                    </ul>
-                    <div className='ml-1 flex items-center gap-3 py-1.5 px-1.5 mr-[1.5px] bg-darkColor/5 dark:bg-lightColor/10 rounded-secondary'>
-                        <ThemeSwitch />
-                    </div>
-                </div>
-                <div className="flex items-center gap-2 space-x-2">
-                    <Link
-                        href='/contact'
-                        className={`flex items-center `}
-                    >
-                        <span className='border border-darkColor/10 dark:border-lightColor/10 md:block hidden font-semibold text-neutral-800 dark:text-white bg-lightColor/65 dark:bg-secondaryDark/50 backdrop-blur-xs backdrop-brightness-110 shadow-custom hover:bg-mainColor hover:text-white ease-in-out duration-300 dark:hover:bg-secondaryColor px-4 py-2 rounded-main'>
-                            Kontak
-                        </span>
-                    </Link>
-                </div>
-            </div>
-            {/* Background Layer & Effect */}
-            < div className={`hidden md:block fixed top-0 z-[80] ${expandedId ? "opacity-100 backdrop-blur-xl md:backdrop-blur-[10px] w-screen h-screen" : "opacity-0"} noBar bg-lightColor/60 dark:bg-darkColor/80 transition-opacity duration-300`} />
-            <div className={`${expandedId ? "md:scale-102 overflow-hidden" : ""} noBar md:transform md:origin-top md:transition-transform md:duration-500 md:ease-in-out`}>
-                {children}
-            </div>
-        </>
-
-    );
+            <li className="relative flex flex-col items-center group">
+              <Link
+                href={"/about-us"}
+                className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
+                aria-current="page"
+              >
+                About
+              </Link>
+              <span
+                className={`${path.startsWith("/about-us") ? "scale-100" : "scale-0"} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}
+              ></span>
+            </li>
+          </ul>
+          <div className="ml-1 flex items-center gap-3 py-1.5 px-1.5 mr-[1.5px] bg-darkColor/5 dark:bg-lightColor/10 rounded-secondary">
+            <ThemeSwitch />
+          </div>
+        </div>
+        <div className="flex items-center gap-2 space-x-2">
+          <Link href="/contact" className={`flex items-center `}>
+            <span className="border border-darkColor/10 dark:border-lightColor/10 md:block hidden font-semibold text-neutral-800 dark:text-white bg-lightColor/65 dark:bg-secondaryDark/50 backdrop-blur-xs backdrop-brightness-110 shadow-custom hover:bg-mainColor hover:text-white ease-in-out duration-300 dark:hover:bg-secondaryColor px-4 py-2 rounded-main">
+              Kontak
+            </span>
+          </Link>
+        </div>
+      </div>
+      {/* Background Layer & Effect */}
+      <div
+        className={`hidden md:block fixed top-0 z-[80] ${expandedId ? "opacity-100 backdrop-blur-xl md:backdrop-blur-[10px] w-screen h-screen" : "opacity-0"} noBar bg-lightColor/60 dark:bg-darkColor/80 transition-opacity duration-300`}
+      />
+      <div
+        className={`${expandedId ? "md:scale-102 overflow-hidden" : ""} noBar md:transform md:origin-top md:transition-transform md:duration-500 md:ease-in-out`}
+      >
+        {children}
+      </div>
+    </>
+  );
 };

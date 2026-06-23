@@ -77,6 +77,7 @@ export const productDivisions = [
         id: "001",
         name: "Cement Blanket",
         slug: "cement-blanket",
+        dedicatedPath: "/cement-blanket",
         productCategory: null,
         variants: []
       },
