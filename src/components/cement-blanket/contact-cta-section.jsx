@@ -1,68 +1,48 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Download } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { cementBlanketData } from "@/lib/cementBlanketData";
+import { Title } from "@/components/title-text";
 
-const { contactCTA } = cementBlanketData;
+const { contactCTA, contact } = cementBlanketData;
 
 export function ContactCtaSection() {
   const handleWhatsApp = () => {
     const message =
-      "Halo, saya tertarik dengan produk Cement Blanket. Mohon informasi lebih lanjut.";
+      "Halo, saya tertarik dengan produk Cement Blanket GEC. Mohon informasi lebih lanjut.";
     window.open(
-      `https://api.whatsapp.com/send?phone=628871510045&text=${encodeURIComponent(message)}`,
-      "_blank"
+      `https://api.whatsapp.com/send?phone=${contact.whatsapp}&text=${encodeURIComponent(message)}`,
+      "_blank",
     );
   };
 
   return (
     <section id="contact-cta" className="margin spacing">
-      <div className="relative overflow-hidden rounded-main bg-gradient-to-br from-mainColor via-mainColor/90 to-secondaryColor p-8 md:p-12 text-center text-white">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-otherColor rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-other2 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative z-10 max-w-2xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold mb-3">
+      <div className="rounded-main overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-700 dark:from-neutral-100 dark:via-neutral-200 dark:to-neutral-300 p-8 md:p-12">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl md:text-4xl font-semibold tracking-tighter text-white dark:text-black mb-3">
             {contactCTA.headline}
           </h2>
-          <p className="text-white/80 mb-8 leading-relaxed">
+          <p className="text-white/70 dark:text-black/70 text-sm md:text-base leading-relaxed mb-8">
             {contactCTA.subheadline}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-2">
             <Button
-              size="lg"
               asChild
-              className="bg-otherColor hover:bg-otherColor/90 text-otherColorDark font-semibold"
+              className="bg-white text-black hover:bg-white/90 dark:bg-black dark:text-white dark:hover:bg-black/90"
             >
-              <Link href="/contact">
-                Minta Penawaran Harga
-                <ArrowRight className="ml-1" />
-              </Link>
+              <Link href="/contact">Minta Penawaran</Link>
             </Button>
             <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="border-white/40 text-white hover:bg-white/10 hover:text-white"
-            >
-              <Link href="/contact">
-                <Download className="mr-1" />
-                Download Brosur Teknis
-              </Link>
-            </Button>
-            <Button
-              size="lg"
+              variant="ghost"
               onClick={handleWhatsApp}
-              className="bg-green-600 hover:bg-green-700 text-white"
+              className="border border-white/50 bg-transparent text-white hover:bg-white/15 hover:text-white dark:border-black/30 dark:text-black dark:hover:bg-black/10 dark:hover:text-black"
             >
-              <FaWhatsapp className="mr-1" />
-              Hubungi via WhatsApp
+              <FaWhatsapp />
+              WhatsApp
             </Button>
           </div>
         </div>

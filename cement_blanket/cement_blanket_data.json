@@ -1,350 +1,245 @@
 {
   "product": {
     "name": "Cement Blanket",
-    "tagline": "The Future of Construction is Here",
-    "brand": "Ganesha Multi Konsultan",
-    "category": "Innovative Construction Material",
-    "heroDescription": "Material konstruksi inovatif berbentuk lembaran fleksibel berisi semen kering. Cukup dibasahi air untuk mengeras menjadi beton tipis yang kuat dalam 24 jam."
+    "title": "CEMENT BLANKET SOLUTION",
+    "tagline": "Solusi beton fleksibel yang mengeras setelah diberi air.",
+    "taglineSub": "Cepat, Kuat, dan Tahan Hingga 30 Tahun.",
+    "brand": "GEC",
+    "category": "Solusi Geokomposit Semen",
+    "heroDescription": "Material pelapis semen geokomposit berbentuk gulungan yang terdiri dari matriks komposit serat yang diperkuat, inti semen, dan lapisan belakang kedap air. Setelah dihidrasi, material ini membentuk lapisan beton permanen untuk perlindungan erosi, saluran drainase, lereng, dan berbagai aplikasi infrastruktur sipil.",
+    "heroHighlights": ["Tahan Air", "Mudah Dipasang", "Cepat Mengeras"]
   },
 
-  "keyBenefits": [
+  "technology": {
+    "label": "Generasi Baru",
+    "title": "Teknologi Paten – Penyegelan Karet 3D",
+    "subtitle": "3D Rubber Sealing",
+    "description": "Karet melapisi dan menyegel seluruh jaring kain dasar secara tiga dimensi (3D), mencegah kebocoran bubuk semen serta memberikan hasil yang konsisten dan berkinerja tinggi.",
+    "features": [
+      "Karet menembus jaring kain.",
+      "Menutup seluruh pori dan celah mikro.",
+      "Bubuk semen terkunci pada tempatnya sehingga distribusinya merata."
+    ],
+    "materialLayers": [
+      {
+        "layer": "Lapisan Atas",
+        "name": "Serat / Fiber",
+        "description": "Permukaan berserat untuk hidrasi yang optimal."
+      },
+      {
+        "layer": "Inti",
+        "name": "Campuran Semen Kering",
+        "description": "Bubuk semen kering berkualitas tinggi."
+      },
+      {
+        "layer": "Lapisan Bawah",
+        "name": "Penyegelan Karet 3D",
+        "description": "Karet melapisi dan menyegel seluruh jaring kain secara 3D."
+      }
+    ]
+  },
+
+  "characteristics": [
     {
-      "icon": "💧",
-      "title": "Just Add Water",
-      "description": "Tidak memerlukan campuran beton konvensional. Cukup basahi dan biarkan mengeras secara alami."
+      "title": "Mudah Digunakan",
+      "description": "Praktis digunakan karena beton sudah siap pakai tanpa memerlukan proses tambahan. Cukup tambahkan air."
     },
     {
-      "icon": "⚡",
-      "title": "Fast Installation",
-      "description": "Pemasangan jauh lebih cepat dibanding metode konstruksi tradisional. Menghemat waktu proyek secara signifikan."
+      "title": "Pemasangan Cepat",
+      "description": "Cement Blanket dapat dipasang hingga 10 kali lebih cepat dibandingkan beton konvensional, dengan cakupan pemasangan hingga 200 m² per jam."
     },
     {
-      "icon": "🪶",
-      "title": "Lightweight & Flexible",
-      "description": "Ringan saat belum diaktifkan sehingga mudah dibawa dan dipotong sesuai kebutuhan di lapangan."
+      "title": "Solusi Hemat Biaya",
+      "description": "Waktu pemasangan yang lebih singkat dan kebutuhan logistik yang minimal membantu mengurangi biaya proyek secara keseluruhan."
     },
     {
-      "icon": "🌿",
-      "title": "Eco-Friendly",
-      "description": "Mengurangi limbah konstruksi dan jejak karbon karena tidak memerlukan cetakan atau bekisting."
-    },
-    {
-      "icon": "🔧",
-      "title": "Minimal Equipment",
-      "description": "Tidak membutuhkan peralatan berat atau keahlian khusus. Dapat dikerjakan oleh tim kecil."
-    },
-    {
-      "icon": "🛡️",
-      "title": "Durable & Weather Resistant",
-      "description": "Setelah mengeras membentuk lapisan beton solid yang tahan terhadap cuaca ekstrem, erosi, dan korosi."
+      "title": "Ramah Lingkungan",
+      "description": "Solusi dengan massa ringan dan emisi karbon rendah yang menggunakan hingga 95% lebih sedikit material dibandingkan beton konvensional."
     }
   ],
 
-  "specifications": {
-    "thickness": {
-      "label": "Ketebalan Produk",
-      "variants": [
-        { "type": "CB5", "thickness": "5 mm", "finalThickness": "~10 mm setelah mengeras" },
-        { "type": "CB8", "thickness": "8 mm", "finalThickness": "~13 mm setelah mengeras" },
-        { "type": "CB13", "thickness": "13 mm", "finalThickness": "~18 mm setelah mengeras" }
-      ]
-    },
-    "rollSize": {
-      "label": "Ukuran Roll",
-      "standard": "0.9 m × 50 m (per roll)",
-      "note": "Tersedia dalam ukuran custom"
-    },
-    "curingTime": {
-      "label": "Waktu Pengerasan",
-      "initial": "2 jam (initial set)",
-      "full": "24 jam (full strength)"
-    },
-    "compressiveStrength": "22–35 MPa (tergantung varian)",
-    "weight": {
-      "CB5": "≈ 4 kg/m²",
-      "CB8": "≈ 6.5 kg/m²",
-      "CB13": "≈ 10 kg/m²"
-    },
-    "fiber": "Diperkuat serat polimer 3D (3D fiber matrix)",
-    "waterActivation": "Air bersih biasa (fresh water)",
-    "shelfLife": "24 bulan (dalam kemasan tertutup, kondisi kering)"
-  },
-
-  "howItWorks": [
+  "userAdvantages": [
     {
-      "step": 1,
-      "title": "Persiapan Permukaan",
-      "description": "Bersihkan dan ratakan permukaan yang akan dilapisi. Pastikan bebas dari kotoran, minyak, dan material lepas."
+      "title": "Fleksibel",
+      "description": "Cement Blanket dapat dengan mudah mengikuti kontur permukaan tanah dan struktur di sekitarnya. Sebelum mengeras, material ini dapat dipotong dan disesuaikan menggunakan peralatan sederhana."
     },
     {
-      "step": 2,
-      "title": "Potong Sesuai Ukuran",
-      "description": "Potong Cement Blanket menggunakan gunting atau cutter biasa sesuai dimensi area yang dibutuhkan."
+      "title": "Kedap Air",
+      "description": "Dilengkapi dengan lapisan karet yang kuat dan tahan lama, Cement Blanket memberikan tingkat kedap air yang sangat baik serta efektif mencegah rembesan atau penetrasi air."
     },
     {
-      "step": 3,
-      "title": "Basahi dengan Air",
-      "description": "Siram atau rendam lembaran dengan air bersih secara merata hingga seluruh permukaan lembab."
+      "title": "Kuat",
+      "description": "Diperkuat dengan serat berkinerja tinggi, Cement Blanket tahan terhadap retak, mampu menyerap energi benturan, dan menjaga kestabilan struktur secara optimal."
     },
     {
-      "step": 4,
-      "title": "Gelar & Posisikan",
-      "description": "Bentangkan lembaran yang sudah dibasahi pada posisi yang diinginkan. Material masih bisa dibentuk sesuai kontur permukaan."
-    },
-    {
-      "step": 5,
-      "title": "Biarkan Mengeras",
-      "description": "Dalam 24 jam, Cement Blanket akan mengeras sempurna membentuk lapisan beton solid yang kuat dan tahan lama."
+      "title": "Tahan Lama",
+      "description": "Cement Blanket memiliki ketahanan abrasi yang tinggi dan performa jangka panjang, serta memberikan perlindungan yang kuat terhadap bahan kimia, cuaca, dan paparan sinar UV."
     }
   ],
 
   "applications": [
     {
-      "category": "Perlindungan Lereng & Tebing",
+      "category": "Slope Protection",
       "slug": "slope-protection",
-      "description": "Digunakan untuk stabilisasi lereng, tebing jalan tol, dan area rawan longsor. Memberikan perlindungan erosi yang efektif.",
+      "description": "Perlindungan erosi dan stabilisasi lereng untuk tebing jalan, tanggul, dan area rawan longsor.",
       "useCases": [
         "Tebing jalan raya dan tol",
         "Lereng tambang terbuka",
-        "Tanggul sungai dan bendungan",
-        "Area reklamasi"
+        "Tanggul sungai dan bendungan"
       ]
     },
     {
-      "category": "Saluran Air & Drainase",
-      "slug": "drainage-channel",
-      "description": "Pelapisan saluran irigasi, drainase, dan kanal untuk mencegah erosi dan rembesan air.",
+      "category": "Channel Lining",
+      "slug": "channel-lining",
+      "description": "Pelapisan saluran irigasi dan kanal air untuk mencegah erosi dan rembesan.",
       "useCases": [
         "Saluran irigasi pertanian",
+        "Kanal distribusi air",
+        "Kolam retensi dan waduk"
+      ]
+    },
+    {
+      "category": "Ditch Lining",
+      "slug": "ditch-lining",
+      "description": "Pelapisan parit dan drainase perkotaan maupun pertanian dengan permukaan beton permanen.",
+      "useCases": [
         "Drainase perkotaan",
-        "Kanal dan parit",
-        "Kolam retensi"
+        "Parit pertanian",
+        "Saluran tepi jalan"
       ]
     },
     {
-      "category": "Pipa & Utilitas Bawah Tanah",
-      "slug": "pipe-protection",
-      "description": "Perlindungan pipa minyak, gas, dan air bersih dari tekanan tanah, korosi, dan kerusakan mekanis.",
+      "category": "Bund Lining",
+      "slug": "bund-lining",
+      "description": "Pelapisan tanggul dan bendungan untuk mencegah erosi dan menjaga integritas struktur.",
       "useCases": [
-        "Wrapping pipa bawah tanah",
-        "Perlindungan pipa gas dan minyak",
-        "Encasement pipa utilitas",
-        "Rehabilitasi pipa lama"
+        "Tanggul bendungan",
+        "Embankment jalan",
+        "Penahan banjir"
       ]
     },
     {
-      "category": "Konstruksi Sipil & Infrastruktur",
-      "slug": "civil-construction",
-      "description": "Aplikasi konstruksi cepat untuk area terpencil, darurat, atau dengan akses terbatas.",
+      "category": "Remediation",
+      "slug": "remediation",
+      "description": "Rehabilitasi dan perbaikan infrastruktur yang membutuhkan solusi cepat dan tahan lama.",
       "useCases": [
-        "Pondasi ringan di lahan terpencil",
-        "Konstruksi darurat pasca bencana",
-        "Military & temporary structures",
-        "Remote area construction"
-      ]
-    },
-    {
-      "category": "Pertambangan",
-      "slug": "mining",
-      "description": "Pelapisan dan penguatan struktur di area tambang yang membutuhkan material ringan dan instalasi cepat.",
-      "useCases": [
-        "Pelapisan dinding tambang",
-        "Perlindungan area blast",
-        "Saluran air tambang",
-        "Stabilisasi pit slope"
-      ]
-    },
-    {
-      "category": "Bangunan & Arsitektur",
-      "slug": "building-architecture",
-      "description": "Digunakan sebagai material finishing eksterior, atap, dan elemen struktural ringan pada bangunan.",
-      "useCases": [
-        "Pelapisan atap dan dinding",
-        "Fasilitas kebun dan taman",
-        "Elemen dekoratif eksterior",
-        "Shelter dan kanopi ringan"
+        "Perbaikan infrastruktur rusak",
+        "Pekerjaan darurat pasca bencana",
+        "Rehabilitasi area terpencil"
       ]
     }
   ],
 
-  "caseStudies": [
-    {
-      "title": "Stabilisasi Lereng Tol Cipularang",
-      "location": "Jawa Barat, Indonesia",
-      "challenge": "Lereng curam sepanjang 800 meter di tepi jalan tol rawan longsor saat musim hujan.",
-      "solution": "Pemasangan Cement Blanket CB13 pada seluruh permukaan lereng untuk mencegah erosi dan memberikan lapisan pelindung permanen.",
-      "result": "Instalasi selesai dalam 5 hari kerja, menghemat 40% waktu dibanding metode shotcrete konvensional."
-    },
-    {
-      "title": "Perlindungan Saluran Irigasi",
-      "location": "Sulawesi Selatan, Indonesia",
-      "challenge": "Saluran irigasi sepanjang 2 km mengalami erosi parah akibat debit air tinggi dan tanah yang mudah terkikis.",
-      "solution": "Pelapisan dasar dan sisi saluran dengan Cement Blanket CB8 untuk memberikan permukaan keras yang tahan erosi.",
-      "result": "Kapasitas aliran meningkat 25% dan biaya pemeliharaan tahunan turun drastis."
-    },
-    {
-      "title": "Encasement Pipa Gas Bawah Tanah",
-      "location": "Kalimantan Timur, Indonesia",
-      "challenge": "Pipa gas diameter besar memerlukan perlindungan mekanis di area dengan aktivitas pertambangan aktif.",
-      "solution": "Pembungkusan pipa sepanjang 500 meter menggunakan Cement Blanket CB5 sebagai lapisan pelindung luar.",
-      "result": "Pekerjaan selesai 60% lebih cepat dibanding metode concrete encasement konvensional."
-    }
-  ],
-
-  "comparison": {
-    "title": "Cement Blanket vs Metode Konvensional",
-    "competitors": [
+  "installation": {
+    "title": "Metode Instalasi",
+    "description": "Proses pemasangan sistematis dari persiapan area hingga aktivasi material.",
+    "benefit": "Mempercepat pekerjaan hingga 60% dan lebih efisien dalam penggunaan tenaga kerja.",
+    "steps": [
       {
-        "method": "Cement Blanket",
-        "installationSpeed": "⭐⭐⭐⭐⭐",
-        "skillRequired": "Rendah",
-        "equipmentNeeded": "Minimal",
-        "wasteProduced": "Sangat Sedikit",
-        "weatherDependency": "Rendah",
-        "costEfficiency": "Tinggi",
-        "highlight": true
+        "step": 1,
+        "title": "Area Bersih",
+        "description": "Bersihkan seluruh permukaan dasar (substrate) dari vegetasi, batu tajam, maupun benda-benda lain yang menonjol. Tujuannya adalah untuk memastikan area tersebut padat, stabil, serta memiliki permukaan yang rata dan seragam, sehingga material dapat bersentuhan langsung secara optimal dengan permukaan dasar."
       },
       {
-        "method": "Shotcrete / Gunite",
-        "installationSpeed": "⭐⭐",
-        "skillRequired": "Tinggi",
-        "equipmentNeeded": "Berat",
-        "wasteProduced": "Banyak",
-        "weatherDependency": "Tinggi",
-        "costEfficiency": "Rendah",
-        "highlight": false
+        "step": 2,
+        "title": "Pemasangan Material",
+        "description": "Material Cement Blanket dipasang di atas area yang telah dipersiapkan. Pastikan pemasangan dilakukan dengan tumpang tindih (overlap) minimal 10 cm antar lembar material. Gulungan harus diposisikan sedemikian rupa sehingga lapisan bawah material bersentuhan langsung dengan permukaan tanah di bawahnya."
       },
       {
-        "method": "Cast-in-Place Concrete",
-        "installationSpeed": "⭐",
-        "skillRequired": "Sangat Tinggi",
-        "equipmentNeeded": "Sangat Berat",
-        "wasteProduced": "Sangat Banyak",
-        "weatherDependency": "Tinggi",
-        "costEfficiency": "Sangat Rendah",
-        "highlight": false
+        "step": 3,
+        "title": "Pengikatan Material",
+        "description": "Material yang telah dipasang kemudian diamankan menggunakan berbagai metode sesuai substrat. Pada overlap, sekrup dipasang 30–50 mm dari tepi lapisan atas. Untuk tanah, gunakan pasak atau parit jangkar. Pada beton, gunakan baut atau paku khusus."
       },
       {
-        "method": "Riprap / Batu Kosong",
-        "installationSpeed": "⭐⭐",
-        "skillRequired": "Sedang",
-        "equipmentNeeded": "Sedang",
-        "wasteProduced": "Sedang",
-        "weatherDependency": "Sedang",
-        "costEfficiency": "Sedang",
-        "highlight": false
+        "step": 4,
+        "title": "Aktivasi Material",
+        "description": "Semprotkan air secara merata ke seluruh permukaan serat hingga benar-benar basah saat disentuh. Gunakan air cukup dan hindari tekanan tinggi langsung ke material. Material akan mulai setting dalam 24 jam setelah aktivasi dan terus mengalami peningkatan kekuatan."
       }
     ]
   },
 
-  "certifications": [
-    {
-      "name": "CE Marking",
-      "body": "European Conformity",
-      "description": "Memenuhi standar konstruksi Eropa"
+  "specifications": {
+    "trademarkNote": "Merek dagang CEMENT BLANKET telah diajukan pendaftarannya kepada Direktorat Jenderal Kekayaan Intelektual (DJKI) Republik Indonesia dan saat ini sedang berada pada tahap pemeriksaan substantif.",
+    "beforeSetting": {
+      "title": "GEC Cement Blanket (Sebelum Proses Setting)",
+      "headers": ["Spesifikasi", "GEC CB 8", "GEC CB 10"],
+      "rows": [
+        { "spec": "Ketebalan", "cb8": "8 mm", "cb10": "10 mm" },
+        { "spec": "Lebar Gulungan", "cb8": "2 m", "cb10": "2 m" },
+        { "spec": "Panjang Gulungan", "cb8": "25 m", "cb10": "25 m" },
+        { "spec": "Massa per Unit", "cb8": "10–13 kg/m²", "cb10": "10–13 kg/m²" },
+        { "spec": "Waktu Kerja Setelah Hidratasi", "cb8": "1–2 jam", "cb10": "1–2 jam" }
+      ]
     },
-    {
-      "name": "ISO 9001:2015",
-      "body": "Quality Management",
-      "description": "Sistem manajemen mutu terstandarisasi"
+    "afterSetting": {
+      "title": "GEC Cement Blanket (Setelah Proses Setting)",
+      "parameters": [
+        { "label": "Kekuatan Lentur", "value": "4.50 MPa" },
+        { "label": "Kekuatan Tarik", "value": "19 kN/m" },
+        { "label": "Kekuatan Tekan", "value": "50.0 MPa" },
+        { "label": "Ketahanan Aus", "value": "0.3 mm" },
+        { "label": "Ketahanan Benturan", "value": "24.3 kJ/m²" }
+      ]
     },
-    {
-      "name": "BBA Certificate",
-      "body": "British Board of Agrément",
-      "description": "Sertifikasi material bangunan Inggris"
-    },
-    {
-      "name": "SNI Compatible",
-      "body": "Standar Nasional Indonesia",
-      "description": "Kompatibel dengan standar konstruksi Indonesia"
-    }
-  ],
+    "testMethods": [
+      "ASTM D5199",
+      "ASTM D5993",
+      "ASTM D8058",
+      "ASTM D4885",
+      "ASTM D8329",
+      "ASTM C1353",
+      "GB/T 15231-2023"
+    ]
+  },
 
-  "faqs": [
-    {
-      "question": "Berapa lama Cement Blanket mengeras setelah dibasahi?",
-      "answer": "Initial set terjadi dalam 2 jam. Kekuatan penuh dicapai dalam 24 jam. Setelah 7 hari mencapai 80% kekuatan maksimal."
-    },
-    {
-      "question": "Apakah bisa diaplikasikan di permukaan yang tidak rata?",
-      "answer": "Ya. Sebelum mengeras, Cement Blanket sangat fleksibel dan dapat mengikuti kontur permukaan yang tidak rata, melengkung, atau bergelombang."
-    },
-    {
-      "question": "Berapa banyak air yang dibutuhkan untuk mengaktifkan?",
-      "answer": "Sekitar 5–7 liter air per meter persegi, tergantung varian ketebalan. Cukup dibasahi merata menggunakan selang atau penyemprot."
-    },
-    {
-      "question": "Apakah tahan terhadap bahan kimia?",
-      "answer": "Cement Blanket memiliki ketahanan yang baik terhadap asam lemah, sulfat, dan klorida. Untuk aplikasi kimia agresif, konsultasikan dengan tim teknis kami."
-    },
-    {
-      "question": "Bagaimana cara menyambung dua lembar Cement Blanket?",
-      "answer": "Tumpang tindihkan (overlap) minimal 10 cm dan basahi secara bersamaan. Setelah mengeras, sambungan akan menyatu membentuk lapisan monolitik."
-    },
-    {
-      "question": "Apakah bisa digunakan di bawah air?",
-      "answer": "Ya. Cement Blanket dapat diaplikasikan di lingkungan basah, di bawah permukaan air, atau dalam kondisi hujan karena proses hidrasinya justru dipercepat oleh air."
-    },
-    {
-      "question": "Berapa harga Cement Blanket?",
-      "answer": "Harga tergantung varian, kuantitas, dan lokasi pengiriman. Hubungi tim sales kami untuk mendapatkan penawaran harga terbaik."
+  "contact": {
+    "website": "ganeshaec.co.id",
+    "websiteUrl": "https://www.ganeshaec.co.id",
+    "phone": "+62 887-1510-045",
+    "phoneUrl": "tel:+628871510045",
+    "whatsapp": "628871510045",
+    "email": "gecganesha@gmail.com",
+    "address": {
+      "building": "Gedung Fancy Mampang",
+      "street": "Jl. Mampang Prapatan Raya No. 151 Lantai 4 Unit A7",
+      "district": "RT.003/RW.001, Duren Tiga, Kecamatan Pancoran",
+      "city": "Kota Jakarta Selatan, Jakarta 12760, Indonesia"
     }
-  ],
+  },
 
   "contactCTA": {
     "headline": "Siap Menggunakan Cement Blanket untuk Proyek Anda?",
-    "subheadline": "Tim teknis kami siap membantu menentukan spesifikasi yang tepat dan memberikan estimasi kebutuhan material.",
-    "buttons": [
-      {
-        "label": "Minta Penawaran Harga",
-        "type": "primary",
-        "action": "contact-form"
-      },
-      {
-        "label": "Download Brosur Teknis",
-        "type": "secondary",
-        "action": "download-brochure"
-      },
-      {
-        "label": "Hubungi via WhatsApp",
-        "type": "whatsapp",
-        "action": "whatsapp"
-      }
-    ]
+    "subheadline": "Tim teknis GEC siap membantu menentukan spesifikasi yang tepat dan memberikan estimasi kebutuhan material."
   },
 
   "seo": {
-    "metaTitle": "Cement Blanket – Material Konstruksi Inovatif | Ganesha Multi Konsultan",
-    "metaDescription": "Cement Blanket adalah lembaran semen fleksibel yang mengeras hanya dengan air. Solusi konstruksi cepat untuk perlindungan lereng, saluran air, pipa, dan infrastruktur sipil.",
+    "metaTitle": "Cement Blanket Solution – GEC | Solusi Beton Fleksibel",
+    "metaDescription": "Cement Blanket GEC adalah material pelapis semen geokomposit yang mengeras dengan air. Cepat dipasang, kuat, tahan hingga 30 tahun untuk slope protection, channel lining, dan infrastruktur sipil.",
     "keywords": [
       "cement blanket",
-      "concrete blanket",
-      "lembaran semen",
-      "material konstruksi inovatif",
-      "perlindungan lereng",
-      "stabilisasi lereng",
-      "saluran irigasi beton",
-      "concrete canvas",
-      "cement canvas indonesia",
-      "material konstruksi cepat",
-      "slope protection material",
-      "pipa protection concrete"
-    ],
-    "ogImage": "cement-blanket-hero.jpg"
+      "gec cement blanket",
+      "solusi beton fleksibel",
+      "slope protection",
+      "channel lining",
+      "ditch lining",
+      "bund lining",
+      "3d rubber sealing",
+      "material geokomposit semen",
+      "pelapisan saluran irigasi",
+      "perlindungan erosi"
+    ]
   },
 
   "pageStructure": {
     "sections": [
-      { "id": "hero", "label": "Hero / Banner Utama", "priority": 1 },
-      { "id": "key-benefits", "label": "6 Keunggulan Utama", "priority": 2 },
-      { "id": "how-it-works", "label": "Cara Kerja (5 Langkah)", "priority": 3 },
-      { "id": "applications", "label": "Aplikasi & Penggunaan (6 Kategori)", "priority": 4 },
-      { "id": "specifications", "label": "Spesifikasi Teknis", "priority": 5 },
-      { "id": "comparison", "label": "Perbandingan vs Metode Konvensional", "priority": 6 },
-      { "id": "case-studies", "label": "Studi Kasus (3 Proyek)", "priority": 7 },
-      { "id": "certifications", "label": "Sertifikasi & Standar", "priority": 8 },
-      { "id": "faq", "label": "FAQ (7 Pertanyaan)", "priority": 9 },
-      { "id": "contact-cta", "label": "Call to Action / Kontak", "priority": 10 }
+      { "id": "hero", "label": "Hero", "priority": 1 },
+      { "id": "technology", "label": "Teknologi 3D Rubber Sealing", "priority": 2 },
+      { "id": "characteristics", "label": "Karakteristik Utama", "priority": 3 },
+      { "id": "user-advantages", "label": "Keunggulan Pengguna", "priority": 4 },
+      { "id": "applications", "label": "Aplikasi", "priority": 5 },
+      { "id": "installation", "label": "Metode Instalasi", "priority": 6 },
+      { "id": "specifications", "label": "Spesifikasi Produk", "priority": 7 },
+      { "id": "contact-cta", "label": "Kontak", "priority": 8 }
     ]
   }
 }

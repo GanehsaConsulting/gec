@@ -13,7 +13,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/cement.webp",
+        url: "/cement-blanket/installation.png",
         alt: product.name,
       },
     ],

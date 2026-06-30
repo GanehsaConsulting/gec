@@ -2,32 +2,7 @@ import { cementBlanketData } from "@/lib/cementBlanketData";
 import { SectionHeader } from "./section-header";
 
 const { specifications } = cementBlanketData;
-
-const variantUseCases = {
-  CB5: "Pipa, permukaan ringan",
-  CB8: "Saluran air, drainase",
-  CB13: "Slope protection, beban berat",
-};
-
-const extraSpecs = [
-  {
-    label: specifications.rollSize.label,
-    value: specifications.rollSize.standard,
-    note: specifications.rollSize.note,
-  },
-  {
-    label: specifications.curingTime.label,
-    value: `${specifications.curingTime.initial} · ${specifications.curingTime.full}`,
-  },
-  {
-    label: "Kekuatan Tekan",
-    value: specifications.compressiveStrength,
-  },
-  {
-    label: "Masa Simpan",
-    value: specifications.shelfLife,
-  },
-];
+const { beforeSetting, afterSetting, testMethods, trademarkNote } = specifications;
 
 export function SpecificationsSection() {
   return (
@@ -38,69 +13,68 @@ export function SpecificationsSection() {
       <div className="margin">
         <SectionHeader
           label="Spesifikasi"
-          title="Spesifikasi Teknis"
-          description="Tersedia dalam 3 varian ketebalan untuk berbagai kebutuhan aplikasi."
+          title="Spesifikasi Produk"
+          description="GEC Cement Blanket tersedia dalam varian CB 8 dan CB 10."
         />
 
-        <div className="overflow-x-auto rounded-main border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-secondaryDark">
-          <table className="w-full min-w-[640px] text-sm">
+        <p className="text-sm text-muted-foreground mb-8 p-4 rounded-secondary bg-white dark:bg-secondaryDark border border-neutral-200 dark:border-neutral-800">
+          {trademarkNote}
+        </p>
+
+        <h3 className="text-lg font-semibold mb-4">{beforeSetting.title}</h3>
+        <div className="overflow-x-auto rounded-main border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-secondaryDark mb-8">
+          <table className="w-full min-w-[480px] text-sm">
             <thead>
               <tr className="bg-mainColor/5 dark:bg-otherColor/10">
-                <th className="px-4 py-3 text-left font-semibold">Varian</th>
-                <th className="px-4 py-3 text-left font-semibold">Ketebalan</th>
-                <th className="px-4 py-3 text-left font-semibold">
-                  Setelah Mengeras
-                </th>
-                <th className="px-4 py-3 text-left font-semibold">Berat/m²</th>
-                <th className="px-4 py-3 text-left font-semibold">
-                  Ideal Untuk
-                </th>
+                {beforeSetting.headers.map((header) => (
+                  <th key={header} className="px-4 py-3 text-left font-semibold">
+                    {header}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody>
-              {specifications.thickness.variants.map((variant) => (
+              {beforeSetting.rows.map((row) => (
                 <tr
-                  key={variant.type}
+                  key={row.spec}
                   className="border-t border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900/50"
                 >
-                  <td className="px-4 py-3 font-bold text-mainColor dark:text-otherColor">
-                    {variant.type}
-                  </td>
-                  <td className="px-4 py-3">{variant.thickness}</td>
-                  <td className="px-4 py-3">{variant.finalThickness}</td>
-                  <td className="px-4 py-3">
-                    {specifications.weight[variant.type]}
-                  </td>
-                  <td className="px-4 py-3 text-muted-foreground">
-                    {variantUseCases[variant.type]}
-                  </td>
+                  <td className="px-4 py-3 font-medium">{row.spec}</td>
+                  <td className="px-4 py-3">{row.cb8}</td>
+                  <td className="px-4 py-3">{row.cb10}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-          {extraSpecs.map((spec) => (
+        <h3 className="text-lg font-semibold mb-4">{afterSetting.title}</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          {afterSetting.parameters.map((param) => (
             <div
-              key={spec.label}
-              className="p-4 bg-white dark:bg-secondaryDark rounded-secondary"
+              key={param.label}
+              className="p-4 bg-white dark:bg-secondaryDark rounded-secondary border border-neutral-200 dark:border-neutral-800"
             >
-              <p className="text-xs text-muted-foreground mb-1">{spec.label}</p>
-              <p className="font-semibold text-sm">{spec.value}</p>
-              {spec.note && (
-                <p className="text-xs text-muted-foreground mt-1">{spec.note}</p>
-              )}
+              <p className="text-xs text-muted-foreground mb-1">{param.label}</p>
+              <p className="font-semibold text-lg text-mainColor dark:text-otherColor">
+                {param.value}
+              </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-4 p-4 rounded-secondary bg-white dark:bg-secondaryDark text-sm">
-          <span className="font-semibold">Serat: </span>
-          {specifications.fiber}
-          <span className="mx-2 text-muted-foreground">·</span>
-          <span className="font-semibold">Aktivasi: </span>
-          {specifications.waterActivation}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Metode Uji</h3>
+          <div className="flex flex-wrap gap-2">
+            {testMethods.map((method) => (
+              <span
+                key={method}
+                className="px-3 py-1.5 text-xs font-medium rounded-full bg-white dark:bg-secondaryDark border border-neutral-200 dark:border-neutral-800"
+              >
+                {method}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

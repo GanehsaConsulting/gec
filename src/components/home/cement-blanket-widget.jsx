@@ -8,23 +8,7 @@ import { HERO_IMAGE } from "@/components/cement-blanket/constants";
 
 const { product } = cementBlanketData;
 
-const highlights = [
-  {
-    icon: Droplets,
-    label: "Just Add Water",
-    text: "Mengeras hanya dengan air",
-  },
-  {
-    icon: Zap,
-    label: "Fast Installation",
-    text: "Instalasi jauh lebih cepat",
-  },
-  {
-    icon: Shield,
-    label: "Durable",
-    text: "Tahan cuaca & erosi",
-  },
-];
+const highlightIcons = [Droplets, Zap, Shield];
 
 export function CementBlanketWidget() {
   return (
@@ -47,26 +31,31 @@ export function CementBlanketWidget() {
         </div>
 
         <div className="flex flex-col justify-center p-6 md:p-8 lg:py-10">
-          <h2 className="font-montserrat text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-3">
+          <h2 className="font-montserrat text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-2">
             {product.name}
           </h2>
+          <p className="text-sm font-medium text-mainColor dark:text-otherColor mb-3">
+            {product.tagline}
+          </p>
           <p className="text-muted-foreground leading-relaxed mb-6 max-w-lg">
             {product.heroDescription}
           </p>
 
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
-            {highlights.map(({ icon: Icon, label, text }) => (
-              <li
-                key={label}
-                className="flex flex-col gap-2 p-3 rounded-secondary bg-white dark:bg-secondaryDark border border-neutral-200/80 dark:border-neutral-800"
-              >
-                <div className="w-9 h-9 rounded-full bg-mainColor/10 dark:bg-otherColor/10 flex items-center justify-center">
-                  <Icon className="h-4 w-4 text-mainColor dark:text-otherColor" />
-                </div>
-                <span className="text-xs font-semibold">{label}</span>
-                <span className="text-xs text-muted-foreground">{text}</span>
-              </li>
-            ))}
+            {product.heroHighlights.map((label, index) => {
+              const Icon = highlightIcons[index] || Shield;
+              return (
+                <li
+                  key={label}
+                  className="flex flex-col gap-2 p-3 rounded-secondary bg-white dark:bg-secondaryDark border border-neutral-200/80 dark:border-neutral-800"
+                >
+                  <div className="w-9 h-9 rounded-full bg-mainColor/10 dark:bg-otherColor/10 flex items-center justify-center">
+                    <Icon className="h-4 w-4 text-mainColor dark:text-otherColor" />
+                  </div>
+                  <span className="text-xs font-semibold">{label}</span>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex flex-col sm:flex-row gap-3">
