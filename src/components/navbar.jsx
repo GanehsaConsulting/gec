@@ -8,21 +8,6 @@ import ThemeSwitch from "./theme";
 import { MegaMenuNavbar } from "./mega-menu";
 import { ServicesMenu } from "./services-menu";
 import { ProductMenu } from "./product-menu";
-import { FaGear } from "react-icons/fa6";
-
-// Sementara
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-//
 
 export const Navbar = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -128,28 +113,18 @@ export const Navbar = ({ children }) => {
               ></span>
             </li>
 
-            {/* <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                                <button className='cursor-pointer z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out'>
-                                    News & Blog
-                                </button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                                <AlertDialogHeader>
-                                    <FaGear className='text-3xl spin-slow' />
-                                    <AlertDialogTitle>
-                                        Under Construction
-                                    </AlertDialogTitle>
-                                    <AlertDialogDescription>
-                                        News currently being developed. Please check again later.
-                                    </AlertDialogDescription>
-
-                                </AlertDialogHeader>
-                                <AlertDialogFooter>
-                                    <AlertDialogAction className={'w-full'}>Continue</AlertDialogAction>
-                                </AlertDialogFooter>
-                            </AlertDialogContent>
-                        </AlertDialog> */}
+            <li className="relative flex flex-col items-center group">
+              <Link
+                href={"/news"}
+                className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
+                aria-current="page"
+              >
+                News & Blog
+              </Link>
+              <span
+                className={`${path.startsWith("/news") ? "scale-100" : "scale-0"} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}
+              ></span>
+            </li>
 
             <li className="relative flex flex-col items-center group">
               <Link
