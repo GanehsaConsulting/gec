@@ -17,7 +17,7 @@ export default function TentangKami() {
                             infrastruktur, pengadaan teknis, instalasi pabrik, dan reklamasi pasca
                             tambang. Dengan tim ahli berpengalaman dan jaringan kemitraan kuat, GEC
                             menjadi mitra terpercaya untuk proyek-proyek nasional dan internasional."
-                sectionClassName="bg-darkColor dark:bg-lightColor h-[50lvh]"
+                sectionClassName="bg-darkColor dark:bg-lightColor"
                 titleClassName="invert"
                 descriptionClassName="invert"
             />
