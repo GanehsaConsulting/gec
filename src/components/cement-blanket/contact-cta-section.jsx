@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { cementBlanketData } from "@/lib/cementBlanketData";
-import { Title } from "@/components/title-text";
+import { heroCarouselImages } from "./constants";
 
 const { contactCTA, contact } = cementBlanketData;
 
@@ -14,32 +15,45 @@ export function ContactCtaSection() {
       "Halo, saya tertarik dengan produk Cement Blanket GEC. Mohon informasi lebih lanjut.";
     window.open(
       `https://api.whatsapp.com/send?phone=${contact.whatsapp}&text=${encodeURIComponent(message)}`,
-      "_blank",
+      "_blank"
     );
   };
 
   return (
     <section id="contact-cta" className="margin spacing">
-      <div className="rounded-main overflow-hidden bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-700 dark:from-neutral-100 dark:via-neutral-200 dark:to-neutral-300 p-8 md:p-12">
-        <div className="max-w-2xl">
-          <h2 className="text-2xl md:text-4xl font-semibold tracking-tighter text-white dark:text-black mb-3">
-            {contactCTA.headline}
-          </h2>
-          <p className="text-white/70 dark:text-black/70 text-sm md:text-base leading-relaxed mb-8">
-            {contactCTA.subheadline}
-          </p>
+      <div className="relative rounded-main overflow-hidden min-h-[280px] md:min-h-[320px]">
+        <Image
+          src={heroCarouselImages[0].src}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-darkColor/80 dark:bg-secondaryDark/90" />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6 p-8 md:p-12">
+          <div className="max-w-xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-otherColor mb-4">
+              Kontak
+            </p>
+            <h2 className="text-2xl md:text-4xl font-semibold tracking-tighter text-white mb-3 text-balance">
+              {contactCTA.headline}
+            </h2>
+            <p className="text-white/70 text-sm md:text-base leading-relaxed">
+              {contactCTA.subheadline}
+            </p>
+          </div>
 
-          <div className="flex flex-col sm:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 shrink-0">
             <Button
               asChild
-              className="bg-white text-black hover:bg-white/90 dark:bg-black dark:text-white dark:hover:bg-black/90"
+              className="bg-otherColor text-otherColorDark hover:bg-otherColor/90"
             >
               <Link href="/contact">Minta Penawaran</Link>
             </Button>
             <Button
               variant="ghost"
               onClick={handleWhatsApp}
-              className="border border-white/50 bg-transparent text-white hover:bg-white/15 hover:text-white dark:border-black/30 dark:text-black dark:hover:bg-black/10 dark:hover:text-black"
+              className="border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
             >
               <FaWhatsapp />
               WhatsApp

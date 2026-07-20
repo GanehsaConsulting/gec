@@ -1,10 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 import { cementBlanketData } from "@/lib/cementBlanketData";
-import { fadeUp } from "./constants";
 import { SectionHeader } from "./section-header";
+import { HERO_IMAGE } from "./constants";
 
 const { technology } = cementBlanketData;
 
@@ -13,54 +10,74 @@ export function TechnologySection() {
     <section id="technology" className="margin spacing">
       <SectionHeader
         label={technology.label}
-        title={technology.title}
+        title="Teknologi Paten"
         description={technology.description}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="p-6 md:p-8 bg-lightColor dark:bg-darkColor rounded-main"
-        >
-          <p className="text-xs font-semibold uppercase tracking-wider text-mainColor dark:text-otherColor mb-2">
-            {technology.subtitle}
-          </p>
-          <ul className="space-y-3 mt-4">
-            {technology.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-2 text-sm">
-                <CheckCircle2 className="h-4 w-4 text-mainColor dark:text-otherColor shrink-0 mt-0.5" />
-                <span>{feature}</span>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 md:gap-4">
+        <div className="lg:col-span-5 relative min-h-[280px] md:min-h-[360px] rounded-main overflow-hidden">
+          <Image
+            src={HERO_IMAGE}
+            alt="Struktur material Cement Blanket di lapangan"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-darkColor/80 via-darkColor/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-otherColor mb-1">
+              {technology.subtitle}
+            </p>
+            <p className="text-white text-lg md:text-xl font-semibold tracking-tight">
+              3D Rubber Sealing
+            </p>
+          </div>
+        </div>
+
+        <div className="lg:col-span-7 flex flex-col gap-3">
+          <ul className="grid sm:grid-cols-3 gap-2">
+            {technology.features.map((feature, index) => (
+              <li
+                key={feature}
+                className="p-4 rounded-main bg-lightColor dark:bg-darkColor border border-transparent dark:border-white/5"
+              >
+                <span className="text-otherColorDark dark:text-otherColor text-xs font-semibold tabular-nums">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p className="mt-2 text-sm leading-relaxed">{feature}</p>
               </li>
             ))}
           </ul>
-        </motion.div>
 
-        <div className="space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
-            Struktur Material
-          </p>
-          {technology.materialLayers.map((layer, index) => (
-            <motion.div
-              key={layer.layer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              transition={{ delay: index * 0.1 }}
-              className="p-4 md:p-5 bg-white dark:bg-secondaryDark rounded-secondary border border-neutral-200 dark:border-neutral-800"
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-bold text-mainColor dark:text-otherColor">
-                  {layer.layer}
-                </span>
-                <span className="text-sm font-semibold">{layer.name}</span>
+          <div className="grid sm:grid-cols-3 gap-2 flex-1">
+            {technology.materialLayers.map((layer, index) => (
+              <div
+                key={layer.layer}
+                className="flex flex-col justify-between p-4 md:p-5 rounded-main bg-lightColor/80 dark:bg-secondaryDark border border-neutral-200/60 dark:border-white/5"
+              >
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
+                    {layer.layer}
+                  </p>
+                  <p className="font-semibold text-sm md:text-base mb-2">
+                    {layer.name}
+                  </p>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {layer.description}
+                </p>
+                <div
+                  className="mt-4 h-1 rounded-full bg-mainColor/20 dark:bg-otherColor/20 overflow-hidden"
+                  aria-hidden
+                >
+                  <div
+                    className="h-full rounded-full bg-mainColor dark:bg-otherColor"
+                    style={{ width: `${100 - index * 22}%` }}
+                  />
+                </div>
               </div>
-              <p className="text-sm text-muted-foreground">{layer.description}</p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
