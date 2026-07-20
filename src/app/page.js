@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Branding } from "@/components/branding";
 import { CementBlanketWidget } from "@/components/home/cement-blanket-widget";
 import { FamilyProductsClient } from "@/components/home/family-products-client";
+import { LatestArticlesClient } from "@/components/home/latest-articles-client";
 import { LatestProjectClient } from "@/components/home/latest-project-client";
 import { MainBanner } from "@/components/main-banner";
 import { StatsSection } from "@/components/stats-section";
@@ -95,6 +96,7 @@ export default function Home() {
         <MainBanner />
         <CementBlanketWidget />
         <LatestProjectClient />
+        <LatestArticlesClient />
         <Branding />
         <StatsSection />
         <WhyUs />

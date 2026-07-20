@@ -10,12 +10,13 @@ import { slugify } from "@/lib/slugify";
 
 // Separate Card Component for better reusability
 const ProjectCard = ({ project, className = "" }) => {
-    // Use slug if available, fallback to id
-    const href = project.slug
-        ? `/project/${project.slug}`
-        : project.title
-            ? `/project/${slugify(project.title)}`
-            : `/project/${project.id}`;
+    const href =
+        project.href ||
+        (project.slug
+            ? `/project/${project.slug}`
+            : project.title
+                ? `/project/${slugify(project.title)}`
+                : `/project/${project.id}`);
 
     return (
         <Link href={href}>
@@ -34,7 +35,7 @@ const ProjectCard = ({ project, className = "" }) => {
                 {/* Category Badge */}
                 <div className="absolute top-2 left-2 group-hover:-translate-y-100 translate-y-0 duration-500">
                     <span className="px-2 py-1 text-xs rounded-full bg-lightColor/70 dark:bg-darkColor/70 lightColor font-semibold backdrop-blur-lg">
-                        {project.category}
+                        {project.categoryLabel || project.category}
                     </span>
                 </div>
 
@@ -85,6 +86,7 @@ export const CardPost = ({
     className = "",
     gridCols = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
     loading = false,
+    emptyMessage = "No projects available at the moment.",
 }) => {
     const carouselRef = useRef(null);
 
@@ -108,7 +110,7 @@ export const CardPost = ({
         return (
             <div className="margin py-20 text-center">
                 <p className="text-neutral-500 dark:text-neutral-400">
-                    No projects available at the moment.
+                    {emptyMessage}
                 </p>
             </div>
         );

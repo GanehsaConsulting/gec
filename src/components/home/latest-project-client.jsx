@@ -1,69 +1,73 @@
-'use client'
-import { useProjects } from "@/hooks/useProjects";
-import { ProjectGridSkeleton } from "../project-card-skeleton";
-import { Button } from "../ui/button";
-import { CardPost } from "../card-post";
+"use client";
 
-export const LatestProjectClient = () => {
+import { Button } from "@/components/ui/button";
+import { CardPost } from "@/components/card-post";
+import { ProjectGridSkeleton } from "@/components/project-card-skeleton";
+import { useArticles } from "@/hooks/useArticles";
+import { PROJECT_CATEGORY_ID } from "@/lib/cmsConstants";
 
-    const { data: projects, loadingProject, errorProject } = useProjects({
-        page: 1,
-        limit: 12,
-        published: true,
-    });
+function mapArticleToCard(article) {
+  const year =
+    article.publishedAt || article.date
+      ? new Date(article.publishedAt || article.date).getFullYear()
+      : "";
 
-    // Transform data ke format yang dibutuhkan CardPost
-    const transformedProjects = projects?.map(project => ({
-        id: project.id,
-        title: project.title,
-        category: project.category,
-        location: project.location,
-        year: project.date?.split('/')[2] || '',
-        description: project.content?.replace(/<[^>]*>/g, '').substring(0, 150) + '...' || '',
-        image: project.thumbnail || project.imageUrl[0] || 'https://images.unsplash.com/photo-1519143009590-e3800b9df468',
-    })) || [];
+  return {
+    id: article.id,
+    slug: article.slug,
+    href: `/news/${article.slug}`,
+    title: article.title,
+    category: article.categoryLabel || article.category || "Our Project",
+    categoryLabel: article.categoryLabel || article.category || "Our Project",
+    description: article.excerpt || "",
+    image: article.coverImage || article.thumbnail,
+    year: Number.isFinite(year) ? String(year) : "",
+  };
+}
+
+export function LatestProjectClient() {
+  const { data, loading, error, refetch } = useArticles({
+    page: 1,
+    limit: 12,
+    category: PROJECT_CATEGORY_ID,
+    sort: "publishedAt-desc",
+  });
+
+  const cards = (data || []).map(mapArticleToCard);
+
+  if (loading) {
     return (
-        <>
-            {/* Loading State with Skeleton */}
-            {loadingProject && (
-                <ProjectGridSkeleton
-                    count={6}
-                    gridCols="grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
-                />
-            )}
+      <ProjectGridSkeleton
+        count={4}
+        gridCols="grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+      />
+    );
+  }
 
-            {!loadingProject && !errorProject && (
-                <>
-                    <CardPost
-                        mode="carousel"
-                        showTitle={true}
-                        title="Latest Projects"
-                        data={transformedProjects}
-                        gridCols="grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
-                        loading={loadingProject}
-                    />
-                </>
-            )}
+  if (error) {
+    return (
+      <div className="margin py-10">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+          <p className="text-red-800 dark:text-red-200">
+            Failed to load projects: {error}
+          </p>
+          <Button onClick={refetch} className="mt-4" variant="outline">
+            Retry
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
-            {/* Error State */}
-            {errorProject && (
-                <div className="margin py-10">
-                    <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-                        <p className="text-red-800 dark:text-red-200">
-                            Failed to load projects: {error}
-                        </p>
-                        <Button
-                            onClick={() => window.location.reload()}
-                            className="mt-4"
-                            variant="outline"
-                        >
-                            Retry
-                        </Button>
-                    </div>
-                </div>
-            )}
+  if (!cards.length) return null;
 
-
-        </>
-    )
+  return (
+    <CardPost
+      mode="carousel"
+      showTitle
+      title="Latest Projects"
+      data={cards}
+      emptyMessage="No projects published yet."
+    />
+  );
 }

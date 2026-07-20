@@ -4,14 +4,17 @@ import Link from "next/link";
 import { productDivisions } from "./system";
 import { TbAsterisk, TbBlocks, TbChevronRight, TbSearch } from "react-icons/tb";
 import { useState } from "react";
-import Image from "next/image";
 import { slugify } from "@/lib/slugify";
-import { Button } from "./ui/button";
+import { MegaMenuBanner } from "@/components/mega-menu-banner";
+import { useBanner } from "@/hooks/useBanner";
 
 export const ProductMenu = ({ expandedId }) => {
     const [hoveredCard, setHoveredCard] = useState(null);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [searchQuery, setSearchQuery] = useState("");
+    const { data: megaBanner, loading: bannerLoading } = useBanner("mega-menu");
+    const showMegaBanner =
+        !bannerLoading && megaBanner?.images?.length > 0;
 
     const expandAnimationClass = expandedId
         ? "scale-100 -translate-y-0 opacity-100 duration-500 ease-in-out"
@@ -52,7 +55,7 @@ export const ProductMenu = ({ expandedId }) => {
     return (
         <main className="space-y-5">
             <div className="grid grid-cols-10 gap-4">
-                <div className="col-span-8 flex items-center justify-between gap-4">
+                <div className={`${showMegaBanner ? "col-span-8" : "col-span-10"} flex items-center justify-between gap-4`}>
                     <p
                         className={`${expandAnimationClass} text-xs font-semibold uppercase pr-3 pl-2 py-1 bg-darkColor/10 dark:bg-lightColor/15 rounded-main w-fit flex items-center gap-1`}
                     >
@@ -71,19 +74,21 @@ export const ProductMenu = ({ expandedId }) => {
                         />
                     </div>
                 </div>
-                <div className="col-span-2">
-                    <p
-                        className={`${expandAnimationClass} text-xs font-semibold uppercase pr-3 pl-2 py-1 bg-darkColor/10 dark:bg-lightColor/15 rounded-main w-fit flex items-center gap-1`}
-                    >
-                        <TbAsterisk className="spin-slow" />
-                        Insight
-                    </p>
-                </div>
+                {showMegaBanner && (
+                    <div className="col-span-2">
+                        <p
+                            className={`${expandAnimationClass} text-xs font-semibold uppercase pr-3 pl-2 py-1 bg-darkColor/10 dark:bg-lightColor/15 rounded-main w-fit flex items-center gap-1`}
+                        >
+                            <TbAsterisk className="spin-slow" />
+                            Insight
+                        </p>
+                    </div>
+                )}
             </div>
 
             <section className="grid grid-cols-10 gap-4">
                 {/* Products cards */}
-                <div className="col-span-8 grid grid-cols-4 gap-3">
+                <div className={`${showMegaBanner ? "col-span-8" : "col-span-10"} grid grid-cols-4 gap-3`}>
                     {displayDivisions.length > 0 ? (
                         displayDivisions.map((el, idx) => (
                             <Link
@@ -345,24 +350,14 @@ export const ProductMenu = ({ expandedId }) => {
                     )}
                 </div>
 
-                {/* === SIDE IMAGE === */}
-                <div
-                    className={`${expandAnimationClass} col-span-2 max-h-[45vh] h-[45vh] relative overflow-hidden rounded-main group cursor-pointer`}
-                >
-                    <Image
-                        width={500}
-                        height={500}
-                        className="w-full h-full rounded-main object-cover"
-                        src="https://images.unsplash.com/photo-1542361345-89e58247f2d5?q=80&w=2070&auto=format&fit=crop"
-                        alt="Our Latest Project"
+                {/* === CMS MEGA-MENU BANNER === */}
+                {showMegaBanner && (
+                    <MegaMenuBanner
+                        placementKey="mega-menu"
+                        expandAnimationClass={expandAnimationClass}
+                        className="col-span-2 max-h-[45vh] h-[45vh]"
                     />
-                    <div className="absolute bottom-0 left-0 right-0 h-30 pointer-events-none linear-blur z-10" />
-                    <div className="absolute bottom-3 left-3 right-3 z-20">
-                        <div className="px-3 py-1 w-fit backdrop-blur-2xl bg-lightColor/50 dark:bg-darkColor/50 rounded-main">
-                            <h1 className="text-lg font-semibold">Our Latest Project</h1>
-                        </div>
-                    </div>
-                </div>
+                )}
             </section>
         </main>
     );

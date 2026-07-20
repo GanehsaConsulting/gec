@@ -17,7 +17,7 @@ export function NewsCard({ post, className = "" }) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <span className="absolute top-3 left-3 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-secondary bg-lightColor/85 dark:bg-darkColor/80 backdrop-blur-sm">
-          {post.category}
+          {post.categoryLabel || post.category}
         </span>
       </div>
 

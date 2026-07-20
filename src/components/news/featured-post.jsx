@@ -30,10 +30,10 @@ function FeaturedSlide({ post, isActive }) {
       <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-8 lg:p-10">
         <div className="flex flex-wrap items-center gap-3 mb-3">
           <span className="px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider rounded-secondary bg-otherColor text-otherColorDark">
-            Most Read
+            Featured
           </span>
           <span className="text-[11px] font-semibold uppercase tracking-wider text-white/70">
-            {post.category}
+            {post.categoryLabel || post.category}
           </span>
           <time
             dateTime={post.date}
@@ -97,7 +97,7 @@ export function FeaturedCarousel({ posts = [] }) {
         }
       }}
       aria-roledescription="carousel"
-      aria-label="Most Read articles"
+      aria-label="Featured articles"
     >
       {posts.map((post, index) => (
         <FeaturedSlide

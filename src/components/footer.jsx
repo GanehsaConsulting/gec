@@ -40,7 +40,8 @@ export const Footer = () => {
         ],
         support: [
             { label: 'Contact Us', href: '/contact' },
-            { label: 'Documentation', href: '/project' },
+            { label: 'News & Blog', href: '/news' },
+            { label: 'Our Projects', href: '/project' },
             { label: 'Product Catalog', href: '/product' },
         ],
     };

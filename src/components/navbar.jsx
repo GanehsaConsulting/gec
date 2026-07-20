@@ -70,6 +70,19 @@ export const Navbar = ({ children }) => {
 
           <ul className="flex items-center flex-col ml-[1px] p-4 md:p-0 mt-4 font-medium md:space-x-2 rtl:space-x-reverse md:flex-row md:mt-0 text-[14px]">
             {/* Menu */}
+            <li className="relative flex flex-col items-center group">
+              <Link
+                href={"/"}
+                className={`z-[555] block py-[6px] px-3 items-center text-gray-800 dark:text-white rounded-secondary hover:bg-darkColor/5 dark:hover:bg-lightColor/5 duration-200 ease-in-out`}
+                aria-current={path === "/" ? "page" : undefined}
+              >
+                Home
+              </Link>
+              <span
+                className={`${path === "/" ? "scale-100" : "scale-0"} absolute bottom-[4px] w-[15px] h-[2px] ease-in-out duration-300 group-hover:scale-100 scale-0 dark:bg-lightColor bg-darkColor rounded-secondary`}
+              ></span>
+            </li>
+
             {/* <MegaMenuNavbar
                             id="Services"
                             title="Services"

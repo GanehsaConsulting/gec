@@ -46,6 +46,10 @@ const nextConfig = {
             },
             {
                 protocol: "https",
+                hostname: "cms.gonline.id",
+            },
+            {
+                protocol: "https",
                 hostname: "cms-ganesha.ganeshaconsulting.co.id",
             },
             {

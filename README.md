@@ -16,9 +16,17 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Copy `.env.example` → `.env.local` and fill Google Sheets + CMS values as needed.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### CMS env (News / Projects / mega-menu banner)
+
+| Variable | Description |
+|----------|-------------|
+| `CMS_API_URL` | CMS origin (default `https://cms.gonline.id`) |
+| `CMS_BRAND_ID` | Brand slug (default `gec`) |
+| `CMS_PREVIEW_SECRET` | Optional. Draft preview: `/news/{slug}?preview=1&token=<secret>` |
+
+**Content before production:** publish articles; category `our-project` for projects; `highlighted` for Featured; banner key `mega-menu`; replace base64 `authorImage` with HTTPS URLs on the CMS (list payloads are otherwise multi‑MB).
 
 ## Learn More
 

@@ -1,35 +1,42 @@
-import { notFound } from "next/navigation";
-import { NewsDetail } from "@/components/news/news-detail";
+import { Suspense } from "react";
+import { NewsDetailView } from "@/components/news/news-detail";
 import {
-  getAllNews,
-  getNewsBySlug,
-  getRelatedNews,
-} from "@/lib/newsData";
+  fetchArticleBySlug,
+  isPreviewAuthorized,
+} from "@/lib/cmsArticles";
 
-export function generateStaticParams() {
-  return getAllNews().map((post) => ({ slug: post.slug }));
-}
+export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params, searchParams }) {
   const { slug } = await params;
-  const post = getNewsBySlug(slug);
-  if (!post) {
-    return { title: "Article Not Found | GEC" };
-  }
+  const resolvedSearch = await searchParams;
+  const preview = isPreviewAuthorized(resolvedSearch);
 
-  return {
-    title: `${post.title} | GEC News`,
-    description: post.excerpt,
-  };
+  try {
+    const post = await fetchArticleBySlug(slug, {
+      preview,
+      cache: preview ? "no-store" : undefined,
+    });
+
+    if (!post) {
+      return { title: "Article Not Found | GEC" };
+    }
+
+    return {
+      title: `${post.metaTitle || post.title} | GEC News`,
+      description: post.metaDescription || post.excerpt,
+    };
+  } catch {
+    return { title: "News | GEC" };
+  }
 }
 
 export default async function NewsDetailPage({ params }) {
   const { slug } = await params;
-  const post = getNewsBySlug(slug);
 
-  if (!post) {
-    notFound();
-  }
-
-  return <NewsDetail post={post} related={getRelatedNews(slug)} />;
+  return (
+    <Suspense fallback={null}>
+      <NewsDetailView slug={slug} />
+    </Suspense>
+  );
 }
