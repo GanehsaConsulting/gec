@@ -8,6 +8,7 @@ export const Pagination = ({
     onPageChange,
     totalItems = 0,
     itemsPerPage = 12,
+    itemLabel = "produk",
     showInfo = true,
     maxVisible = 5,
     mode = "numbers", // "numbers" or "loadmore"
@@ -26,7 +27,7 @@ export const Pagination = ({
                 {showInfo && totalItems > 0 && (
                     <div className="text-sm text-muted-foreground" key={`info-${currentPage}`}>
                         Menampilkan <span className="font-medium text-foreground">{loadedItems}</span> dari{" "}
-                        <span className="font-medium text-foreground">{totalItems}</span> produk
+                        <span className="font-medium text-foreground">{totalItems}</span> {itemLabel}
                     </div>
                 )}
 
@@ -56,7 +57,7 @@ export const Pagination = ({
                 {/* All Loaded Message */}
                 {isAllLoaded && totalItems > 0 && (
                     <div className="text-sm text-muted-foreground">
-                        Semua produk telah dimuat
+                        Semua {itemLabel} telah dimuat
                     </div>
                 )}
             </div>
@@ -105,7 +106,7 @@ export const Pagination = ({
             {showInfo && totalItems > 0 && (
                 <div className="text-sm text-muted-foreground" key={`info-numbers-${currentPage}`}>
                     Menampilkan <span className="font-medium text-foreground">{startItem}-{endItem}</span> dari{" "}
-                    <span className="font-medium text-foreground">{totalItems}</span> produk
+                    <span className="font-medium text-foreground">{totalItems}</span> {itemLabel}
                 </div>
             )}
 
