@@ -1,0 +1,44 @@
+---
+description: Core standards — GEC company profile website (existing codebase)
+alwaysApply: true
+---
+
+# GEC Company Profile — Core Rules
+
+Existing **company profile / marketing website** for Ganesha Engineering & Construction (GEC). Not a CMS admin. Agents inherit this codebase — **preserve patterns**; do not treat it as greenfield.
+
+Priorities: **brand aesthetics** and **accessibility**. Keep the stack simple and maintainable.
+
+## Stack (locked)
+
+Next.js 15 App Router · **JavaScript / JSX** · Tailwind v4 · shadcn/ui (`tsx: false`) · DaisyUI · next-themes · Google Sheets via API routes
+
+Do **not** migrate to TypeScript, Biome, Server Actions, Zustand, or TanStack Query unless explicitly asked.
+
+## Data layer
+
+- Sheets → `lib/*Helpers` + `src/app/api/*` → client hooks (`useEffect` + `fetch`)
+- Keep this pattern. Do not replace API routes with Server Actions without a clear request.
+- Product landing data (e.g. Ganvex Mat): `ganvex_mat/` JSON via `src/lib/ganvexMatData.js`
+
+## Structure
+
+```
+src/app/          # routes + API
+src/components/   # ui/ (shadcn), home/, ganvex-mat/, shared marketing
+src/hooks/        # useProducts, useProjects, …
+src/lib/          # helpers, utils, sheet access
+```
+
+## Non-negotiables
+
+- Match existing design language (tokens, layout utilities, section composition)
+- Prefer readability over abstraction — **YAGNI**
+- No large refactors or drive-by cleanups unless asked
+- No new dependencies without a strong reason
+
+## Forbidden assumptions
+
+- This is **not** a CMS CRUD app — ignore article/admin patterns
+- Do not assume TypeScript strict / English-only CMS copy rules
+- Do not invent `components/cms/`, `lib/actions/`, or `lib/db/`

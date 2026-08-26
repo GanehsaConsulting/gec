@@ -75,9 +75,9 @@ export const productDivisions = [
     services: [
       {
         id: "001",
-        name: "Cement Blanket",
-        slug: "cement-blanket",
-        dedicatedPath: "/cement-blanket",
+        name: "Ganvex Mat",
+        slug: "ganvex-mat",
+        dedicatedPath: "/ganvex-mat",
         productCategory: null,
         variants: []
       },

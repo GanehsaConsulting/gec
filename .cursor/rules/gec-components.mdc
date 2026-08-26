@@ -1,0 +1,56 @@
+---
+description: React/Next component patterns — shadcn, client boundaries, file structure
+globs: src/components/**/*.{js,jsx},src/app/**/*.{js,jsx}
+alwaysApply: false
+---
+
+# GEC Component Rules
+
+## shadcn/ui
+
+- Check registry and install via CLI before building custom UI:
+
+```bash
+npx shadcn@latest add [component]
+```
+
+- Custom components only when shadcn has no fit
+- `src/components/ui/` may already be customized (e.g. button `glass`) — **don’t reset to pristine**; wrap/extend for small tweaks
+- Use `cn()` from `@/lib/utils`
+
+## Server vs client
+
+- Default to Server Components for thin pages that only compose sections
+- `"use client"` only for state, events, browser APIs, theme, carousels, forms, Framer Motion interactivity
+- Product/project list pages that use hooks stay client — match existing `useProducts` / `useProjects` pattern
+
+## File & export conventions
+
+- New code: **one concern per file**; kebab-case filenames (`why-us.jsx`, `hero-section.jsx`)
+- Prefer **named exports** (`export function HeroSection`)
+- Path alias `@/` → `src/`
+- Do **not** split large legacy files (`system.jsx`, `card-product.jsx`) unless asked
+
+## Feature folders
+
+```
+components/home/              # home section clients
+components/ganvex-mat/    # product landing sections
+components/news/              # News & Blog listing + detail
+components/ui/                # shadcn
+```
+
+Route page stays thin; compose sections:
+
+```jsx
+// app/ganvex-mat/page.js — metadata + <GanvexMatPage />
+// components/ganvex-mat/ganvex-mat-page.jsx — stacks sections
+// app/news/page.js — metadata + <NewsPage />
+```
+
+## Data in components
+
+- Sheets-backed lists: hooks → `/api/…`
+- Ganvex Mat: import from `@/lib/ganvexMatData` (JSON under `ganvex_mat/`)
+- News & Blog: `@/lib/cmsArticles` + `/api/articles*` (CMS `brandId`) → `useArticles`
+- Banners: `@/lib/cmsBanners` + `/api/banners*` → `useBanner` (placement keys: homepage, popup, mega-menu, bottom)

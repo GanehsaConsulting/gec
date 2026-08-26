@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Branding } from "@/components/branding";
-import { CementBlanketWidget } from "@/components/home/cement-blanket-widget";
+import { GanvexMatWidget } from "@/components/home/ganvex-mat-widget";
 import { FamilyProductsClient } from "@/components/home/family-products-client";
 import { LatestArticlesClient } from "@/components/home/latest-articles-client";
 import { LatestProjectClient } from "@/components/home/latest-project-client";
@@ -94,7 +94,7 @@ export default function Home() {
       {/* 🧱 PAGE STRUCTURE */}
       <main lang="id">
         <MainBanner />
-        <CementBlanketWidget />
+        <GanvexMatWidget />
         <LatestProjectClient />
         <LatestArticlesClient />
         <Branding />

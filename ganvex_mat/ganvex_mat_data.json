@@ -1,0 +1,245 @@
+{
+  "product": {
+    "name": "Ganvex Mat",
+    "title": "GANVEX MAT SOLUTION",
+    "tagline": "Solusi beton fleksibel yang mengeras setelah diberi air.",
+    "taglineSub": "Cepat, Kuat, dan Tahan Hingga 30 Tahun.",
+    "brand": "GEC",
+    "category": "Solusi Geokomposit Semen",
+    "heroDescription": "Material pelapis semen geokomposit berbentuk gulungan yang terdiri dari matriks komposit serat yang diperkuat, inti semen, dan lapisan belakang kedap air. Setelah dihidrasi, material ini membentuk lapisan beton permanen untuk perlindungan erosi, saluran drainase, lereng, dan berbagai aplikasi infrastruktur sipil.",
+    "heroHighlights": ["Tahan Air", "Mudah Dipasang", "Cepat Mengeras"]
+  },
+
+  "technology": {
+    "label": "Generasi Baru",
+    "title": "Teknologi Paten – Penyegelan Karet 3D",
+    "subtitle": "3D Rubber Sealing",
+    "description": "Karet melapisi dan menyegel seluruh jaring kain dasar secara tiga dimensi (3D), mencegah kebocoran bubuk semen serta memberikan hasil yang konsisten dan berkinerja tinggi.",
+    "features": [
+      "Karet menembus jaring kain.",
+      "Menutup seluruh pori dan celah mikro.",
+      "Bubuk semen terkunci pada tempatnya sehingga distribusinya merata."
+    ],
+    "materialLayers": [
+      {
+        "layer": "Lapisan Atas",
+        "name": "Serat / Fiber",
+        "description": "Permukaan berserat untuk hidrasi yang optimal."
+      },
+      {
+        "layer": "Inti",
+        "name": "Campuran Semen Kering",
+        "description": "Bubuk semen kering berkualitas tinggi."
+      },
+      {
+        "layer": "Lapisan Bawah",
+        "name": "Penyegelan Karet 3D",
+        "description": "Karet melapisi dan menyegel seluruh jaring kain secara 3D."
+      }
+    ]
+  },
+
+  "characteristics": [
+    {
+      "title": "Mudah Digunakan",
+      "description": "Praktis digunakan karena beton sudah siap pakai tanpa memerlukan proses tambahan. Cukup tambahkan air."
+    },
+    {
+      "title": "Pemasangan Cepat",
+      "description": "Ganvex Mat dapat dipasang hingga 10 kali lebih cepat dibandingkan beton konvensional, dengan cakupan pemasangan hingga 200 m² per jam."
+    },
+    {
+      "title": "Solusi Hemat Biaya",
+      "description": "Waktu pemasangan yang lebih singkat dan kebutuhan logistik yang minimal membantu mengurangi biaya proyek secara keseluruhan."
+    },
+    {
+      "title": "Ramah Lingkungan",
+      "description": "Solusi dengan massa ringan dan emisi karbon rendah yang menggunakan hingga 95% lebih sedikit material dibandingkan beton konvensional."
+    }
+  ],
+
+  "userAdvantages": [
+    {
+      "title": "Fleksibel",
+      "description": "Ganvex Mat dapat dengan mudah mengikuti kontur permukaan tanah dan struktur di sekitarnya. Sebelum mengeras, material ini dapat dipotong dan disesuaikan menggunakan peralatan sederhana."
+    },
+    {
+      "title": "Kedap Air",
+      "description": "Dilengkapi dengan lapisan karet yang kuat dan tahan lama, Ganvex Mat memberikan tingkat kedap air yang sangat baik serta efektif mencegah rembesan atau penetrasi air."
+    },
+    {
+      "title": "Kuat",
+      "description": "Diperkuat dengan serat berkinerja tinggi, Ganvex Mat tahan terhadap retak, mampu menyerap energi benturan, dan menjaga kestabilan struktur secara optimal."
+    },
+    {
+      "title": "Tahan Lama",
+      "description": "Ganvex Mat memiliki ketahanan abrasi yang tinggi dan performa jangka panjang, serta memberikan perlindungan yang kuat terhadap bahan kimia, cuaca, dan paparan sinar UV."
+    }
+  ],
+
+  "applications": [
+    {
+      "category": "Slope Protection",
+      "slug": "slope-protection",
+      "description": "Perlindungan erosi dan stabilisasi lereng untuk tebing jalan, tanggul, dan area rawan longsor.",
+      "useCases": [
+        "Tebing jalan raya dan tol",
+        "Lereng tambang terbuka",
+        "Tanggul sungai dan bendungan"
+      ]
+    },
+    {
+      "category": "Channel Lining",
+      "slug": "channel-lining",
+      "description": "Pelapisan saluran irigasi dan kanal air untuk mencegah erosi dan rembesan.",
+      "useCases": [
+        "Saluran irigasi pertanian",
+        "Kanal distribusi air",
+        "Kolam retensi dan waduk"
+      ]
+    },
+    {
+      "category": "Ditch Lining",
+      "slug": "ditch-lining",
+      "description": "Pelapisan parit dan drainase perkotaan maupun pertanian dengan permukaan beton permanen.",
+      "useCases": [
+        "Drainase perkotaan",
+        "Parit pertanian",
+        "Saluran tepi jalan"
+      ]
+    },
+    {
+      "category": "Bund Lining",
+      "slug": "bund-lining",
+      "description": "Pelapisan tanggul dan bendungan untuk mencegah erosi dan menjaga integritas struktur.",
+      "useCases": [
+        "Tanggul bendungan",
+        "Embankment jalan",
+        "Penahan banjir"
+      ]
+    },
+    {
+      "category": "Remediation",
+      "slug": "remediation",
+      "description": "Rehabilitasi dan perbaikan infrastruktur yang membutuhkan solusi cepat dan tahan lama.",
+      "useCases": [
+        "Perbaikan infrastruktur rusak",
+        "Pekerjaan darurat pasca bencana",
+        "Rehabilitasi area terpencil"
+      ]
+    }
+  ],
+
+  "installation": {
+    "title": "Metode Instalasi",
+    "description": "Proses pemasangan sistematis dari persiapan area hingga aktivasi material.",
+    "benefit": "Mempercepat pekerjaan hingga 60% dan lebih efisien dalam penggunaan tenaga kerja.",
+    "steps": [
+      {
+        "step": 1,
+        "title": "Area Bersih",
+        "description": "Bersihkan seluruh permukaan dasar (substrate) dari vegetasi, batu tajam, maupun benda-benda lain yang menonjol. Tujuannya adalah untuk memastikan area tersebut padat, stabil, serta memiliki permukaan yang rata dan seragam, sehingga material dapat bersentuhan langsung secara optimal dengan permukaan dasar."
+      },
+      {
+        "step": 2,
+        "title": "Pemasangan Material",
+        "description": "Material Ganvex Mat dipasang di atas area yang telah dipersiapkan. Pastikan pemasangan dilakukan dengan tumpang tindih (overlap) minimal 10 cm antar lembar material. Gulungan harus diposisikan sedemikian rupa sehingga lapisan bawah material bersentuhan langsung dengan permukaan tanah di bawahnya."
+      },
+      {
+        "step": 3,
+        "title": "Pengikatan Material",
+        "description": "Material yang telah dipasang kemudian diamankan menggunakan berbagai metode sesuai substrat. Pada overlap, sekrup dipasang 30–50 mm dari tepi lapisan atas. Untuk tanah, gunakan pasak atau parit jangkar. Pada beton, gunakan baut atau paku khusus."
+      },
+      {
+        "step": 4,
+        "title": "Aktivasi Material",
+        "description": "Semprotkan air secara merata ke seluruh permukaan serat hingga benar-benar basah saat disentuh. Gunakan air cukup dan hindari tekanan tinggi langsung ke material. Material akan mulai setting dalam 24 jam setelah aktivasi dan terus mengalami peningkatan kekuatan."
+      }
+    ]
+  },
+
+  "specifications": {
+    "trademarkNote": "Merek dagang GANVEX MAT telah diajukan pendaftarannya kepada Direktorat Jenderal Kekayaan Intelektual (DJKI) Republik Indonesia dan saat ini sedang berada pada tahap pemeriksaan substantif.",
+    "beforeSetting": {
+      "title": "GEC Ganvex Mat (Sebelum Proses Setting)",
+      "headers": ["Spesifikasi", "GEC CB 8", "GEC CB 10"],
+      "rows": [
+        { "spec": "Ketebalan", "cb8": "8 mm", "cb10": "10 mm" },
+        { "spec": "Lebar Gulungan", "cb8": "2 m", "cb10": "2 m" },
+        { "spec": "Panjang Gulungan", "cb8": "25 m", "cb10": "25 m" },
+        { "spec": "Massa per Unit", "cb8": "10–13 kg/m²", "cb10": "10–13 kg/m²" },
+        { "spec": "Waktu Kerja Setelah Hidratasi", "cb8": "1–2 jam", "cb10": "1–2 jam" }
+      ]
+    },
+    "afterSetting": {
+      "title": "GEC Ganvex Mat (Setelah Proses Setting)",
+      "parameters": [
+        { "label": "Kekuatan Lentur", "value": "4.50 MPa" },
+        { "label": "Kekuatan Tarik", "value": "19 kN/m" },
+        { "label": "Kekuatan Tekan", "value": "50.0 MPa" },
+        { "label": "Ketahanan Aus", "value": "0.3 mm" },
+        { "label": "Ketahanan Benturan", "value": "24.3 kJ/m²" }
+      ]
+    },
+    "testMethods": [
+      "ASTM D5199",
+      "ASTM D5993",
+      "ASTM D8058",
+      "ASTM D4885",
+      "ASTM D8329",
+      "ASTM C1353",
+      "GB/T 15231-2023"
+    ]
+  },
+
+  "contact": {
+    "website": "ganeshaec.co.id",
+    "websiteUrl": "https://www.ganeshaec.co.id",
+    "phone": "+62 887-1510-045",
+    "phoneUrl": "tel:+628871510045",
+    "whatsapp": "628871510045",
+    "email": "gecganesha@gmail.com",
+    "address": {
+      "building": "Gedung Fancy Mampang",
+      "street": "Jl. Mampang Prapatan Raya No. 151 Lantai 4 Unit A7",
+      "district": "RT.003/RW.001, Duren Tiga, Kecamatan Pancoran",
+      "city": "Kota Jakarta Selatan, Jakarta 12760, Indonesia"
+    }
+  },
+
+  "contactCTA": {
+    "headline": "Siap Menggunakan Ganvex Mat untuk Proyek Anda?",
+    "subheadline": "Tim teknis GEC siap membantu menentukan spesifikasi yang tepat dan memberikan estimasi kebutuhan material."
+  },
+
+  "seo": {
+    "metaTitle": "Ganvex Mat Solution – GEC | Solusi Beton Fleksibel",
+    "metaDescription": "Ganvex Mat GEC adalah material pelapis semen geokomposit yang mengeras dengan air. Cepat dipasang, kuat, tahan hingga 30 tahun untuk slope protection, channel lining, dan infrastruktur sipil.",
+    "keywords": [
+      "ganvex mat",
+      "gec ganvex mat",
+      "solusi beton fleksibel",
+      "slope protection",
+      "channel lining",
+      "ditch lining",
+      "bund lining",
+      "3d rubber sealing",
+      "material geokomposit semen",
+      "pelapisan saluran irigasi",
+      "perlindungan erosi"
+    ]
+  },
+
+  "pageStructure": {
+    "sections": [
+      { "id": "hero", "label": "Hero", "priority": 1 },
+      { "id": "technology", "label": "Teknologi 3D Rubber Sealing", "priority": 2 },
+      { "id": "characteristics", "label": "Karakteristik Utama", "priority": 3 },
+      { "id": "user-advantages", "label": "Keunggulan Pengguna", "priority": 4 },
+      { "id": "applications", "label": "Aplikasi", "priority": 5 },
+      { "id": "installation", "label": "Metode Instalasi", "priority": 6 },
+      { "id": "specifications", "label": "Spesifikasi Produk", "priority": 7 },
+      { "id": "contact-cta", "label": "Kontak", "priority": 8 }
+    ]
+  }
+}

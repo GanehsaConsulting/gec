@@ -3,6 +3,20 @@
 const nextConfig = {
     reactStrictMode: true,
     devIndicators: false,
+    async redirects() {
+        return [
+            {
+                source: "/cement-blanket",
+                destination: "/ganvex-mat",
+                permanent: true,
+            },
+            {
+                source: "/cement-blanket/:path*",
+                destination: "/ganvex-mat/:path*",
+                permanent: true,
+            },
+        ];
+    },
     env: {
         APIURL: process.env.NEXT_PUBLIC_APIURL,
     },

@@ -1,0 +1,54 @@
+---
+description: GEC design language — tokens, layout, aesthetics, accessibility
+alwaysApply: true
+---
+
+# GEC Design Language
+
+Follow patterns from About Us, home sections, and ganvex-mat — not generic SaaS marketing UI.
+
+## Brand tokens (`globals.css` `@theme`)
+
+- Primary: `mainColor` `#441752`, `secondaryColor`, `thirdColor`
+- Accents: `otherColor` / `otherColorDark`, `other1`, `other2`
+- Neutrals: `darkColor`, `lightColor`, `secondaryDark`, `secondaryLight`
+- Radius: `rounded-main` (20px), `rounded-secondary`, `rounded-third`
+- Purple brand is **intentional** — do not “de-purple” the site
+
+## Layout utilities
+
+```
+.margin  → mx-4 md:mx-10
+.spacing → py-10 md:py-20
+```
+
+Section pages usually combine `margin` + `spacing`, or bg band + inner `margin`.
+
+## Surfaces & chrome
+
+- Soft panels: `bg-lightColor dark:bg-darkColor` (often `/50`–`/60`)
+- Inverted bands: `bg-darkColor dark:bg-lightColor` with careful text contrast
+- Section labels: `Title` from `src/components/title-text.jsx` (uppercase, tracking)
+- Banners: split title / description like `ReusableBanner` / About Us — image strip + content band below when matching that pattern
+- Prefer `components/<feature>/*-section.jsx` composition for multi-section pages
+
+## Do / Don’t
+
+```jsx
+// ✅ GEC — token surfaces, Title chrome, brand CTA
+<section className="margin spacing">
+  <Title>About Us</Title>
+  <div className="bg-lightColor dark:bg-darkColor rounded-main p-4">…</div>
+</section>
+
+// ❌ Generic — purple gradient CTA blob, full-bleed text-on-hero overlay stack
+<div className="bg-gradient-to-br from-violet-600 to-indigo-500 …">
+```
+
+## Accessibility (required)
+
+- Sufficient contrast in **light and dark**
+- Meaningful `alt` on `next/image`; decorative images: empty `alt` only when intentional
+- Interactive controls: visible focus, keyboard operable, `aria-label` when label is visual-only
+- Keep `lang` aligned with dominant copy on the page/section when adding markup
+- Prefer shadcn primitives (button, dialog, sheet) for focus/ARIA behavior over custom widgets

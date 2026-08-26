@@ -1,0 +1,39 @@
+---
+description: UI copy policy — bilingual EN chrome / ID narrative
+alwaysApply: true
+---
+
+# GEC UI Copy — Bilingual
+
+This site is **bilingual by design**. Do not force English-only CMS rules.
+
+## Pattern (match neighbors)
+
+| Layer | Language |
+|-------|----------|
+| Nav / chrome / many section titles | English (e.g. Products, About Us, Featured Product) |
+| Company & product body narrative | Indonesian (or source data language) |
+| Agent chat with user | Follow the user’s language |
+
+## Rules
+
+- New copy should **match the surrounding section** — don’t invent a third dialect
+- Do not mix ID and EN inside **one** user-facing string without reason
+- Do **not** mass-translate the whole site unless explicitly asked
+- Product JSON / Sheets content: keep author/source language; only polish if asked
+- `aria-label` / `title`: same language as the control’s visible label when possible
+
+## Examples
+
+```jsx
+// ✅ Nav chrome EN, body ID (existing About pattern)
+<Title>About Us</Title>
+<p>GEC adalah identitas brand dari PT Ganesha Multi Kreatif…</p>
+
+// ❌ Random mix in one control
+<Button>Create Artikel Sekarang</Button>
+```
+
+## Commits & code comments
+
+Follow team preference — not constrained by this UI copy rule.
